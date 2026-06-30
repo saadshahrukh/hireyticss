@@ -12,7 +12,7 @@ export default function PricingSection() {
 
   return (
     <section className="section-block pt-28 md:pt-36">
-      <div className="section-container max-w-[1400px]">
+      <div className="section-container !max-w-[1800px]">
         <div className="section-header">
           <p className="section-eyebrow">Pricing</p>
           <h1 className="section-title">
