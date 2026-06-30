@@ -131,7 +131,7 @@ function DashboardInfographic() {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section className="relative overflow-hidden pb-20 md:pb-28">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 h-[600px] w-[600px] rounded-full bg-blue-50/80 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-violet-50/60 blur-3xl" />
