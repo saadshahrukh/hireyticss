@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-violet: #7c3aed;
+  --accent-light: #eff6ff;
+  --border: #e2e8f0;
+  --surface: #f8fafc;
+  --brand-dark: #0f172a;
+  --brand-glass: rgba(255, 255, 255, 0.72);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-violet: var(--accent-violet);
+  --color-accent-light: var(--accent-light);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-brand-dark: var(--brand-dark);
+  --font-sans: var(--font-jakarta);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float 4s ease-in-out 1s infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: var(--brand-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+}
+
+.brand-gradient-subtle {
+  background: linear-gradient(
+    135deg,
+    rgba(37, 99, 235, 0.08) 0%,
+    rgba(124, 58, 237, 0.06) 100%
+  );
+}
+
+.section-container {
+  @apply mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12;
+}
+
+.section-block {
+  @apply py-24 md:py-32;
+}
+
+.section-header {
+  @apply mx-auto max-w-2xl text-center mb-16 md:mb-20;
+}
+
+.section-eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-blue-600 mb-4;
+}
+
+.section-title {
+  @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-[2.75rem] md:leading-tight;
+}
+
+.section-desc {
+  @apply mt-5 text-base leading-relaxed text-slate-600 sm:text-lg;
+}
