@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Hireytics — Intelligent Workforce Platform",
   description:
     "All-in-one HRM + Recruitment CRM with AI-augmented hiring, automated onboarding, and workforce analytics. Reduce time-to-hire by 30% and gain actionable insights.",
+     icons: {
+    icon: [
+      { url: "/logo-icon.png" },
+    ],
+  },
   keywords: [
     "HRM",
     "Recruitment CRM",

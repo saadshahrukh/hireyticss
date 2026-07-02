@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Why Hireytics", href: "/#value" },
@@ -42,11 +43,12 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
     >
       <nav className="section-container flex max-w-6xl items-center justify-between py-4 md:py-5">
         <a href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl brand-gradient shadow-md shadow-blue-500/20 transition-transform duration-300 group-hover:scale-105">
-            <span className="text-sm font-bold text-white">H</span>
+          <div className="flex h-9 w-9 items-center justify-center shadow-blue-500/20 transition-transform duration-300 group-hover:scale-105">
+            {/* <span className="text-sm font-bold text-white">H</span> */}
+            <Image src="/logo-icon.png" alt="Hireytics Logo" width={32} height={32} className="" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-slate-900">
-            Hireytics
+          <span >
+              <Image src="/logo-grad.png" alt="Hireytics Logo" width={150} height={52} className="hidden h-7 w-auto md:block" />
           </span>
         </a>
 
