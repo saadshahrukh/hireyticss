@@ -1,4 +1,5 @@
 import { Globe, Share2, Mail } from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
   Product: [
@@ -27,9 +28,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-black">
-                <span className="text-sm font-bold text-white">H</span>
-              </div>
+             <Image src="/logo-icon.png" alt="Hireytics Logo" width={32} height={32} className="" />
               <span className="text-xl font-bold tracking-tight text-slate-900">
                 Hireytics
               </span>
