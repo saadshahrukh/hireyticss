@@ -17,7 +17,7 @@ export default function PricingSection() {
           <p className="section-eyebrow">Pricing</p>
           <h1 className="section-title">
             Plans that scale with your{" "}
-            <span className="gradient-text">hiring ambitions</span>
+            <span className="text-black">hiring ambitions</span>
           </h1>
           <p className="section-desc">
             Start free, grow with confidence. Every plan includes the core HRM
@@ -54,12 +54,12 @@ export default function PricingSection() {
               className="mx-auto max-w-xl"
             >
               <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-12 text-center shadow-xl shadow-slate-200/40">
-                <div className="absolute inset-0 brand-gradient-subtle" />
-                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue-100/40 blur-3xl" />
-                <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-violet-100/40 blur-3xl" />
+                <div className="absolute inset-0 bg-slate-100 opacity-50" />
+                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-slate-200 blur-3xl" />
+                <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-slate-200 blur-3xl" />
 
                 <div className="relative">
-                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl brand-gradient shadow-lg shadow-blue-500/20">
+                  <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-black shadow-lg shadow-slate-400/20">
                     <CalendarClock className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900">
@@ -70,10 +70,10 @@ export default function PricingSection() {
                     teams committed to long-term hiring excellence. Check back
                     shortly or contact us for early access.
                   </p>
-                  <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50/80 px-5 py-2 text-xs font-semibold text-blue-700">
+                  <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-100 px-5 py-2 text-xs font-semibold text-slate-900">
                     <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-600" />
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-slate-400 opacity-50" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-slate-900" />
                     </span>
                     Launching Q3 2026
                   </div>

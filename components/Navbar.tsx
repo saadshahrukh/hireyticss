@@ -43,7 +43,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
     >
       <nav className="section-container flex max-w-6xl items-center justify-between py-4 md:py-5">
         <a href="/" className="flex items-center gap-2.5 group">
-          <div className="flex h-9 w-9 items-center justify-center shadow-blue-500/20 transition-transform duration-300 group-hover:scale-105">
+          <div className="flex h-9 w-9 items-center justify-center shadow-slate-300/20 transition-transform duration-300 group-hover:scale-105">
             {/* <span className="text-sm font-bold text-white">H</span> */}
             <Image src="/logo-icon.png" alt="Hireytics Logo" width={32} height={32} className="" />
           </div>
@@ -57,7 +57,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="relative text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-gradient-to-r after:from-blue-600 after:to-violet-600 after:transition-all hover:after:w-full"
+                className="relative text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
               >
                 {link.label}
               </a>

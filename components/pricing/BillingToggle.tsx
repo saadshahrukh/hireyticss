@@ -26,7 +26,7 @@ export default function BillingToggle({ value, onChange }: BillingToggleProps) {
             {active && (
               <motion.span
                 layoutId="billing-pill"
-                className="absolute inset-0 rounded-full brand-gradient shadow-md shadow-blue-500/20"
+                className="absolute inset-0 rounded-full bg-black shadow-md shadow-slate-500/10"
                 transition={{ type: "spring", stiffness: 400, damping: 30 }}
               />
             )}

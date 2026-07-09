@@ -51,7 +51,7 @@ function DemoPreview({ paused }: { paused: boolean }) {
           className="w-full max-w-md rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md md:p-8"
         >
           <div className="flex items-center justify-between mb-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-blue-300">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
               {current.title}
             </span>
             <div className="flex gap-1.5">
@@ -61,7 +61,7 @@ function DemoPreview({ paused }: { paused: boolean }) {
                   type="button"
                   onClick={() => setFrame(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === frame ? "w-6 bg-blue-400" : "w-1.5 bg-white/25 hover:bg-white/40"
+                    i === frame ? "w-6 bg-slate-900" : "w-1.5 bg-white/25 hover:bg-white/40"
                   }`}
                   aria-label={`Frame ${i + 1}`}
                 />
@@ -76,7 +76,7 @@ function DemoPreview({ paused }: { paused: boolean }) {
             {current.bars.map((h, i) => (
               <motion.div
                 key={i}
-                className="flex-1 rounded-t-md brand-gradient opacity-80"
+                className="flex-1 rounded-t-md bg-slate-900 opacity-80"
                 initial={{ height: 0 }}
                 animate={{ height: `${Math.max(h, 4)}%` }}
                 transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -96,25 +96,18 @@ export default function VideoSection() {
     <section id="demo" className="section-block">
       <div className="section-container">
         <SectionHeader
-          eyebrow="See It Live"
+          eyebrow="AI TALENT OPS PLATFORM"
           title="Your entire workforce lifecycle — in one view"
           description="From the first interview to the quarterly review, see how Hireytics keeps every stage connected and measurable."
         />
 
         <FadeIn>
           <div className="relative mx-auto max-w-4xl">
-            <div className="absolute -inset-6 rounded-3xl brand-gradient-subtle blur-2xl opacity-60" />
+            <div className="absolute -inset-6 rounded-3xl bg-slate-200/60 blur-2xl opacity-60" />
 
             <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 shadow-2xl shadow-slate-300/30">
-              <div className="relative aspect-video bg-gradient-to-br from-slate-900 via-slate-900 to-[#1a1040]">
-                <div
-                  className="absolute inset-0 opacity-[0.07]"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, #fff 1px, transparent 1px)",
-                    backgroundSize: "20px 20px",
-                  }}
-                />
+              <div className="relative aspect-video bg-slate-950">
+                <div className="absolute inset-0 opacity-[0.03] bg-slate-900/5" />
 
                 {playing ? (
                   <DemoPreview paused={false} />
@@ -128,9 +121,9 @@ export default function VideoSection() {
                       whileTap={{ scale: 0.95 }}
                       aria-label="Play demo"
                     >
-                      <span className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping" />
-                      <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-xl shadow-blue-500/20">
-                        <Play className="h-6 w-6 fill-blue-600 text-blue-600 ml-0.5" />
+                      <span className="absolute inset-0 rounded-full bg-slate-300/30 animate-ping" />
+                      <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-xl shadow-slate-400/20">
+                        <Play className="h-6 w-6 fill-black text-black ml-0.5" />
                       </span>
                     </motion.button>
                     <p className="mt-5 text-sm font-medium text-slate-400">
@@ -143,7 +136,7 @@ export default function VideoSection() {
                   <button
                     type="button"
                     onClick={() => setPlaying(false)}
-                    className="absolute bottom-5 right-5 flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                    className="absolute bottom-5 right-5 flex items-center gap-2 rounded-full bg-black/10 px-4 py-2 text-xs font-medium text-black backdrop-blur-md transition-colors hover:bg-black/15"
                   >
                     <Pause className="h-3.5 w-3.5" />
                     Pause
@@ -151,14 +144,14 @@ export default function VideoSection() {
                 )}
 
                 <div className="absolute bottom-5 left-5 flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg brand-gradient">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
                     <span className="text-xs font-bold text-white">H</span>
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-white">
                       Hireytics Platform
                     </p>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-400">
                       Hire · Onboard · Manage
                     </p>
                   </div>

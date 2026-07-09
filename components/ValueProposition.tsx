@@ -43,13 +43,13 @@ export default function ValueProposition() {
         <StaggerContainer className="grid gap-8 lg:grid-cols-3">
           {pains.map((item) => (
             <StaggerItem key={item.pain}>
-              <div className="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-xl hover:shadow-blue-500/5">
+              <div className="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-xl hover:shadow-slate-300/10">
                 <div className="mb-6 flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl brand-gradient-subtle">
-                    <item.icon className="h-5 w-5 text-blue-600" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100">
+                    <item.icon className="h-5 w-5 text-slate-900" />
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl font-extrabold gradient-text">{item.metric}</p>
+                    <p className="text-2xl font-extrabold text-black">{item.metric}</p>
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
                       {item.metricLabel}
                     </p>
@@ -63,9 +63,9 @@ export default function ValueProposition() {
                 <p className="mt-2 text-sm leading-relaxed text-slate-500">{item.loss}</p>
 
                 <div className="my-6 flex items-center gap-2">
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-                  <ArrowRight className="h-4 w-4 text-blue-500" />
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+                  <div className="h-px flex-1 bg-slate-200" />
+                  <ArrowRight className="h-4 w-4 text-slate-500" />
+                  <div className="h-px flex-1 bg-slate-200" />
                 </div>
 
                 <p className="text-xs font-semibold uppercase tracking-wider text-emerald-600">

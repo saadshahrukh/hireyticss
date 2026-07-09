@@ -13,13 +13,13 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-gradient-to-r from-blue-600 to-violet-600 text-white shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:brightness-110",
+    "bg-black text-white shadow-lg shadow-slate-400/10 hover:bg-slate-900",
   secondary:
-    "border border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50 shadow-sm",
+    "border border-slate-300 bg-white text-black hover:border-slate-400 hover:bg-slate-100 shadow-sm",
   ghost:
-    "text-slate-600 hover:text-blue-600 hover:bg-blue-50/60",
+    "text-black hover:text-slate-900 hover:bg-slate-100",
   dark:
-    "bg-slate-900 text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-violet-600 shadow-md hover:shadow-lg hover:shadow-blue-500/20",
+    "bg-slate-900 text-white hover:bg-black shadow-md hover:shadow-lg hover:shadow-slate-500/20",
 };
 
 const base =

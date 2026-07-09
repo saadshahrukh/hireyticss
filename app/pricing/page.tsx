@@ -18,15 +18,8 @@ export default function PricingPage() {
     <>
       <Navbar solid />
       <main className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-gradient-to-b from-blue-50/50 via-white to-white" />
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] opacity-[0.35]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #2563eb 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-slate-200/60" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-slate-100/80" />
 
         <PricingSection />
         <ComparisonTable />
@@ -36,7 +29,7 @@ export default function PricingPage() {
           <div className="section-container max-w-4xl">
             <FadeIn>
               <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-14 text-center shadow-xl shadow-slate-200/40 md:px-16">
-                <div className="absolute inset-0 brand-gradient-subtle" />
+                <div className="absolute inset-0 bg-slate-100/80" />
                 <div className="relative">
                   <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                     Not sure which plan fits?

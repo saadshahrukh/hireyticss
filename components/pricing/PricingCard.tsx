@@ -13,7 +13,7 @@ function FeatureRow({ feature }: { feature: Plan["features"][0] }) {
 
   return (
     <li className="flex items-start gap-2.5 text-sm text-slate-600">
-      <Check className="mt-0.5 h-4 w-4 shrink-0 text-blue-600" strokeWidth={2.5} />
+      <Check className="mt-0.5 h-4 w-4 shrink-0 text-slate-900" strokeWidth={2.5} />
       <span className="leading-snug">
         {feature.text}
         {feature.tooltip && <Tooltip content={feature.tooltip} />}
@@ -33,11 +33,11 @@ function FeatureRow({ feature }: { feature: Plan["features"][0] }) {
               <motion.ul
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
-                className="mt-2 space-y-1 rounded-lg bg-blue-50/60 px-3 py-2 text-xs text-slate-600"
+                className="mt-2 space-y-1 rounded-lg bg-slate-100/60 px-3 py-2 text-xs text-slate-600"
               >
                 {feature.accordion.items.map((item) => (
                   <li key={item} className="flex items-center gap-1.5">
-                    <span className="h-1 w-1 rounded-full bg-blue-400" />
+                    <span className="h-1 w-1 rounded-full bg-slate-900" />
                     {item}
                   </li>
                 ))}
@@ -76,7 +76,7 @@ export default function PricingCard({ plan, index }: PricingCardProps) {
     >
       {isPopular && (
         <div className="absolute -top-3.5 left-1/2 z-10 -translate-x-1/2">
-          <span className="inline-flex items-center gap-1.5 rounded-full brand-gradient px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg shadow-blue-500/25">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-black px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg shadow-slate-400/15">
             <Sparkles className="h-3.5 w-3.5" />
             Most Popular
           </span>

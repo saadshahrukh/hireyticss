@@ -43,8 +43,8 @@ export default function Testimonials() {
         <StaggerContainer className="grid gap-8 md:grid-cols-3">
           {testimonials.map((item) => (
             <StaggerItem key={item.name}>
-              <div className="group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-blue-200/60 hover:shadow-xl hover:shadow-blue-500/5">
-                <Quote className="absolute right-6 top-6 h-8 w-8 text-slate-100 transition-colors group-hover:text-blue-50" />
+              <div className="group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-slate-300/60 hover:shadow-xl hover:shadow-slate-300/10">
+                <Quote className="absolute right-6 top-6 h-8 w-8 text-slate-100 transition-colors group-hover:text-slate-300" />
 
                 <div className="flex gap-0.5">
                   {[...Array(item.rating)].map((_, i) => (
@@ -60,7 +60,7 @@ export default function Testimonials() {
                 </p>
 
                 <div className="mt-8 flex items-center gap-3 border-t border-slate-100 pt-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full brand-gradient text-xs font-bold text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-black text-xs font-bold text-white">
                     {item.name
                       .split(" ")
                       .map((n) => n[0])

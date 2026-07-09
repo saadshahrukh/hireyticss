@@ -32,7 +32,7 @@ export default function InquiryForm() {
         <FadeIn>
           <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl shadow-slate-200/40">
             <div className="grid lg:grid-cols-5">
-              <div className="brand-gradient p-8 text-white md:p-10 lg:col-span-2">
+              <div className="bg-black p-8 text-white md:p-10 lg:col-span-2">
                 <h3 className="text-xl font-bold md:text-2xl">
                   What you&apos;ll get from a demo
                 </h3>
@@ -59,7 +59,7 @@ export default function InquiryForm() {
                           />
                         </svg>
                       </div>
-                      <span className="text-sm leading-relaxed text-blue-50">{item}</span>
+                      <span className="text-sm leading-relaxed text-slate-100">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -92,7 +92,7 @@ export default function InquiryForm() {
                           type="text"
                           required
                           placeholder="Jane Smith"
-                          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20"
                         />
                       </div>
                       <div>
@@ -158,7 +158,7 @@ export default function InquiryForm() {
                           name="size"
                           required
                           defaultValue=""
-                          className="w-full appearance-none rounded-xl border border-slate-200 py-3 pl-10 pr-4 text-sm outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                          className="w-full appearance-none rounded-xl border border-slate-200 py-3 pl-10 pr-4 text-sm outline-none transition-all focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20"
                         >
                           <option value="" disabled>Select team size</option>
                           {companySizes.map((size) => (
@@ -180,7 +180,7 @@ export default function InquiryForm() {
                           rows={4}
                           required
                           placeholder="Slow screening, scattered tools, no visibility into hiring metrics..."
-                          className="w-full resize-none rounded-xl border border-slate-200 py-3 pl-10 pr-4 text-sm outline-none transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+                          className="w-full resize-none rounded-xl border border-slate-200 py-3 pl-10 pr-4 text-sm outline-none transition-all focus:border-slate-500 focus:ring-2 focus:ring-slate-500/20"
                         />
                       </div>
                     </div>

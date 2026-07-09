@@ -21,7 +21,7 @@ export function AccordionItem({
     <div className="border-b border-slate-200 last:border-b-0">
       <button
         type="button"
-        className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-blue-600"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-slate-900"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >

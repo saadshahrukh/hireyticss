@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl brand-gradient">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-black">
                 <span className="text-sm font-bold text-white">H</span>
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">
@@ -44,7 +44,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-400 transition-all duration-300 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-400 transition-all duration-300 hover:border-slate-300 hover:bg-slate-100 hover:text-slate-900"
                   aria-label="Social link"
                 >
                   <Icon className="h-4 w-4" />
@@ -61,7 +61,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-sm text-slate-500 transition-colors hover:text-blue-600"
+                      className="text-sm text-slate-500 transition-colors hover:text-slate-900"
                     >
                       {link.label}
                     </a>

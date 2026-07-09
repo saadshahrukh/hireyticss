@@ -15,7 +15,7 @@ export function Tooltip({ content, label = "More information" }: TooltipProps) {
     <span className="relative inline-flex align-middle">
       <button
         type="button"
-        className="ml-1.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/40"
+        className="ml-1.5 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-500/40"
         aria-label={label}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}

@@ -1,16 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --muted: #64748b;
-  --accent: #2563eb;
-  --accent-violet: #7c3aed;
-  --accent-light: #eff6ff;
-  --border: #e2e8f0;
-  --surface: #f8fafc;
-  --brand-dark: #0f172a;
+  --background: #F4F4F4;
+  --foreground: #000000;
+  --muted: #475569;
+  --accent: #000000;
+  --accent-secondary: #475569;
+  --accent-warning: #eab308;
+  --border: #d1d5db;
+  --surface: #ffffff;
+  --brand-dark: #000000;
   --brand-glass: rgba(255, 255, 255, 0.72);
+  --font-body: "Apk Galeria", Arial, sans-serif;
+  --font-heading: "Apkpraktikal", "Palatino Linotype", serif;
+  --font-utility: "Apkpraktikal", "Palatino Linotype", sans-serif;
+
+  --_typography---typeface--body: "Apk Galeria", Arial, sans-serif;
+  --_typography---font-size-body--body-text-regular: .875rem;
+  --_typography---font-size-headings--h2: 2rem;
+  --_typography---font-size-body--body-text-small: .75rem;
+  --_typography---typeface--utility: "Apkpraktikal", "Palatino Linotype", sans-serif;
+  --_typography---letter-spacing--3-letter-spacing: -.66px;
+  --_typography---font-size-body--caption-small: .625rem;
+  --_typography---letter-spacing--2-letter-spacing: .32px;
+  --_typography---typeface--heading: "Apkpraktikal", "Palatino Linotype", sans-serif;
+  --_typography---font-size-utility--overline: .75rem;
+  --_typography---font-size-headings--h4: 1.25rem;
+  --_typography---font-size-utility--button-label-small: .875rem;
+  --_typography---font-size-utility--button-label-x-small: .75rem;
+  --_typography---letter-spacing--5-letter-spacing: .6px;
+  --_typography---letter-spacing--1-letter-spacing: -.18px;
+  --_typography---font-size-headings--superhero-display: 3.5rem;
+  --_typography---font-size-body--body-text-large: 1rem;
+  --_typography---font-size-headings--rte-h1: 2.5rem;
+  --_typography---font-size-headings--rte-h2: 2.25rem;
+  --_typography---font-size-headings--rte-h3: 2rem;
+  --_typography---font-size-headings--rte-h5: 1.5rem;
+  --_typography---font-size-headings--rte-h6: 1.25rem;
+  --_typography---font-size-body--rte-paragraph: 1rem;
+  --_typography---font-size-headings--hero-display: 2.75rem;
+  --_typography---font-size-headings--h3: 1.5rem;
+  --_typography---font-size-headings--rte-h4: 1.75rem;
+  --_typography---font-size-headings--h1: 2.5rem;
+  --_typography---font-size-utility--button-label-large: 1.25rem;
+  --_typography---font-size-body--body-text-xl: 1.125rem;
+  --_typography---font-size-utility--button-label-medium: 1rem;
+  --_typography---font-size-utility--code: .875rem;
 }
 
 @theme inline {
@@ -18,12 +53,12 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
-  --color-accent-violet: var(--accent-violet);
-  --color-accent-light: var(--accent-light);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-warning: var(--accent-warning);
   --color-border: var(--border);
   --color-surface: var(--surface);
   --color-brand-dark: var(--brand-dark);
-  --font-sans: var(--font-jakarta);
+  --font-sans: var(--font-body);
 }
 
 html {
@@ -33,7 +68,53 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-jakarta), system-ui, sans-serif;
+  font-family: var(--_typography---typeface--body);
+  font-size: var(--_typography---font-size-body--body-text-regular);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--_typography---typeface--heading);
+}
+
+h1 {
+  font-size: var(--_typography---font-size-headings--h1);
+}
+
+h2 {
+  font-size: var(--_typography---font-size-headings--h2);
+}
+
+h3 {
+  font-size: var(--_typography---font-size-headings--h3);
+}
+
+h4 {
+  font-size: var(--_typography---font-size-headings--h4);
+}
+
+h5 {
+  font-size: var(--_typography---font-size-headings--rte-h5);
+}
+
+h6 {
+  font-size: var(--_typography---font-size-headings--rte-h6);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-utility {
+  font-family: var(--font-utility);
 }
 
 @keyframes float {
@@ -55,28 +136,32 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--foreground);
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
 }
 
 .glass-card {
-  background: var(--brand-glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 32px 80px rgba(22, 12, 40, 0.08);
 }
 
-.brand-gradient {
-  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+.glass-section {
+  background: rgba(255, 255, 255, 0.64);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 40px 100px rgba(22, 12, 40, 0.07);
 }
 
-.brand-gradient-subtle {
-  background: linear-gradient(
-    135deg,
-    rgba(37, 99, 235, 0.08) 0%,
-    rgba(124, 58, 237, 0.06) 100%
-  );
+.brand-solid {
+  background: var(--accent);
+}
+
+.brand-solid-subtle {
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .section-container {
@@ -92,7 +177,7 @@ body {
 }
 
 .section-eyebrow {
-  @apply text-xs font-semibold uppercase tracking-[0.2em] text-blue-600 mb-4;
+  @apply text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 mb-4;
 }
 
 .section-title {

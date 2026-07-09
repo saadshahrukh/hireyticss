@@ -65,13 +65,13 @@ export default function ComparisonTable() {
                         key={plan.id}
                         className={`px-4 py-5 text-center text-sm font-bold ${
                           plan.id === "pro"
-                            ? "text-blue-600"
+                            ? "text-slate-900"
                             : "text-slate-900"
                         }`}
                       >
                         {plan.label}
                         {plan.id === "pro" && (
-                          <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-blue-500">
+                          <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-slate-500">
                             Popular
                           </span>
                         )}
@@ -94,7 +94,7 @@ export default function ComparisonTable() {
                         <td
                           key={plan.id}
                           className={`px-4 py-4 text-center ${
-                            plan.id === "pro" ? "bg-blue-50/30" : ""
+                            plan.id === "pro" ? "bg-slate-100/60" : ""
                           }`}
                         >
                           <CellValue value={row[plan.id]} />
