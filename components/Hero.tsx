@@ -39,11 +39,10 @@ export default function Hero() {
               Live product walkthrough
             </p>
             <h2 className="mt-3 text-[32px] font-semibold tracking-tight text-foreground sm:text-[38px] lg:text-[44px]">
-              See the hiring workflow move like a mobile product demo.
+              Your entire workforce lifecycle in one view
             </h2>
             <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-muted-foreground">
-              Watch AI-sourced roles, candidate summaries and offer staging animate in a single full-width preview.
-            </p>
+From the first interview to the quarterly review, see how Hireytics keeps every stage connected and measurable.            </p>
           </div>
           <div className="mt-10 overflow-hidden rounded-[36px] border border-white/10 bg-[#0A0F19]/95 p-4 shadow-[0_40px_80px_-40px_rgba(0,0,0,0.45)] backdrop-blur-xl">
             <ProductStage />
