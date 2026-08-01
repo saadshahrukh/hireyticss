@@ -65,10 +65,10 @@ function HeroCopy() {
       <p className="mt-5 max-w-[640px] text-[15.5px] leading-relaxed text-muted-foreground">
 Transform the entire talent journey with Hireytics that automates screening, AI-led Realtime interviews, analytics, hiring, negotiations, onboarding, and workforce operations—helping your team save time, reduce complexity, and focus on people instead of processes.      </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <button className="group inline-flex items-center gap-2 rounded-lg bg-[color:var(--primary)] px-5 py-3 text-[14px] font-semibold text-[color:var(--primary-foreground)] shadow-[0_10px_40px_-10px_var(--ring)] transition hover:brightness-110">
+        <a href="/onboarding" className="group inline-flex items-center gap-2 rounded-lg bg-[color:var(--primary)] px-5 py-3 text-[14px] font-semibold text-[color:var(--primary-foreground)] shadow-[0_10px_40px_-10px_var(--ring)] transition hover:brightness-110">
           Start onboarding
           <span className="transition group-hover:translate-x-0.5" aria-hidden>→</span>
-        </button>
+        </a>
         <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-medium text-foreground/90 transition hover:bg-surface-2">
           <PlayIcon /> Watch 90s tour
         </button>

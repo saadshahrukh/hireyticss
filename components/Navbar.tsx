@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { MdArrowOutward } from "react-icons/md";
 import { ButtonLink } from "@/components/ui/Button";
 import Image from "next/image";
 
@@ -65,7 +66,14 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <a
+            href="/onboarding"
+            className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-950"
+          >
+            <span>Login</span>
+            <MdArrowOutward className="text-base transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
           <ButtonLink href="/#inquiry" variant="dark">
             Request Demo
           </ButtonLink>
@@ -102,6 +110,14 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                 </li>
               ))}
               <li className="mt-2 px-4">
+                <a
+                  href="/onboarding"
+                  className="mb-3 flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Login
+                  <span className="text-base">→</span>
+                </a>
                 <ButtonLink
                   href="/#inquiry"
                   variant="dark"
