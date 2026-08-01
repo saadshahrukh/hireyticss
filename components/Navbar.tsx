@@ -71,7 +71,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
             href="/onboarding"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-950"
           >
-            <span>Login</span>
+            <span className="underline" > <a href="https://apphireytics.vercel.app/auth" target="_blank" rel="noopener noreferrer">Login</a></span>
             <MdArrowOutward className="text-base transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <ButtonLink href="/#inquiry" variant="dark">
