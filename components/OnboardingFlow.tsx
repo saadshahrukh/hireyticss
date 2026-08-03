@@ -14,7 +14,7 @@ import {
 
 const steps = [
   {
-    title: 'Client basics',
+    title: 'Basic information',
     description: 'Tell us who you are and how we should reach you.',
     icon: MdPersonOutline,
   },
@@ -166,7 +166,7 @@ export default function OnboardingFlow() {
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,_#f8fbff_0%,_#f4f7ff_100%)] px-0 py-0 lg:px-0">
       <div className="mx-auto flex min-h-screen w-full flex-col overflow-hidden bg-white shadow-[0_30px_100px_-35px_rgba(15,23,42,0.35)] lg:flex-row">
-        <aside className="relative flex min-h-[320px] items-end overflow-hidden lg:min-h-screen lg:w-[40%]">
+        <aside className="relative flex min-h-[320px] items-center overflow-hidden lg:min-h-screen lg:w-[42%]">
           <Image
             src="/onboarding.jpg"
             alt="Team onboarding"
@@ -188,6 +188,20 @@ export default function OnboardingFlow() {
               legal acceptance, buyer context, and billing preferences.
             </p>
 
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <ShieldCheck size={16} /> Secure setup
+                </div>
+                <p className="mt-2 text-sm text-slate-100">Legal consent and data handling are handled in one pass.</p>
+              </div>
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                  <CreditCard size={16} /> Flexible billing
+                </div>
+                <p className="mt-2 text-sm text-slate-100">Choose invoice or card billing based on your team’s process.</p>
+              </div>
+            </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
                 <div className="flex items-center gap-2 text-sm font-semibold text-white">
