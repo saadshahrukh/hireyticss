@@ -58,7 +58,7 @@ function HeroCopy() {
   return (
     <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center justify-center">
       <span className="chip w-fit">
-        <span className="dot-live" /> AI TALENT OPS PLATFORM
+        <span className="dot-live" /> <strong>Recall v1.0</strong> is live now. Read details <strong className="underline text-blue-500" ><a href="/recall" target="_blank" rel="noopener noreferrer">here</a></strong>.
       </span>
       <h1 className="mt-6 text-[44px] font-semibold leading-[1.02] tracking-tight sm:text-[56px] lg:text-[64px]">
             Turn 20 Hours of Hiring Into 20 Minutes.      </h1>

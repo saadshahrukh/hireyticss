@@ -10,6 +10,7 @@ import Image from "next/image";
 const navLinks = [
   { label: "Why Hireytics", href: "/#value" },
   { label: "How It Works", href: "/#how-it-works" },
+  { label: "Recall", href: "/recall" },
   { label: "Pricing", href: "/pricing" },
   { label: "Demo", href: "/#demo" },
   { label: "Stories", href: "/#testimonials" },
@@ -68,10 +69,12 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
 
         <div className="hidden items-center gap-3 md:flex">
           <a
-            href="/onboarding"
+            href="https://apphireytics.vercel.app/auth"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-950"
           >
-            <span className="underline" > <a href="https://apphireytics.vercel.app/auth" target="_blank" rel="noopener noreferrer">Login</a></span>
+            <span className="underline">Login</span>
             <MdArrowOutward className="text-base transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           <ButtonLink href="/#inquiry" variant="dark">
