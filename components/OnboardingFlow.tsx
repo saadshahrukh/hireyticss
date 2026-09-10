@@ -1,397 +1,672 @@
-'use client';
+"use client";
 
-import { useMemo, useState } from 'react';
-import Image from 'next/image';
-import { ArrowRight, CheckCircle2, CreditCard, ShieldCheck, Sparkles } from 'lucide-react';
-import {
-  MdArrowOutward,
-  MdCheck,
-  MdGroups,
-  MdPayment,
-  MdPersonOutline,
-  MdVerifiedUser,
-} from 'react-icons/md';
+import { useMemo, useState, useEffect, useRef, Suspense } from "react";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { 
+  ShieldCheck, 
+  Sparkles, 
+  Building2, 
+  Mail, 
+  Globe, 
+  User, 
+  Phone, 
+  Check, 
+  Briefcase, 
+  ChevronDown, 
+  ChevronRight, 
+  Lock, 
+  Search, 
+  Zap,
+  ArrowRight
+} from "lucide-react";
+import { MdArrowOutward } from "react-icons/md";
+import Link from "next/link";
+import { plans } from "@/components/pricing/data";
 
-const steps = [
-  {
-    title: 'Basic information',
-    description: 'Tell us who you are and how we should reach you.',
-    icon: MdPersonOutline,
-  },
-  {
-    title: 'Compliance',
-    description: 'Confirm the legal and operational acceptance steps.',
-    icon: MdVerifiedUser,
-  },
-  {
-    title: 'Buyer details',
-    description: 'Share the buying context and implementation expectations.',
-    icon: MdGroups,
-  },
-  {
-    title: 'Payment setup',
-    description: 'Choose your billing path and finalize your onboarding.',
-    icon: MdPayment,
-  },
-] as const;
-
-type FormState = {
-  fullName: string;
-  companyName: string;
-  workEmail: string;
-  personalEmail: string;
-  phone: string;
-  role: string;
-  legalConsent: boolean;
-  dpaConsent: boolean;
-  privacyConsent: boolean;
-  buyerName: string;
-  buyerRole: string;
-  teamSize: string;
-  startDate: string;
-  plan: string;
-  paymentMethod: string;
-};
-
-const initialState: FormState = {
-  fullName: '',
-  companyName: '',
-  workEmail: '',
-  personalEmail: '',
-  phone: '',
-  role: '',
-  legalConsent: false,
-  dpaConsent: false,
-  privacyConsent: false,
-  buyerName: '',
-  buyerRole: '',
-  teamSize: '',
-  startDate: '',
-  plan: 'growth',
-  paymentMethod: 'invoice',
-};
-
-function Field({
-  label,
-  name,
-  type = 'text',
-  required = false,
-  placeholder,
-  value,
-  onChange,
-}: {
-  label: string;
-  name: keyof FormState;
-  type?: string;
-  required?: boolean;
-  placeholder?: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-}) {
-  return (
-    <label className="block text-sm">
-      <span className="mb-2 block font-medium text-slate-700">
-        {label}
-        {required ? ' *' : ''}
-      </span>
-      <input
-        name={name}
-        type={type}
-        required={required}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-sky-400 focus:bg-white"
-      />
-    </label>
-  );
+interface Country {
+  name: string;
+  code: string;
+  dialCode: string;
+  flag: string;
 }
 
-export default function OnboardingFlow() {
+const COUNTRIES: Country[] = [
+  { name: "United States", code: "US", dialCode: "+1", flag: "🇺🇸" },
+  { name: "United Kingdom", code: "GB", dialCode: "+44", flag: "🇬🇧" },
+  { name: "Canada", code: "CA", dialCode: "+1", flag: "🇨🇦" },
+  { name: "Australia", code: "AU", dialCode: "+61", flag: "🇦🇺" },
+  { name: "Germany", code: "DE", dialCode: "+49", flag: "🇩🇪" },
+  { name: "France", code: "FR", dialCode: "+33", flag: "🇫🇷" },
+  { name: "India", code: "IN", dialCode: "+91", flag: "🇮🇳" },
+  { name: "United Arab Emirates", code: "AE", dialCode: "+971", flag: "🇦🇪" },
+  { name: "Saudi Arabia", code: "SA", dialCode: "+966", flag: "🇸🇦" },
+  { name: "Singapore", code: "SG", dialCode: "+65", flag: "🇸🇬" },
+  { name: "Pakistan", code: "PK", dialCode: "+92", flag: "🇵🇰" },
+  { name: "Netherlands", code: "NL", dialCode: "+31", flag: "🇳🇱" },
+  { name: "Switzerland", code: "CH", dialCode: "+41", flag: "🇨🇭" },
+  { name: "Spain", code: "ES", dialCode: "+34", flag: "🇪🇸" },
+  { name: "Italy", code: "IT", dialCode: "+39", flag: "🇮🇹" },
+  { name: "Brazil", code: "BR", dialCode: "+55", flag: "🇧🇷" },
+  { name: "Japan", code: "JP", dialCode: "+81", flag: "🇯🇵" },
+  { name: "Ireland", code: "IE", dialCode: "+353", flag: "🇮🇪" },
+  { name: "Sweden", code: "SE", dialCode: "+46", flag: "🇸🇪" },
+  { name: "South Africa", code: "ZA", dialCode: "+27", flag: "🇿🇦" },
+];
+
+const ROLES = [
+  "CEO / Founder",
+  "VP of Talent / People",
+  "Head of Talent Acquisition",
+  "Hiring Manager",
+  "Technical Recruiter",
+  "Head of Engineering",
+  "HR Generalist / Operations",
+  "Other Executive",
+];
+
+const SIZES = [
+  "1 – 10 employees",
+  "11 – 50 employees",
+  "51 – 200 employees",
+  "201 – 1,000 employees",
+  "1,000+ employees",
+];
+
+const steps = [
+  { stepNum: 1, title: "Personal Details", percentage: 33 },
+  { stepNum: 2, title: "Company Details", percentage: 66 },
+  { stepNum: 3, title: "Choose Package", percentage: 100 },
+];
+
+function OnboardingContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const planQuery = searchParams.get("plan");
+
   const [step, setStep] = useState(0);
-  const [form, setForm] = useState<FormState>(initialState);
-  const [submitted, setSubmitted] = useState(false);
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
+  const [selectedPlanId, setSelectedPlanId] = useState<string>("pro");
 
-  const progress = useMemo(() => ((step + 1) / steps.length) * 100, [step]);
+  // STEP 1: Personal Details
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [personalEmail, setPersonalEmail] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState<Country>(COUNTRIES[0]);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
+  const [countrySearch, setCountrySearch] = useState("");
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
 
-  const updateField = (key: keyof FormState, value: string | boolean) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
-  };
+  // STEP 2: Company Details
+  const [companyName, setCompanyName] = useState("");
+  const [companyUrl, setCompanyUrl] = useState("");
+  const [emailUsername, setEmailUsername] = useState("");
+  const [companyRole, setCompanyRole] = useState("");
+  const [companySize, setCompanySize] = useState("");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-      const checked = (e.target as HTMLInputElement).checked;
-      updateField(name as keyof FormState, checked);
-    } else {
-      updateField(name as keyof FormState, value);
+  // Close country dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(e.target as Node)) {
+        setCountryDropdownOpen(false);
+      }
     }
-  };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
-  const goNext = () => {
-    if (step < steps.length - 1) {
-      setStep((prev) => prev + 1);
+  // Pre-select plan if passed via URL parameter
+  useEffect(() => {
+    if (planQuery) {
+      const match = plans.find((p) => p.id.toLowerCase() === planQuery.toLowerCase());
+      if (match) {
+        setSelectedPlanId(match.id);
+      }
     }
-  };
+  }, [planQuery]);
 
-  const goBack = () => {
-    if (step > 0) setStep((prev) => prev - 1);
-  };
+  // Clean company URL to domain
+  const cleanDomain = useMemo(() => {
+    if (!companyUrl) return "";
+    return companyUrl
+      .replace(/^https?:\/\//i, "")
+      .replace(/^www\./i, "")
+      .split("/")[0]
+      .trim()
+      .toLowerCase();
+  }, [companyUrl]);
 
+  // Derived work email
+  const fullWorkEmail = useMemo(() => {
+    if (cleanDomain && emailUsername) {
+      return `${emailUsername}@${cleanDomain}`;
+    }
+    return personalEmail;
+  }, [cleanDomain, emailUsername, personalEmail]);
+
+  const filteredCountries = useMemo(() => {
+    if (!countrySearch.trim()) return COUNTRIES;
+    return COUNTRIES.filter(
+      (c) =>
+        c.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+        c.dialCode.includes(countrySearch)
+    );
+  }, [countrySearch]);
+
+  // Validation
   const canProceed = () => {
     if (step === 0) {
-      return Boolean(
-        form.fullName &&
-          form.companyName &&
-          form.workEmail &&
-          form.personalEmail &&
-          form.phone &&
-          form.role,
-      );
+      return Boolean(firstName.trim() && personalEmail.trim() && personalEmail.includes("@") && phoneNumber.trim());
     }
     if (step === 1) {
-      return form.legalConsent && form.dpaConsent && form.privacyConsent;
+      return Boolean(companyName.trim() && companyUrl.trim() && emailUsername.trim() && companyRole && companySize);
     }
     if (step === 2) {
-      return Boolean(form.buyerName && form.buyerRole && form.teamSize && form.startDate);
+      return Boolean(selectedPlanId);
     }
     return true;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
+  const goNext = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (step < steps.length - 1 && canProceed()) {
+      setStep((prev) => prev + 1);
+    }
   };
 
+  const goBack = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (step > 0) setStep((prev) => prev - 1);
+  };
+
+  const handleCompleteAndCheckout = (e: React.FormEvent) => {
+    e.preventDefault();
+    const query = new URLSearchParams({
+      plan: selectedPlanId,
+      billing: billingCycle,
+      firstName: firstName,
+      lastName: lastName,
+      email: fullWorkEmail || personalEmail,
+      company: companyName,
+    }).toString();
+
+    router.push(`/checkout?${query}`);
+  };
+
+  const currentPercentage = steps[step].percentage;
+
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,_#f8fbff_0%,_#f4f7ff_100%)] px-0 py-0 lg:px-0">
-      <div className="mx-auto flex min-h-screen w-full flex-col overflow-hidden bg-white shadow-[0_30px_100px_-35px_rgba(15,23,42,0.35)] lg:flex-row">
-        <aside className="relative flex min-h-[320px] items-center overflow-hidden lg:min-h-screen lg:w-[42%]">
+    <div className="min-h-screen bg-slate-50 px-0 py-0 lg:px-0">
+      <div className="mx-auto flex min-h-screen w-full flex-col overflow-hidden bg-white shadow-2xl lg:flex-row">
+        
+        {/* Left Branded Sidebar */}
+        <aside className="relative flex min-h-[320px] pt-20 items-center overflow-hidden lg:min-h-screen lg:w-[40%]">
           <Image
             src="/onboarding.jpg"
-            alt="Team onboarding"
+            alt="Hireytics Onboarding"
             fill
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(14,116,144,0.78),_rgba(109,40,217,0.78))]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.24),_transparent_45%)]" />
-          <div className="relative z-10 p-8 text-white sm:p-10 lg:p-12">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-100">
-              <Sparkles size={14} /> Client onboarding
-            </div>
-            <h1 className="mt-6 text-3xl font-semibold leading-tight sm:text-4xl">
-              Start strong with a tailored setup experience.
-            </h1>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-slate-100 sm:text-base">
-              We collect everything needed for your team to go live quickly: core contact details,
-              legal acceptance, buyer context, and billing preferences.
-            </p>
+          <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(37,99,235,0.86),_rgba(109,40,217,0.86))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.25),_transparent_45%)]" />
+          
+          <div className="relative z-10 p-8 text-white sm:p-10 lg:p-12 flex flex-col justify-between h-full">
+            <div>
+              <Link href="/" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur">
+                <Sparkles size={14} className="text-white" /> Hireytics Onboarding
+              </Link>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <ShieldCheck size={16} /> Secure setup
+              <h1 className="mt-6 text-3xl font-bold leading-tight sm:text-4xl text-white">
+                Set up your autonomous recruiting workspace.
+              </h1>
+              <p className="mt-4 max-w-xl text-xs sm:text-sm leading-relaxed text-indigo-50">
+                AI voice and video screening, live code execution, and candidate recall — customized to your company hiring rubrics in 3 quick steps.
+              </p>
+
+              <div className="mt-8 space-y-3">
+                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+                  <div className="flex items-center gap-2 text-xs font-bold text-white">
+                    <ShieldCheck size={16} /> Instant ATS Integration
+                  </div>
+                  <p className="mt-1 text-[11px] text-indigo-100">
+                    Connect Greenhouse, Lever, Ashby, and Workday in one click.
+                  </p>
                 </div>
-                <p className="mt-2 text-sm text-slate-100">Legal consent and data handling are handled in one pass.</p>
-              </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <CreditCard size={16} /> Flexible billing
+                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+                  <div className="flex items-center gap-2 text-xs font-bold text-white">
+                    <Zap size={16} /> Fast Team Activation
+                  </div>
+                  <p className="mt-1 text-[11px] text-indigo-100">
+                    Start screening qualified candidates immediately.
+                  </p>
                 </div>
-                <p className="mt-2 text-sm text-slate-100">Choose invoice or card billing based on your team’s process.</p>
               </div>
             </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <ShieldCheck size={16} /> Secure setup
-                </div>
-                <p className="mt-2 text-sm text-slate-100">Legal consent and data handling are handled in one pass.</p>
+
+            {/* Simple Floating Circular Avatar Icons (Trusted by 250+ talent leaders) */}
+            <div className="mt-8 flex items-center gap-3 pt-6 border-t border-white/15">
+              <div className="flex -space-x-2.5 overflow-hidden">
+                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white/90 object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Leader" />
+                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white/90 object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Leader" />
+                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white/90 object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Leader" />
               </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <div className="flex items-center gap-2 text-sm font-semibold text-white">
-                  <CreditCard size={16} /> Flexible billing
-                </div>
-                <p className="mt-2 text-sm text-slate-100">Choose invoice or card billing based on your team’s process.</p>
-              </div>
+              <p className="text-xs font-medium text-white">
+                Trusted by <strong className="font-bold text-white">250+ talent leaders</strong>
+              </p>
             </div>
           </div>
         </aside>
 
-        <section className="flex-1 !pt-32 bg-slate-50/80 p-6 sm:p-8 lg:p-10">
-          <div className="mb-8">
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-sky-600">
-                  Step {step + 1} of {steps.length}
-                </p>
-                <h2 className="mt-2 text-2xl font-semibold text-slate-900">{steps[step].title}</h2>
-              </div>
-              <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-slate-600">
-                {Math.round(((step + 1) / steps.length) * 100)}%
-              </span>
-            </div>
-
-            <div className="relative flex items-center justify-between gap-2">
-              {steps.map((item, index) => {
-                const isComplete = index < step;
-                const isActive = index === step;
-                const Icon = item.icon;
-                return (
-                  <div key={item.title} className="flex flex-1 flex-col items-center">
-                    <div className="flex w-full items-center">
-                      {index > 0 && (
-                        <div className={`h-[2px] flex-1 ${index <= step ? 'bg-sky-600' : 'bg-slate-200'}`} />
-                      )}
-                      <div className={`flex h-11 w-11 items-center justify-center rounded-full border-2 ${isComplete ? 'border-sky-600 bg-sky-600 text-white' : isActive ? 'border-sky-600 bg-sky-50 text-sky-600' : 'border-slate-200 bg-white text-slate-400'}`}>
-                        {isComplete ? <MdCheck size={20} /> : <Icon size={18} />}
-                      </div>
-                      {index < steps.length - 1 && (
-                        <div className={`h-[2px] flex-1 ${index < step ? 'bg-sky-600' : 'bg-slate-200'}`} />
-                      )}
-                    </div>
-                    <div className="mt-3 text-center">
-                      <p className={`text-[11px] font-semibold uppercase tracking-[0.16em] ${isActive || isComplete ? 'text-slate-900' : 'text-slate-400'}`}>
-                        {item.title}
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="mb-6 rounded-[20px] border border-slate-200 bg-white/80 p-4 shadow-sm">
-            <p className="text-sm leading-7 text-slate-600">{steps[step].description}</p>
-          </div>
-
-          {!submitted ? (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {step === 0 && (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field label="Full name" name="fullName" required placeholder="Alex Morgan" value={form.fullName} onChange={handleInputChange} />
-                  <Field label="Company name" name="companyName" required placeholder="Northstar Labs" value={form.companyName} onChange={handleInputChange} />
-                  <Field label="Work email" name="workEmail" type="email" required placeholder="alex@northstar.com" value={form.workEmail} onChange={handleInputChange} />
-                  <Field label="Personal email" name="personalEmail" type="email" required placeholder="alex.morgan@gmail.com" value={form.personalEmail} onChange={handleInputChange} />
-                  <Field label="Phone number" name="phone" required placeholder="+1 555 0123" value={form.phone} onChange={handleInputChange} />
-                  <Field label="Role" name="role" required placeholder="HR Director" value={form.role} onChange={handleInputChange} />
-                </div>
-              )}
-
-              {step === 1 && (
-                <div className="space-y-4 rounded-[24px] border border-slate-200 bg-slate-50 p-5">
-                  <label className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-                    <input type="checkbox" name="legalConsent" checked={form.legalConsent} onChange={handleInputChange} className="mt-1 h-4 w-4 rounded border-slate-300 text-sky-600" />
-                    <span className="text-sm text-slate-700">
-                      I accept the client onboarding terms, service agreement, and any legal disclosures provided by Hireytics.
-                    </span>
-                  </label>
-                  <label className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-                    <input type="checkbox" name="dpaConsent" checked={form.dpaConsent} onChange={handleInputChange} className="mt-1 h-4 w-4 rounded border-slate-300 text-sky-600" />
-                    <span className="text-sm text-slate-700">
-                      I confirm the data processing and privacy terms for employee and candidate information.
-                    </span>
-                  </label>
-                  <label className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4">
-                    <input type="checkbox" name="privacyConsent" checked={form.privacyConsent} onChange={handleInputChange} className="mt-1 h-4 w-4 rounded border-slate-300 text-sky-600" />
-                    <span className="text-sm text-slate-700">
-                      I authorize Hireytics to collect the required business information for onboarding and implementation support.
-                    </span>
-                  </label>
-                </div>
-              )}
-
-              {step === 2 && (
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <Field label="Buyer name" name="buyerName" required placeholder="Jamie Lee" value={form.buyerName} onChange={handleInputChange} />
-                  <Field label="Buyer role" name="buyerRole" required placeholder="VP of Operations" value={form.buyerRole} onChange={handleInputChange} />
-                  <label className="block text-sm">
-                    <span className="mb-2 block font-medium text-slate-700">Team size *</span>
-                    <select
-                      name="teamSize"
-                      value={form.teamSize}
-                      onChange={handleInputChange}
-                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-sky-400 focus:bg-white"
-                    >
-                      <option value="">Select size</option>
-                      <option value="1-50">1-50 employees</option>
-                      <option value="51-200">51-200 employees</option>
-                      <option value="201-1000">201-1000 employees</option>
-                      <option value="1000+">1000+ employees</option>
-                    </select>
-                  </label>
-                  <Field label="Expected launch date" name="startDate" type="date" required value={form.startDate} onChange={handleInputChange} />
-                </div>
-              )}
-
-              {step === 3 && (
-                <div className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <label className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 text-sm">
-                      <span className="mb-3 flex items-center gap-2 font-semibold text-slate-800">
-                        <Sparkles size={16} /> Plan
-                      </span>
-                      <select name="plan" value={form.plan} onChange={handleInputChange} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none">
-                        <option value="growth">Growth</option>
-                        <option value="scale">Scale</option>
-                        <option value="enterprise">Enterprise</option>
-                      </select>
-                    </label>
-                    <label className="rounded-[24px] border border-slate-200 bg-slate-50 p-4 text-sm">
-                      <span className="mb-3 flex items-center gap-2 font-semibold text-slate-800">
-                        <CreditCard size={16} /> Billing method
-                      </span>
-                      <select name="paymentMethod" value={form.paymentMethod} onChange={handleInputChange} className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none">
-                        <option value="invoice">Invoice</option>
-                        <option value="card">Card payment</option>
-                      </select>
-                    </label>
-                  </div>
-
-                  <div className="rounded-[24px] border border-slate-200 bg-gradient-to-br from-sky-50 to-violet-50 p-5">
-                    <h3 className="text-lg font-semibold text-slate-900">Summary</h3>
-                    <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                      <li>• Contact: {form.fullName || 'Pending'} at {form.workEmail || 'Pending'}</li>
-                      <li>• Company: {form.companyName || 'Pending'}</li>
-                      <li>• Buyer: {form.buyerName || 'Pending'} • {form.teamSize || 'Pending'}</li>
-                      <li>• Plan: {form.plan} • Billing: {form.paymentMethod}</li>
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              <div className="flex flex-col gap-3 border-t border-slate-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-                <button type="button" onClick={goBack} className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-slate-900 disabled:opacity-50" disabled={step === 0}>
-                  <MdArrowOutward className="rotate-180" /> Back
-                </button>
-                {step < steps.length - 1 ? (
-                  <button type="button" onClick={goNext} disabled={!canProceed()} className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300">
-                    Continue <MdArrowOutward size={16} />
-                  </button>
-                ) : (
-                  <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-600 to-violet-600 px-5 py-3 text-sm font-semibold text-white transition hover:brightness-110">
-                    Complete onboarding <MdArrowOutward size={16} />
-                  </button>
-                )}
-              </div>
-            </form>
-          ) : (
-            <div className="rounded-[24px] border border-emerald-200 bg-emerald-50 p-8 text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white">
-                <CheckCircle2 size={24} />
-              </div>
-              <h3 className="mt-5 text-2xl font-semibold text-slate-900">Onboarding request received</h3>
-              <p className="mx-auto mt-3 max-w-lg text-sm leading-7 text-slate-700">
-                Thanks, {form.fullName || 'there'}. We have captured your onboarding details and will follow up with your implementation guide shortly.
+        {/* Right Main Flow Area */}
+        <main className="flex flex-1 flex-col item-center justify-center mt-20 p-6 sm:p-10 lg:p-12 overflow-y-auto">
+          
+          {/* Top Breadcrumb & Step Ring */}
+          <div className="flex items-center justify-between border-b border-slate-100 pb-5 max-w-xl mx-auto w-full">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                HOME / STEP {step + 1} OF {steps.length}
               </p>
-              <a href="/" className="mt-6 inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">
-                Return home <MdArrowOutward size={16} />
-              </a>
+              <h2 className="mt-1 text-2xl font-bold text-slate-900">
+                {steps[step].title}
+              </h2>
             </div>
-          )}
-        </section>
+
+            {/* Progress Ring */}
+            <div className="flex items-center gap-3">
+              <div className="relative flex h-12 w-12 items-center justify-center">
+                <svg className="h-12 w-12 -rotate-90 transform" viewBox="0 0 36 36">
+                  <path
+                    className="text-slate-100"
+                    strokeWidth="3.5"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                  <path
+                    className="text-indigo-600 transition-all duration-500 ease-out"
+                    strokeDasharray={`${currentPercentage}, 100`}
+                    strokeWidth="3.5"
+                    strokeLinecap="round"
+                    stroke="currentColor"
+                    fill="none"
+                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                  />
+                </svg>
+                <span className="absolute text-[11px] font-bold font-mono text-slate-900">
+                  {currentPercentage}%
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Content */}
+          <div className="mt-8 flex-1 max-w-xl mx-auto w-full">
+            
+            {/* STEP 1: Personal Details */}
+            {step === 0 && (
+              <div className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="block text-xs font-semibold text-slate-700">
+                    <span className="flex items-center gap-1.5 mb-1.5">
+                      <User className="h-3.5 w-3.5 text-slate-400" /> First Name *
+                    </span>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Sarah"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                    />
+                  </label>
+
+                  <label className="block text-xs font-semibold text-slate-700">
+                    <span className="flex items-center gap-1.5 mb-1.5">
+                      <User className="h-3.5 w-3.5 text-slate-400" /> Last Name (Optional)
+                    </span>
+                    <input
+                      type="text"
+                      placeholder="Jenkins"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                    />
+                  </label>
+                </div>
+
+                {/* Phone Number with Perfectly Centered Flag & Code Selector */}
+                <div className="relative" ref={countryDropdownRef}>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                    <span className="flex items-center gap-1.5">
+                      <Phone className="h-3.5 w-3.5 text-slate-400" /> Mobile Phone Number *
+                    </span>
+                  </label>
+                  <div className="flex items-center rounded-xl border border-slate-200 bg-slate-50/70 focus-within:border-indigo-500 focus-within:bg-white focus-within:ring-2 focus-within:ring-indigo-100 transition overflow-visible h-[48px]">
+                    <button
+                      type="button"
+                      onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
+                      className="flex items-center gap-2 px-3.5 h-full border-r border-slate-200 bg-slate-100/80 hover:bg-slate-200/70 text-xs font-semibold text-slate-800 rounded-l-xl shrink-0 cursor-pointer"
+                    >
+                      <span className="text-base leading-none">{selectedCountry.flag}</span>
+                      <span className="font-mono text-xs leading-none">{selectedCountry.dialCode}</span>
+                      <ChevronDown className="h-3.5 w-3.5 text-slate-500" />
+                    </button>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="555-0199"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      className="w-full bg-transparent px-3.5 py-3 text-sm text-slate-800 outline-none placeholder-slate-400 h-full"
+                    />
+                  </div>
+
+                  {/* Country Code Popover */}
+                  {countryDropdownOpen && (
+                    <div className="absolute left-0 top-full mt-1.5 w-72 rounded-2xl border border-slate-200 bg-white p-2 shadow-xl z-50 max-h-56 overflow-y-auto">
+                      <div className="relative mb-2 px-1">
+                        <Search className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                        <input
+                          type="text"
+                          placeholder="Search country or code..."
+                          value={countrySearch}
+                          onChange={(e) => setCountrySearch(e.target.value)}
+                          className="w-full rounded-lg border border-slate-200 bg-slate-50 py-1.5 pl-8 pr-2 text-xs outline-none focus:border-indigo-500"
+                        />
+                      </div>
+                      <div className="space-y-0.5">
+                        {filteredCountries.map((c) => (
+                          <button
+                            key={c.code}
+                            type="button"
+                            onClick={() => {
+                              setSelectedCountry(c);
+                              setCountryDropdownOpen(false);
+                              setCountrySearch("");
+                            }}
+                            className={`w-full flex items-center justify-between rounded-lg px-2.5 py-2 text-xs text-left transition-colors cursor-pointer ${
+                              selectedCountry.code === c.code
+                                ? "bg-indigo-50 text-indigo-900 font-bold"
+                                : "text-slate-700 hover:bg-slate-100"
+                            }`}
+                          >
+                            <span className="flex items-center gap-2">
+                              <span className="text-base leading-none">{c.flag}</span>
+                              <span>{c.name}</span>
+                            </span>
+                            <span className="font-mono text-slate-400 text-xs">{c.dialCode}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <label className="block text-xs font-semibold text-slate-700">
+                  <span className="flex items-center gap-1.5 mb-1.5">
+                    <Mail className="h-3.5 w-3.5 text-slate-400" /> Personal / Contact Email *
+                  </span>
+                  <input
+                    type="email"
+                    required
+                    placeholder="sarah.jenkins@gmail.com"
+                    value={personalEmail}
+                    onChange={(e) => setPersonalEmail(e.target.value)}
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                  />
+                </label>
+              </div>
+            )}
+
+            {/* STEP 2: Company Details */}
+            {step === 1 && (
+              <div className="space-y-4">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="block text-xs font-semibold text-slate-700">
+                    <span className="flex items-center gap-1.5 mb-1.5">
+                      <Building2 className="h-3.5 w-3.5 text-slate-400" /> Company Name *
+                    </span>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Acme Inc."
+                      value={companyName}
+                      onChange={(e) => setCompanyName(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                    />
+                  </label>
+
+                  <label className="block text-xs font-semibold text-slate-700">
+                    <span className="flex items-center gap-1.5 mb-1.5">
+                      <Globe className="h-3.5 w-3.5 text-slate-400" /> Company Domain URL *
+                    </span>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. acme.com"
+                      value={companyUrl}
+                      onChange={(e) => setCompanyUrl(e.target.value)}
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100"
+                    />
+                  </label>
+                </div>
+
+                {/* Locked Work Email */}
+                <label className="block text-xs font-semibold text-slate-700">
+                  <span className="flex items-center gap-1.5 mb-1.5">
+                    <Mail className="h-3.5 w-3.5 text-slate-400" /> Work Email (Locked Domain) *
+                  </span>
+                  {cleanDomain ? (
+                    <div className="flex rounded-xl border border-slate-200 bg-slate-50/70 overflow-hidden focus-within:border-indigo-500 focus-within:bg-white focus-within:ring-2 focus-within:ring-indigo-100 transition">
+                      <input
+                        type="text"
+                        required
+                        placeholder="username"
+                        value={emailUsername}
+                        onChange={(e) => setEmailUsername(e.target.value.replace(/@.*/, ""))}
+                        className="w-full bg-transparent px-3.5 py-3 text-sm text-slate-800 outline-none"
+                      />
+                      <div className="flex items-center gap-1.5 bg-slate-100 px-3.5 py-3 border-l border-slate-200 text-xs font-semibold text-indigo-900 select-none whitespace-nowrap">
+                        <Lock className="h-3 w-3 text-slate-400" />
+                        <span>@{cleanDomain}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-3 text-xs text-slate-500">
+                      Enter company domain URL above to lock your work email domain.
+                    </div>
+                  )}
+                </label>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      <span className="flex items-center gap-1.5">
+                        <Briefcase className="h-3.5 w-3.5 text-slate-400" /> Your Role *
+                      </span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={companyRole}
+                        onChange={(e) => setCompanyRole(e.target.value)}
+                        className="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100 pr-10 cursor-pointer"
+                      >
+                        <option value="">Select your role</option>
+                        {ROLES.map((r) => (
+                          <option key={r} value={r}>
+                            {r}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3.5 top-3.5 h-4 w-4 text-slate-400" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                      <span className="flex items-center gap-1.5">
+                        <Building2 className="h-3.5 w-3.5 text-slate-400" /> Company Size *
+                      </span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        required
+                        value={companySize}
+                        onChange={(e) => setCompanySize(e.target.value)}
+                        className="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50/70 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100 pr-10 cursor-pointer"
+                      >
+                        <option value="">Select size</option>
+                        {SIZES.map((s) => (
+                          <option key={s} value={s}>
+                            {s}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-3.5 top-3.5 h-4 w-4 text-slate-400" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* STEP 3: Choose Package */}
+            {step === 2 && (
+              <div className="space-y-6">
+                {/* Monthly / Yearly Toggle */}
+                <div className="flex items-center justify-center gap-2">
+                  <div className="inline-flex rounded-xl bg-slate-100 p-1">
+                    <button
+                      type="button"
+                      onClick={() => setBillingCycle("monthly")}
+                      className={`rounded-lg px-4 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                        billingCycle === "monthly"
+                          ? "bg-white text-slate-900 shadow-sm"
+                          : "text-slate-600 hover:text-slate-900"
+                      }`}
+                    >
+                      Monthly Billing
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setBillingCycle("yearly")}
+                      className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all cursor-pointer ${
+                        billingCycle === "yearly"
+                          ? "bg-white text-slate-900 shadow-sm"
+                          : "text-slate-600 hover:text-slate-900"
+                      }`}
+                    >
+                      Yearly Billing
+                      <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-extrabold text-emerald-700">
+                        Save 20%
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Plan Cards Grid matched dynamically with data.ts */}
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {plans
+                    .filter((p) => p.id !== "free" && p.id !== "custom")
+                    .map((plan) => {
+                      const isSelected = selectedPlanId === plan.id;
+                      const rawPrice = plan.price || 0;
+                      const price = billingCycle === "yearly" ? Math.round(rawPrice * 0.8) : rawPrice;
+                      return (
+                        <div
+                          key={plan.id}
+                          onClick={() => setSelectedPlanId(plan.id)}
+                          className={`relative cursor-pointer rounded-2xl border p-4 transition-all duration-200 ${
+                            isSelected
+                              ? "border-indigo-600 bg-indigo-50/40 ring-2 ring-indigo-600 shadow-md"
+                              : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50"
+                          }`}
+                        >
+                          {plan.popular && (
+                            <span className="absolute -top-2.5 right-3 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm">
+                              Most Popular
+                            </span>
+                          )}
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <h4 className="text-sm font-bold text-slate-900">{plan.name}</h4>
+                              <p className="mt-1 text-xs text-slate-500 line-clamp-2">
+                                {plan.features[0]?.text || "AI interview screening"}
+                              </p>
+                            </div>
+                            <div className="text-right shrink-0 pl-2">
+                              <span className="text-lg font-extrabold text-slate-900 font-mono">
+                                ${price}
+                              </span>
+                              <span className="text-[10px] text-slate-500 block">/ mo</span>
+                            </div>
+                          </div>
+
+                          <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2.5">
+                            <span className="text-[11px] font-semibold text-slate-600">
+                              {isSelected ? "Selected plan" : "Click to select"}
+                            </span>
+                            <div
+                              className={`flex h-4 w-4 items-center justify-center rounded-full ${
+                                isSelected ? "bg-indigo-600 text-white" : "border border-slate-300"
+                              }`}
+                            >
+                              {isSelected && <Check className="h-2.5 w-2.5" />}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom Navigation */}
+          <div className="mt-8 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-slate-100 pt-6 max-w-xl mx-auto w-full">
+            <button
+              type="button"
+              onClick={goBack}
+              disabled={step === 0}
+              className="inline-flex items-center justify-center gap-1.5 text-xs font-bold text-slate-500 transition hover:text-slate-900 disabled:opacity-30 disabled:pointer-events-none cursor-pointer"
+            >
+              <MdArrowOutward className="rotate-180" /> Back
+            </button>
+
+            {step < steps.length - 1 ? (
+              <button
+                type="button"
+                onClick={goNext}
+                disabled={!canProceed()}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-xs font-bold text-white shadow-md shadow-indigo-500/20 transition-all hover:scale-105 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none cursor-pointer"
+              >
+                Continue
+                <ChevronRight className="h-4 w-4" />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleCompleteAndCheckout}
+                disabled={!canProceed()}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00A3FF] hover:bg-[#0092E5] px-7 py-3 text-xs font-bold text-white shadow-lg shadow-sky-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                Complete Setup & Proceed to Checkout
+                <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+            )}
+          </div>
+        </main>
       </div>
     </div>
+  );
+}
+
+export default function OnboardingFlow() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50 flex items-center justify-center text-sm font-semibold text-slate-500">Loading Onboarding...</div>}>
+      <OnboardingContent />
+    </Suspense>
   );
 }

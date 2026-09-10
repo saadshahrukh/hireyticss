@@ -19,6 +19,11 @@ import {
   v1Capabilities,
   workflowSteps,
 } from "./recall-data";
+import RecallHeroShowcase from "./RecallHeroShowcase";
+import RecallChatExperienceShowcase from "./RecallChatExperienceShowcase";
+import RecallEngineArchitecture from "./RecallEngineArchitecture";
+import RecallLifecycleShowcase from "./RecallLifecycleShowcase";
+import RecallCompanyMemoryShowcase from "./RecallCompanyMemoryShowcase";
 
 function RecallImage({
   src,
@@ -104,22 +109,7 @@ export default function RecallPage() {
             </FadeIn>
 
             <FadeIn delay={0.1}>
-              <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-50">
-                <RecallImage
-                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80"
-                  alt="Hiring team reviewing candidate context in one workspace"
-                  className="aspect-[4/3] w-full object-cover"
-                />
-                <div className="absolute inset-x-0 bottom-0 border-t border-slate-200/80 bg-white/95 p-5 backdrop-blur-sm">
-                  <p className="font-utility text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                    Recall in Hireytics
-                  </p>
-                  <p className="mt-1 text-sm font-medium text-slate-800">
-                    Ask across jobs, candidates, interviews, and feedback — in
-                    one place.
-                  </p>
-                </div>
-              </div>
+              <RecallHeroShowcase />
             </FadeIn>
           </div>
         </div>
@@ -304,12 +294,8 @@ export default function RecallPage() {
                   ))}
                 </div>
 
-                <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200">
-                  <RecallImage
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
-                    alt="Dashboard showing connected hiring data and insights"
-                    className="aspect-[21/9] w-full object-cover"
-                  />
+                <div className="mt-8">
+                  <RecallChatExperienceShowcase />
                 </div>
               </FadeIn>
             </SectionBlock>
@@ -449,35 +435,8 @@ export default function RecallPage() {
                   })}
                 </div>
 
-                <div className="mt-10 grid gap-8 lg:grid-cols-2">
-                  <div>
-                    <h3 className="text-lg font-semibold text-black">
-                      Your hiring data remains the source of context
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                      Recall reasons over information available in your
-                      Hireytics workspace. Answers are grounded in your records
-                      — not presented as unexplained AI judgment.
-                    </p>
-                    <ul className="mt-5 space-y-2">
-                      {contextSources.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-center gap-2 text-sm text-slate-700"
-                        >
-                          <Check className="h-3.5 w-3.5 shrink-0 text-black" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="overflow-hidden rounded-2xl border border-slate-200">
-                    <RecallImage
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80"
-                      alt="Analytics view representing structured and semantic hiring data"
-                      className="aspect-[3/2] w-full object-cover"
-                    />
-                  </div>
+                <div className="mt-10">
+                  <RecallEngineArchitecture />
                 </div>
               </FadeIn>
             </SectionBlock>
@@ -626,12 +585,8 @@ export default function RecallPage() {
                   </div>
                 </div>
 
-                <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200">
-                  <RecallImage
-                    src="https://images.unsplash.com/photo-1521737711862-e3b97375f902?auto=format&fit=crop&w=1200&q=80"
-                    alt="Team collaborating across the full hiring lifecycle"
-                    className="aspect-[21/9] w-full object-cover"
-                  />
+                <div className="mt-10">
+                  <RecallLifecycleShowcase />
                 </div>
               </FadeIn>
             </SectionBlock>
@@ -684,36 +639,8 @@ export default function RecallPage() {
             {/* Company memory */}
             <SectionBlock id="company-memory">
               <FadeIn>
-                <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-                  <div className="overflow-hidden rounded-2xl border border-slate-200">
-                    <RecallImage
-                      src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80"
-                      alt="From hiring memory to broader company memory"
-                      className="aspect-[4/3] w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <SectionLabel>From hiring memory to company memory</SectionLabel>
-                    <h2 className="mt-3 font-heading text-2xl font-bold tracking-tight text-black md:text-3xl">
-                      Hiring is only the beginning.
-                    </h2>
-                    <p className="mt-4 text-base leading-relaxed text-slate-600">
-                      Candidates become employees. Interviews become hiring
-                      decisions. Hiring decisions become employee records. Over
-                      time, information accumulates across the employee lifecycle.
-                    </p>
-                    <p className="mt-4 text-base leading-relaxed text-slate-600">
-                      Our longer-term vision is for Recall to become an
-                      intelligence layer across that information — not just during
-                      recruiting, but throughout the broader people-management
-                      lifecycle.
-                    </p>
-                    <p className="mt-4 text-base font-medium text-black">
-                      The goal is not to build another database. It is to make the
-                      information a company already has easier to understand and
-                      act on.
-                    </p>
-                  </div>
+                <div className="mt-10">
+                  <RecallCompanyMemoryShowcase />
                 </div>
               </FadeIn>
             </SectionBlock>

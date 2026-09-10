@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ValueProposition from "@/components/ValueProposition";
+import TechMarquee from "@/components/TechMarquee";
 import HowItWorks from "@/components/HowItWorks";
+import WhyHireytics from "@/components/WhyHireytics";
 import Testimonials from "@/components/Testimonials";
-import InquiryForm from "@/components/InquiryForm";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -12,10 +12,10 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <TechMarquee />
         <HowItWorks />
-        <ValueProposition />
+        <WhyHireytics />
         <Testimonials />
-        <InquiryForm />
       </main>
       <Footer />
     </>
