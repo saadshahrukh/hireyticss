@@ -312,7 +312,7 @@ export default function FreeTrialPage() {
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
                       <a
-                        href="https://apphireytics.vercel.app/auth"
+                        href={process.env.PORTAL_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-slate-900 px-5 py-3 text-xs font-semibold text-white shadow-md hover:bg-black"

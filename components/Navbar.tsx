@@ -80,7 +80,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
           {/* Desktop Right Actions */}
           <div className="hidden items-center gap-3 md:flex">
             <a
-              href="https://apphireytics.vercel.app/auth"
+              href={process.env.PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 transition hover:text-slate-950"
@@ -203,7 +203,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                 </a>
 
                 <a
-                  href="https://apphireytics.vercel.app/auth"
+                  href={process.env.PORTAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileDrawerOpen(false)}
