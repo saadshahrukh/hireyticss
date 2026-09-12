@@ -204,7 +204,7 @@ function OnboardingContent() {
         <aside className="relative flex min-h-[320px] pt-20 items-center overflow-hidden lg:min-h-screen lg:w-[40%]">
           <Image
             src="/onboarding.jpg"
-            alt="Hireytics Onboarding"
+            alt="Onboarding"
             fill
             priority
             className="object-cover"
@@ -215,7 +215,7 @@ function OnboardingContent() {
           <div className="relative z-10 p-8 text-white sm:p-10 lg:p-12 flex flex-col justify-between h-full">
             <div>
               <Link href="/" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur">
-                <Sparkles size={14} className="text-white" /> Hireytics Onboarding
+                 Onboarding
               </Link>
 
               <h1 className="mt-6 text-3xl font-bold leading-tight sm:text-4xl text-white">
