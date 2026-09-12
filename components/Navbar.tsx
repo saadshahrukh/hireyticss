@@ -208,15 +208,16 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                   onClick={() => setMobileDrawerOpen(false)}
                   className="flex w-full items-center justify-center gap-1.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-950"
                 >
-                  <span className="underline">Candidate & Team Login</span>
+                  <span className="underline" >
+                    <a href={process.env.PORTAL_URL} target="_blank" rel="noopener noreferrer">
+                      Login
+                    </a>
+                  </span>
                   <MdArrowOutward className="text-sm" />
                 </a>
 
                 <div className="flex items-center justify-between pt-1 text-[10.5px] text-slate-400">
-                  <span className="flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    AI Engine v5.0 Live
-                  </span>
+                    
                   <span>© Hireytics 2026</span>
                 </div>
               </div>
