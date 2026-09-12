@@ -5,7 +5,6 @@ import { CalendarClock } from "lucide-react";
 import BillingToggle, { type BillingPeriod } from "@/components/pricing/BillingToggle";
 import PricingCard from "@/components/pricing/PricingCard";
 import { plans } from "@/components/pricing/data";
-import CustomPricingCalculator from "@/components/pricing/CustomPricingCalculator";
 import { useState } from "react";
 
 export default function PricingSection() {
@@ -84,8 +83,6 @@ export default function PricingSection() {
           )}
         </AnimatePresence>
 
-        {/* Interactive Custom Pricing Calculator with $5 Base Rate */}
-        <CustomPricingCalculator />
       </div>
     </section>
   );

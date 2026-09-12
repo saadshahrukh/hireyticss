@@ -144,9 +144,9 @@ export const plans: Plan[] = [
     priceLabel: "Tailored",
     description:
       "For organizations with unique hiring workflows, enterprise compliance requirements, or custom AI implementations. Base rate starts at $5/seat.",
-    cta: "Calculate Price",
+    cta: "Talk to Sales",
     ctaVariant: "dark",
-    ctaHref: "/pricing#custom-pricing",
+    ctaHref: "mailto:contact@hireytics.com",
     features: [
       { text: "Custom interview minutes" },
       { text: "Unlimited hiring roles" },

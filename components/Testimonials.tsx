@@ -20,37 +20,20 @@ const testimonials: Testimonial[] = [
     name: "Mr Hasan",
     role: "Head of People & Talent",
     company: "Link Service Pvt. Ltd.",
-    quote:
-      "We were losing top engineering talent to faster competitors. Hireytics cut our screening time significantly, and Recall's cross-interview reasoning means our hiring committee never second-guesses a shortlist again.",
+    quote:    
+    "Onboarding and initial resume screening used to eat dozens of hours every week. Now it's completely unified in Hireytics. Our leadership team finally has the real-time talent velocity data they need in one place.",
     rating: 5,
   },
   {
     id: 2,
-    name: "James Okonkwo",
+    name: "James",
     role: "VP of Talent Operations",
-    company: "ScaleBridge Inc.",
-    quote:
-      "Onboarding and initial resume screening used to eat dozens of hours every week. Now it's completely unified in Hireytics. Our leadership team finally has the real-time talent velocity data they need in one place.",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Elena Vasquez",
-    role: "Global Talent Acquisition Lead",
-    company: "Meridian Health",
-    quote:
-      "Candidates notice immediately when your hiring process feels modern and responsive. The candidate experience is seamless and our hiring managers are aligned from the very first round.",
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: "Marcus Sterling",
-    role: "Chief Technology Officer",
-    company: "Vanguard Logic",
+    company: "Gravity Labs",
     quote:
       "The AI Voice Interviewer asks deeper, more contextually relevant follow-up questions than our manual first rounds ever did. It saves our senior engineering leaders countless hours every quarter.",
     rating: 5,
   },
+
 ];
 
 export default function Testimonials() {
