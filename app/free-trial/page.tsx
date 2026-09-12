@@ -145,9 +145,9 @@ export default function FreeTrialPage() {
                     <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-xs font-semibold text-sky-300">
                        14-Day Full Platform Access
                     </span>
-                    <h1 className="mt-4 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                      Start hiring 12x faster with AI & Recall.
-                    </h1>
+                    <h2 className="mt-4 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                      Start hiring 12x faster with Hireytics & Recall.
+                    </h2>
                     <p className="mt-3 text-sm leading-relaxed text-slate-300">
                       Get full instant access to automated resume screening, AI voice interviewers, and cross-candidate reasoning with Recall.
                     </p>
