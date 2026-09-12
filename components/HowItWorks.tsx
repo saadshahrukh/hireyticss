@@ -110,7 +110,7 @@ export default function HowItWorks() {
       <div className="section-container max-w-7xl">
         <SectionHeader
           eyebrow="Connected Workflow"
-          title="From job requisition to productive hire — five connected steps"
+          title="From job requisition to productive hire five connected steps"
           description="Every hiring stage feeds context forward into the next. Recall maintains institutional candidate memory so your team makes faster, data-backed decisions."
         />
 
