@@ -15,9 +15,9 @@ import {
   Globe, 
   User, 
   ArrowRight,
-  CheckCircle2
+  Loader2
 } from "lucide-react";
-import { motion } from "framer-motion";
+import StatusModal from "@/components/ui/StatusModal";
 
 interface FeatureModule {
   id: string;
@@ -89,7 +89,6 @@ export default function CustomPricingCalculator() {
     "ats-sync",
   ]);
 
-  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -97,6 +96,15 @@ export default function CustomPricingCalculator() {
     company: "",
     website: "",
     notes: "",
+  });
+
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean;
+    status: "success" | "error";
+    message?: string;
+  }>({
+    isOpen: false,
+    status: "success",
   });
 
   const toggleFeature = (id: string) => {
@@ -121,13 +129,55 @@ export default function CustomPricingCalculator() {
   const totalPerCandidate = BASE_PRICE_PER_CANDIDATE + featurePerCandidateTotal;
   const monthlyTotal = candidates * totalPerCandidate + flatFeesTotal;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name || !formData.email || !formData.company) return;
+
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const selectedModuleNames = selectedFeatures.map(
+        (id) => FEATURE_MODULES.find((f) => f.id === id)?.name || id
+      );
+
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "Custom Enterprise Plan Inquiry",
+          subject: `[Custom Plan Quote] ${formData.name} - ${formData.company} ($${monthlyTotal.toLocaleString()}/mo)`,
+          data: {
+            contactName: formData.name,
+            workEmail: formData.email,
+            companyName: formData.company,
+            companyWebsite: formData.website || "N/A",
+            monthlyCandidates: candidates,
+            calculatedMonthlyFee: `$${monthlyTotal.toLocaleString()}`,
+            effectiveCostPerCandidate: `$${(monthlyTotal / candidates).toFixed(2)}`,
+            selectedFeatures: selectedModuleNames.join(", "),
+            timestamp: new Date().toISOString(),
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send custom quote request.");
+      }
+
+      setModalState({
+        isOpen: true,
+        status: "success",
+        message: `We've received your custom configuration request! We will email contract terms and sandbox credentials to ${formData.email} within 2 business hours.`,
+      });
+    } catch (err) {
+      console.error(err);
+      setModalState({
+        isOpen: true,
+        status: "error",
+        message: "An error occurred while submitting your custom quote. Please retry.",
+      });
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 900);
+    }
   };
 
   return (
@@ -235,7 +285,7 @@ export default function CustomPricingCalculator() {
                       key={module.id}
                       type="button"
                       onClick={() => toggleFeature(module.id)}
-                      className={`w-full text-left rounded-2xl border p-4 transition-all duration-200 flex items-start justify-between gap-3 ${
+                      className={`w-full text-left rounded-2xl border p-4 transition-all duration-200 flex items-start justify-between gap-3 cursor-pointer ${
                         isChecked
                           ? "border-indigo-600 bg-white shadow-md shadow-indigo-500/10 ring-1 ring-indigo-600"
                           : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/40"
@@ -287,7 +337,7 @@ export default function CustomPricingCalculator() {
             </div>
           </div>
 
-          {/* Right Column: Pricing Summary & Light Modern Enterprise Form */}
+          {/* Right Column: Pricing Summary & Form */}
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-8 shadow-lg shadow-slate-200/40 relative overflow-hidden">
               <div className="relative">
@@ -342,98 +392,95 @@ export default function CustomPricingCalculator() {
                   </div>
                 </div>
 
-                {/* Form or Confirmation */}
+                {/* Form */}
                 <div className="mt-8 pt-6 border-t border-slate-100">
-                  {submitted ? (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5 text-center"
-                    >
-                      <CheckCircle2 className="mx-auto h-8 w-8 text-emerald-600" />
-                      <h4 className="mt-2 text-sm font-bold text-slate-900">
-                        Custom Quote Request Received!
-                      </h4>
-                      <p className="mt-1 text-xs text-slate-600 leading-relaxed">
-                        We have logged your configuration ({candidates} candidates/mo with {selectedFeatures.length} add-ons). Our enterprise team will send contract terms and sandbox credentials to <strong className="text-slate-900">{formData.email || "your work email"}</strong> within 2 business hours.
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-3">
-                      <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Lock in this custom configuration
-                      </p>
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                      Lock in this custom configuration
+                    </p>
 
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="relative">
-                          <User className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
-                          <input
-                            type="text"
-                            required
-                            placeholder="Full Name"
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                          />
-                        </div>
-                        <div className="relative">
-                          <Building2 className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
-                          <input
-                            type="text"
-                            required
-                            placeholder="Company Name"
-                            value={formData.company}
-                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                          />
-                        </div>
-                      </div>
-
+                    <div className="grid grid-cols-2 gap-2">
                       <div className="relative">
-                        <Mail className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
-                        <input
-                          type="email"
-                          required
-                          placeholder="Work Email (name@company.com)"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
-                        />
-                      </div>
-
-                      <div className="relative">
-                        <Globe className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                        <User className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
                         <input
                           type="text"
-                          placeholder="Company Website URL (e.g. acme.inc)"
-                          value={formData.website}
-                          onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                          required
+                          placeholder="Full Name"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
                         />
                       </div>
+                      <div className="relative">
+                        <Building2 className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                        <input
+                          type="text"
+                          required
+                          placeholder="Company Name"
+                          value={formData.company}
+                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                          className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                        />
+                      </div>
+                    </div>
 
-                      <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 py-2.5 text-xs font-bold text-white shadow-md shadow-indigo-500/20 transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70"
-                      >
-                        {loading ? (
-                          "Generating Custom Invoice..."
-                        ) : (
-                          <>
-                            Request Custom Deployment Package
-                            <ArrowRight className="h-3.5 w-3.5" />
-                          </>
-                        )}
-                      </button>
-                    </form>
-                  )}
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                      <input
+                        type="email"
+                        required
+                        placeholder="Work Email (name@company.com)"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                      />
+                    </div>
+
+                    <div className="relative">
+                      <Globe className="absolute left-3 top-2.5 h-3.5 w-3.5 text-slate-400" />
+                      <input
+                        type="text"
+                        placeholder="Company Website URL (e.g. acme.inc)"
+                        value={formData.website}
+                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                        className="w-full rounded-xl border border-slate-200 bg-slate-50/60 py-2 pl-8 pr-3 text-xs text-slate-800 placeholder-slate-400 focus:border-indigo-500 focus:bg-white focus:outline-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 py-2.5 text-xs font-bold text-white shadow-md shadow-indigo-500/20 transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 cursor-pointer"
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                          <span>Generating Custom Quote...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Request Custom Deployment Package</span>
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </>
+                      )}
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Status Modal */}
+      <StatusModal
+        isOpen={modalState.isOpen}
+        status={modalState.status}
+        message={modalState.message}
+        onClose={() => setModalState({ ...modalState, isOpen: false })}
+        onRetry={() => setModalState({ ...modalState, isOpen: false })}
+        actionText={modalState.status === "success" ? "Done" : "Retry"}
+      />
     </div>
   );
 }

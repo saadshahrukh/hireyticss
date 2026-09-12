@@ -29,6 +29,7 @@ import {
 import { ButtonLink } from "@/components/ui/Button";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import { RiLightbulbAiFill } from "react-icons/ri";
 import gsap from "gsap";
 
 const scenes = [
@@ -79,7 +80,7 @@ function HeroCopy() {
   return (
     <div className="relative z-10 mx-auto flex max-w-3xl flex-col items-center text-center justify-center">
       <span className="chip w-fit">
-        <span className="dot-live" /> <strong>Recall v1.0</strong> is live now. Read details{" "}
+        <RiLightbulbAiFill className="text-lg text-yellow-400" /> <strong>Recall v1.0</strong> is live now. Read details{" "}
         <strong className="underline text-blue-500">
           <a href="/recall">here</a>
         </strong>
@@ -101,7 +102,7 @@ function HeroCopy() {
             →
           </span>
         </a>
-        <button className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-medium text-foreground/90 transition hover:bg-surface-2">
+        <button className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-5 py-3 text-[14px] font-medium text-foreground/90 transition hover:bg-surface-2">
           <PlayIcon /> Watch 90s tour
         </button>
       </div>

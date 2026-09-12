@@ -249,7 +249,8 @@ export default function TermsPage() {
                 <p>For inquiries regarding these Terms:</p>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 not-prose text-xs">
                   <p className="font-bold text-slate-900 text-sm">Hireytics Legal Department</p>
-                  <p className="mt-1 text-slate-600">Email: <a href="mailto:legal@hireytics.com" className="font-semibold text-slate-900 underline">legal@hireytics.com</a></p>
+                  <p className="mt-1 text-slate-600">Email: <a href="mailto:contact@hireytics.com" className="font-semibold text-slate-900 underline">contact@hireytics.com</a></p>
+                  <p className="text-slate-500 mt-0.5">Support: <a href="mailto:support@hireytics.com" className="text-slate-700 underline">support@hireytics.com</a></p>
                 </div>
               </section>
             </div>

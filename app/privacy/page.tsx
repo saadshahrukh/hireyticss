@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Shield, Clock, Mail, CheckCircle2, ChevronRight, Lock, FileText, ArrowUpRight } from "lucide-react";
+import { Clock, Mail, CheckCircle2, ChevronRight, Lock, FileText, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — Hireytics",
@@ -68,7 +68,6 @@ export default function PrivacyPage() {
             <aside className="hidden lg:block">
               <div className="sticky top-32 rounded-2xl border border-slate-200 bg-white p-5 shadow-2xs">
                 <div className="flex items-center gap-2 border-b border-slate-100 pb-3 text-xs font-bold uppercase tracking-wider text-slate-400">
-                  <Shield className="h-4 w-4 text-slate-600" />
                   <span>Table of Contents</span>
                 </div>
                 <nav className="mt-3 space-y-1 text-xs">
@@ -315,8 +314,8 @@ export default function PrivacyPage() {
                 <p>If you have any questions about this Privacy Policy, please reach out to our privacy team:</p>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 not-prose text-xs">
                   <p className="font-bold text-slate-900 text-sm">Hireytics Legal & Privacy Team</p>
-                  <p className="mt-1 text-slate-600">Email: <a href="mailto:privacy@hireytics.com" className="font-semibold text-slate-900 underline">privacy@hireytics.com</a></p>
-                  <p className="text-slate-500 mt-0.5">Response Time: Typically within 2 business days</p>
+                  <p className="mt-1 text-slate-600">Email: <a href="mailto:contact@hireytics.com" className="font-semibold text-slate-900 underline">contact@hireytics.com</a></p>
+                  <p className="text-slate-500 mt-0.5">Support & General: <a href="mailto:support@hireytics.com" className="text-slate-700 underline">support@hireytics.com</a> | <a href="mailto:info@hireytics.com" className="text-slate-700 underline">info@hireytics.com</a></p>
                 </div>
               </section>
             </div>

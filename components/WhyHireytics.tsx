@@ -1,329 +1,369 @@
 "use client";
 
 import { 
-  ArrowRight, 
-  Sparkles, 
-  Bot, 
-  BrainCircuit, 
-  Code2, 
-  ShieldCheck, 
-  Zap, 
-  CheckCircle2, 
-  Users, 
-  Clock, 
-  Layers, 
-  BarChart3, 
+  MoreHorizontal, 
+  Plus, 
+  Check, 
   Smartphone, 
-  FileCheck, 
-  Lock, 
-  Headphones, 
-  ChevronRight,
-  TrendingUp,
-  Award
+  Layers, 
+  Users, 
+  ChevronLeft, 
+  Sparkles,
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  Brain,
+  FileText,
+  Mic,
+  Search,
+  Bot,
+  Database,
+  GitBranch,
+  ExternalLink,
+  MessageSquare
 } from "lucide-react";
-import { FadeIn, SectionHeader, StaggerContainer, StaggerItem } from "@/components/ui/Motion";
-import Link from "next/link";
+import { FadeIn } from "@/components/ui/Motion";
+import Image from "next/image";
 
 export default function WhyHireytics() {
   return (
-    <section id="why-hireytics" className="relative section-block bg-[#FAF9F6] py-24 sm:py-32">
-      <div className="section-container">
+    <section id="why-hireytics" className="relative section-block bg-[#FAF9F6] py-24 sm:py-32 overflow-hidden">
+      <div className="section-container max-w-7xl">
         
-        {/* SECTION 1: Built for demanding businesses */}
+        {/* ========================================================
+            HEADER: MEET RECALL
+            ======================================================== */}
         <div className="text-center max-w-3xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-indigo-600 mb-2">
-            Built for demanding businesses
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            An agentic recruiting platform, built for real ROI
-          </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-            Autonomous execution where it saves time, human control where it matters most.
-            Hireytics connects every stage of talent acquisition into a high-precision engine.
-          </p>
+          <FadeIn>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-indigo-600 mb-3">
+              MEET RECALL
+            </p>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold tracking-tight text-slate-900 leading-[1.15]">
+              Stop searching. Start asking.
+            </h2>
+            <p className="mt-5 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+              Hiring information shouldn’t feel scattered when you need to make a decision. Recall helps you find the context across your hiring process without jumping between records and tools.
+            </p>
+          </FadeIn>
         </div>
 
-        {/* WORKABLE-STYLE BENTO GRID 1 */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* ========================================================
+            MULTI-ROW BENTO GRID WITH RECALL AGENTIC PRODUCT UI
+            ======================================================== */}
+        <div className="mt-14 sm:mt-16 space-y-6 sm:space-y-8">
           
-          {/* Card 1: Powerful Reporting & Pipeline Analytics (7 cols) */}
-          <div className="md:col-span-7 rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 border border-indigo-100 px-3 py-1 text-[11px] font-bold text-indigo-700">
-                  <BarChart3 className="h-3.5 w-3.5" /> Live Intelligence
-                </span>
-                <span className="text-xs font-semibold text-slate-400">SOC2 Type II Certified</span>
+          {/* ----------------------------------------------------
+              ROW 1: 01 — Too many tools
+              (Left: Blurred Warm Atmospheric Frame with Connected Data Streams UI)
+              (Right: Text Card)
+              ---------------------------------------------------- */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            
+            {/* Visual Card 1: Warm Blurred Mesh Gradient Frame with Multi-Source Pipeline Streams */}
+            <div 
+              className="lg:col-span-7 rounded-[32px] p-6 sm:p-10 relative overflow-hidden flex items-center justify-center min-h-[380px] shadow-sm border border-slate-200/60"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 80% 20%, rgba(205, 110, 55, 0.55), transparent 60%), radial-gradient(ellipse at 15% 85%, rgba(115, 175, 140, 0.45), transparent 60%), radial-gradient(ellipse at 50% 50%, rgba(235, 185, 105, 0.35), transparent 65%), linear-gradient(145deg, #a6ada2 0%, #b8beb3 45%, #cbbfae 100%)",
+              }}
+            >
+              <div className="relative w-full max-w-md my-auto">
+                {/* Frosted Glass Pipeline Window */}
+                <div className="rounded-2xl border border-white/90 bg-white/95 p-5 sm:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-transform duration-300 hover:scale-[1.01]">
+                  
+                  {/* Card Sub-Header */}
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3.5">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                        LIVE HIRING STREAMS
+                      </span>
+                    </div>
+                    <span className="rounded-full bg-indigo-50 border border-indigo-100 px-2.5 py-0.5 text-[10px] font-bold text-indigo-700">
+                      5 Sources Unified
+                    </span>
+                  </div>
+
+                  {/* Multi-Tool Connected Data Feed */}
+                  <div className="mt-4 space-y-2.5">
+                    
+                    {/* Stream 1: Voice Interview */}
+                    <div className="rounded-xl border border-slate-100 bg-slate-50/90 p-3 flex items-center justify-between shadow-2xs">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-pink-50 text-pink-600 border border-pink-100 font-bold">
+                          <Mic className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-slate-800 truncate">AI Voice Interview Transcript</p>
+                          <p className="text-[10px] text-slate-400 truncate">45m session • System Design & Ruby</p>
+                        </div>
+                      </div>
+                      <span className="text-[9px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full shrink-0">
+                        Synced
+                      </span>
+                    </div>
+
+                    {/* Stream 2: Assessment Scores */}
+                    <div className="rounded-xl border border-slate-100 bg-slate-50/90 p-3 flex items-center justify-between shadow-2xs">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-50 text-sky-600 border border-sky-100 font-bold">
+                          <FileText className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-slate-800 truncate">Technical Assessment & Code</p>
+                          <p className="text-[10px] text-slate-400 truncate">Score: 94/100 • Clean Architecture</p>
+                        </div>
+                      </div>
+                      <span className="text-[9px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full shrink-0">
+                        Synced
+                      </span>
+                    </div>
+
+                    {/* Stream 3: ATS & Rubrics */}
+                    <div className="rounded-xl border border-slate-100 bg-slate-50/90 p-3 flex items-center justify-between shadow-2xs">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-amber-600 border border-amber-100 font-bold">
+                          <Layers className="h-4 w-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-slate-800 truncate">Greenhouse & Panel Rubric</p>
+                          <p className="text-[10px] text-slate-400 truncate">3 Interviewer scorecards combined</p>
+                        </div>
+                      </div>
+                      <span className="text-[9px] font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full shrink-0">
+                        Synced
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* Floating Recall Intelligence Engine Chip */}
+                <div className="absolute -right-2 sm:-right-6 -bottom-6 rounded-2xl border border-white/95 bg-white p-3.5 sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.16)] flex items-center gap-3 backdrop-blur-md">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-xs p-1.5 shrink-0">
+                    <Image src="/recall.png" alt="Recall" width={24} height={24} className="object-contain" />
+                  </div>
+                  <div>
+                    <h5 className="text-xs font-bold text-slate-900">Recall Context Engine</h5>
+                    <p className="text-[10px] text-slate-500">Continuous Cross-Tool Reasoning</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-slate-900">
-                Powerful reporting & candidate telemetry
-              </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-lg leading-relaxed">
-                Make data-backed headcount decisions. Track candidate pass-through rates, time-to-hire velocity, rubric calibration accuracy, and interviewer efficiency in real-time.
-              </p>
             </div>
 
-            {/* UI Mockup of Analytics Dashboard */}
-            <div className="mt-6 rounded-2xl border border-slate-100 bg-slate-50/80 p-5">
-              <div className="flex items-center justify-between border-b border-slate-200/60 pb-3">
-                <div className="flex items-center gap-2">
-                  <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-xs font-bold text-slate-800">Q3 Recruiting Velocity</span>
-                </div>
-                <span className="text-[11px] font-mono font-bold text-indigo-600">+38% vs last quarter</span>
-              </div>
-              
-              {/* Bar Chart Visualization */}
-              <div className="mt-4 flex items-end gap-3 h-28 pt-2">
-                {[
-                  { label: "Sourced", h: "40%", val: "480", color: "bg-slate-300" },
-                  { label: "AI Screen", h: "85%", val: "340", color: "bg-indigo-400" },
-                  { label: "Technical", h: "60%", val: "185", color: "bg-indigo-600" },
-                  { label: "Panel", h: "45%", val: "92", color: "bg-violet-600" },
-                  { label: "Offer", h: "30%", val: "46", color: "bg-emerald-500" },
-                  { label: "Hired", h: "25%", val: "38", color: "bg-emerald-600" },
-                ].map((bar, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
-                    <span className="text-[10px] font-mono text-slate-500">{bar.val}</span>
-                    <div style={{ height: bar.h }} className={`w-full rounded-t-lg ${bar.color} transition-all duration-500`} />
-                    <span className="text-[10px] font-semibold text-slate-600 truncate w-full text-center">{bar.label}</span>
-                  </div>
-                ))}
+            {/* Text Card 1: 01 — Too many tools */}
+            <div className="lg:col-span-5 rounded-[32px] border border-slate-200/80 bg-white p-8 sm:p-12 shadow-sm flex flex-col justify-center">
+              <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest mb-2 font-mono">
+                01 — Too many tools
+              </span>
+              <h3 className="font-heading text-2xl sm:text-[1.75rem] font-bold text-slate-900 leading-snug">
+                Your hiring process lives across too many disconnected places.
+              </h3>
+              <div className="mt-4 space-y-2 text-sm text-slate-600 leading-relaxed">
+                <p>
+                  Your hiring process lives across resumes, spreadsheets, interviews, assessments, emails, and feedback.
+                </p>
+                <p>
+                  Important context gets buried in different places, and you end up switching between tools just to understand one candidate.
+                </p>
+                <p className="font-semibold text-slate-900 pt-1">
+                  Recall brings that context together when you need it.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Card 2: 270+ Integrations & ATS Sync (5 cols) */}
-          <div className="md:col-span-5 rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 border border-sky-100 px-3 py-1 text-[11px] font-bold text-sky-700 mb-4">
-                <Layers className="h-3.5 w-3.5" /> Bi-directional Sync
+          {/* ----------------------------------------------------
+              ROW 2: 02 — Too much digging & 03 — A resume isn't enough
+              (Left: 02 Card | Middle: 03 Card | Right: Visual Mobile Synthesis Card)
+              ---------------------------------------------------- */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
+            
+            {/* Text Card 2: 02 — Too much digging */}
+            <div className="lg:col-span-4 rounded-[32px] border border-slate-200/80 bg-white p-8 sm:p-10 shadow-sm flex flex-col justify-center">
+              <span className="text-xs font-bold text-sky-600 uppercase tracking-widest mb-2 font-mono">
+                02 — Too much digging
               </span>
-              <h3 className="text-xl font-bold text-slate-900">
-                270+ Ecosystem Integrations
+              <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                Finding one answer shouldn&apos;t take an hour.
               </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Seamlessly connects with Greenhouse, Lever, Ashby, Workday, Slack, Google Workspace, and Microsoft Teams with 1-click authentication.
-              </p>
+              <div className="mt-4 space-y-2 text-sm text-slate-600 leading-relaxed">
+                <p>
+                  Finding one simple answer can mean opening multiple candidate records and reading through endless notes.
+                </p>
+                <p>
+                  By the time you have everything in front of you, you’ve already spent too much time.
+                </p>
+                <p className="font-semibold text-slate-900 pt-1">
+                  Ask Recall a question and get the relevant context in one place.
+                </p>
+              </div>
             </div>
 
-            {/* Integration Pills */}
-            <div className="mt-6 grid grid-cols-2 gap-2.5">
-              {[
-                { name: "Greenhouse", icon: "🌿", status: "Connected" },
-                { name: "Lever", icon: "⚡", status: "Live Sync" },
-                { name: "Ashby", icon: "▲", status: "Active" },
-                { name: "Workday HR", icon: "💼", status: "Verified" },
-              ].map((tool, i) => (
-                <div key={i} className="rounded-xl border border-slate-100 bg-slate-50 p-3 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{tool.icon}</span>
-                    <span className="text-xs font-bold text-slate-800">{tool.name}</span>
+            {/* Text Card 3: 03 — A resume isn’t enough */}
+            <div className="lg:col-span-4 rounded-[32px] border border-slate-200/80 bg-white p-8 sm:p-10 shadow-sm flex flex-col justify-center">
+              <span className="text-xs font-bold text-violet-600 uppercase tracking-widest mb-2 font-mono">
+                03 — A resume isn’t enough
+              </span>
+              <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+                Paper claims vs. real demonstrated capability.
+              </h3>
+              <div className="mt-4 space-y-2 text-sm text-slate-600 leading-relaxed">
+                <p>
+                  A resume only tells you what a candidate says on paper.
+                </p>
+                <p>
+                  Their assessment, interview, transcript, and interviewer feedback tell you much more.
+                </p>
+                <p className="font-semibold text-slate-900 pt-1">
+                  Recall looks across that information to help you understand the candidate as a whole.
+                </p>
+              </div>
+            </div>
+
+            {/* Visual Card 2: Lavender Gradient Background with High-Fidelity Agentic Synthesis UI */}
+            <div 
+              className="md:col-span-2 lg:col-span-4 rounded-[32px] p-6 sm:p-8 relative overflow-hidden flex items-center justify-center min-h-[380px] shadow-sm border border-indigo-200/40"
+              style={{
+                background: "linear-gradient(145deg, #8B8FF8 0%, #A2A6FA 100%)",
+              }}
+            >
+              {/* Floating Mobile Device with Live Synthesis Query */}
+              <div className="w-full max-w-[230px] rounded-[28px] border-[4px] border-slate-900 bg-white shadow-2xl p-3 text-slate-900 text-[10px]">
+                {/* Phone Status Bar */}
+                <div className="flex justify-between items-center px-1 mb-2">
+                  <span className="font-bold text-[8.5px] text-slate-800">9:41</span>
+                  <div className="h-1.5 w-12 bg-slate-900 rounded-full" />
+                  <span className="text-[8px] font-mono">100%</span>
+                </div>
+
+                {/* Query Bubble */}
+                <div className="rounded-xl bg-slate-100 p-2 text-[9px] text-slate-700 font-medium mb-2 border border-slate-200">
+                  <p className="text-slate-400 text-[7.5px] uppercase font-bold">User question</p>
+                  &ldquo;What did Maya Evans say about distributed databases?&rdquo;
+                </div>
+
+                {/* Synthesis Output */}
+                <div className="rounded-xl border border-indigo-100 bg-indigo-50/70 p-2.5 space-y-1.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-indigo-600" />
+                    <span className="font-bold text-[9px] text-indigo-950">Recall Synthesis</span>
                   </div>
-                  <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                    {tool.status}
+                  
+                  <p className="text-[8.5px] text-slate-700 leading-snug">
+                    Maya detailed 3 years managing distributed PostgreSQL with CockroachDB sharding during high-throughput peaks.
+                  </p>
+
+                  {/* Citations */}
+                  <div className="pt-1 flex flex-wrap gap-1">
+                    <span className="rounded bg-white px-1.5 py-0.5 text-[7px] font-bold text-slate-600 border border-slate-200">
+                      [Voice 18:32]
+                    </span>
+                    <span className="rounded bg-white px-1.5 py-0.5 text-[7px] font-bold text-slate-600 border border-slate-200">
+                      [Tech Panel]
+                    </span>
+                    <span className="rounded bg-emerald-100 text-emerald-800 px-1.5 py-0.5 text-[7px] font-bold">
+                      Verified Match
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bottom Status */}
+                <div className="mt-2.5 flex items-center justify-between text-[7.5px] text-slate-400 px-1">
+                  <span>Confidence: 98%</span>
+                  <span className="text-indigo-600 font-bold">Zero digging required</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ----------------------------------------------------
+              ROW 3: 04 — Don’t lose what you learned
+              (Left: Blurred Sage/Teal Gradient with Historical Memory Recall UI)
+              (Right: Text Card)
+              ---------------------------------------------------- */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            
+            {/* Visual Card 3: Blurred Sage/Teal Gradient with Historical Memory Recall Mockup */}
+            <div 
+              className="lg:col-span-7 rounded-[32px] p-6 sm:p-10 relative overflow-hidden flex items-center justify-center min-h-[380px] shadow-sm border border-slate-200/60"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 80% 20%, rgba(70, 155, 125, 0.5), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(190, 150, 90, 0.4), transparent 60%), radial-gradient(ellipse at 50% 50%, rgba(100, 140, 170, 0.35), transparent 65%), linear-gradient(145deg, #96a594 0%, #b2bcb0 50%, #9da69c 100%)",
+              }}
+            >
+              {/* Frosted Memory Search Window */}
+              <div className="w-full max-w-md rounded-2xl border border-white/90 bg-white/95 p-5 sm:p-6 shadow-[0_20px_45px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-transform duration-300 hover:scale-[1.01]">
+                
+                {/* Search Bar Query */}
+                <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs">
+                  <Search className="h-3.5 w-3.5 text-slate-400" />
+                  <span className="text-slate-800 font-medium truncate">
+                    &ldquo;Who did we interview previously with Staff Go experience?&rdquo;
                   </span>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Card 3: Mobile-First Candidate Portal (6 cols) */}
-          <div className="md:col-span-6 rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-100 px-3 py-1 text-[11px] font-bold text-emerald-700 mb-4">
-                <Smartphone className="h-3.5 w-3.5" /> Mobile Experience
+                {/* Retrieved Past Candidate Card */}
+                <div className="mt-4 rounded-xl border border-emerald-200/80 bg-emerald-50/40 p-3.5 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2.5">
+                      <img 
+                        className="h-8 w-8 rounded-full object-cover border border-white shadow-2xs" 
+                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80" 
+                        alt="Maya" 
+                      />
+                      <div>
+                        <p className="text-xs font-bold text-slate-900 leading-tight">Maya Evans</p>
+                        <p className="text-[10px] text-slate-500">Interviewed 4 months ago • Final Round</p>
+                      </div>
+                    </div>
+                    <span className="rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5">
+                      94% Alignment
+                    </span>
+                  </div>
+
+                  {/* Context Note */}
+                  <p className="text-[11px] text-slate-600 bg-white/80 p-2 rounded-lg border border-slate-100">
+                    Strong scorecards across Golang & Kafka. Offer was paused previously due to Q3 headcount freeze. Now ready for immediate re-engagement.
+                  </p>
+
+                  <div className="flex items-center justify-between pt-1">
+                    <span className="text-[10px] text-slate-400">Past scorecards retained</span>
+                    <button className="rounded-lg bg-slate-900 text-white px-2.5 py-1 text-[10.5px] font-bold hover:bg-black transition">
+                      Re-engage Profile
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Text Card 4: 04 — Don’t lose what you learned */}
+            <div className="lg:col-span-5 rounded-[32px] border border-slate-200/80 bg-white p-8 sm:p-12 shadow-sm flex flex-col justify-center">
+              <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-2 font-mono">
+                04 — Don’t lose what you learned
               </span>
-              <h3 className="text-xl font-bold text-slate-900">
-                Mobile-first candidate & recruiter app
+              <h3 className="font-heading text-2xl sm:text-[1.75rem] font-bold text-slate-900 leading-snug">
+                Turn past hiring efforts into lasting institutional memory.
               </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Candidates complete asynchronous video and voice interviews right from their mobile browser with 0 app downloads required.
-              </p>
-            </div>
-
-            {/* Mobile App UI Card */}
-            <div className="mt-6 rounded-2xl border border-slate-100 bg-gradient-to-r from-slate-50 to-indigo-50/40 p-4 flex items-center gap-4">
-              <div className="w-16 h-20 rounded-xl bg-slate-900 text-white p-2 flex flex-col justify-between shrink-0 shadow-sm">
-                <div className="h-1.5 w-6 bg-slate-700 rounded-full mx-auto" />
-                <div className="space-y-1">
-                  <div className="h-1.5 w-full bg-indigo-400 rounded-full" />
-                  <div className="h-1.5 w-3/4 bg-slate-600 rounded-full" />
-                </div>
-                <div className="h-2 w-2 rounded-full bg-emerald-400 mx-auto" />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-xs font-bold text-slate-900">Candidate Mobile Portal</h4>
-                <p className="text-[11px] text-slate-500 mt-0.5">Instant link invite • Asynchronous voice & video • Anti-cheat verified</p>
-                <div className="mt-2 flex items-center gap-2">
-                  <span className="text-[10px] font-bold text-indigo-700 bg-white border border-indigo-100 px-2 py-0.5 rounded-full">iOS & Android Ready</span>
-                </div>
+              <div className="mt-4 space-y-2 text-sm text-slate-600 leading-relaxed">
+                <p>
+                  Hiring teams make decisions every day, but useful context can disappear into old records.
+                </p>
+                <p>
+                  A previous interview or candidate may become relevant months later.
+                </p>
+                <p className="font-semibold text-slate-900 pt-1">
+                  Recall helps you bring that past hiring context back when you need it.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Card 4: G2 Ratings & Trust Metrics (6 cols) */}
-          <div className="md:col-span-6 rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-100 px-3 py-1 text-[11px] font-bold text-amber-700">
-                  <Award className="h-3.5 w-3.5" /> Industry Leadership
-                </span>
-                <span className="text-xs font-bold text-slate-400">G2 Winter 2026</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900">
-                Rated #1 in Enterprise Hiring Satisfaction
-              </h3>
-            </div>
-
-            {/* Score Badges */}
-            <div className="mt-6 grid grid-cols-3 gap-3 text-center">
-              <div className="rounded-2xl bg-amber-500/10 border border-amber-200/60 p-3.5">
-                <p className="text-2xl font-extrabold text-amber-900 font-mono">9.3</p>
-                <p className="text-[10px] font-bold text-amber-800 uppercase tracking-wider mt-0.5">Ease of Setup</p>
-              </div>
-              <div className="rounded-2xl bg-indigo-50 border border-indigo-100 p-3.5">
-                <p className="text-2xl font-extrabold text-indigo-900 font-mono">9.6</p>
-                <p className="text-[10px] font-bold text-indigo-800 uppercase tracking-wider mt-0.5">AI Accuracy</p>
-              </div>
-              <div className="rounded-2xl bg-emerald-50 border border-emerald-100 p-3.5">
-                <p className="text-2xl font-extrabold text-emerald-900 font-mono">9.4</p>
-                <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider mt-0.5">Support SLA</p>
-              </div>
-            </div>
-
-            {/* Micro metrics bar */}
-            <div className="mt-4 rounded-xl bg-slate-900 text-white px-4 py-2.5 flex items-center justify-between text-xs font-mono">
-              <span className="text-slate-300">Avg. Screening: <strong className="text-emerald-400">24s</strong></span>
-              <span className="text-slate-300">Time-to-Hire: <strong className="text-indigo-300">3.5x faster</strong></span>
-              <span className="text-slate-300">Uptime: <strong className="text-white">99.99%</strong></span>
-            </div>
-          </div>
-        </div>
-
-        {/* WORKABLE QUOTE BANNER 1 */}
-        <div className="mt-8 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4 sm:p-5 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-indigo-950">
-            &ldquo;An AI agent is only as good as the system behind it. Hireytics is built into a complete, end-to-end recruitment infrastructure — not a tool bolted on beside it.&rdquo;
-          </p>
-        </div>
-
-
-        {/* SECTION 2: A full HR platform on the same system that hired them */}
-        <div className="mt-28 text-center max-w-3xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">
-            For everything after the hire
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            A full talent platform on the same system that hired them
-          </h2>
-          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
-            Onboarding, compliance, e-signatures, candidate recall, and workforce analytics — one platform that keeps your context capture intact from interview to offer.
-          </p>
-        </div>
-
-        {/* 6-Card Multi-Column Grid */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {/* Card 1: Automated New Hire Onboarding */}
-          <div className="group rounded-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-md transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600 mb-5 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-              <FileCheck className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Automated new hire onboarding</h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Create personalized welcome portals with role-specific workflows. Collect compliance paperwork, assign hardware, and trigger team intros automatically.
-            </p>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-indigo-600">
-              <span>View workflow details</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </div>
-          </div>
-
-          {/* Card 2: Self-Service Portal */}
-          <div className="group rounded-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-md transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-50 text-sky-600 mb-5 group-hover:bg-sky-600 group-hover:text-white transition-colors">
-              <Users className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Self-service employee portal</h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Enable employees to manage personal details, time off, benefits selection, and view company handbooks in one secure, intuitive interface.
-            </p>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-sky-600">
-              <span>Explore portal features</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </div>
-          </div>
-
-          {/* Card 3: Performance & Engagement */}
-          <div className="group rounded-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-md transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-violet-50 text-violet-600 mb-5 group-hover:bg-violet-600 group-hover:text-white transition-colors">
-              <TrendingUp className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Performance & evaluation rubrics</h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Run 360° reviews, goal tracking, and continuous feedback cycles. Align team output with the exact competencies evaluated during hiring.
-            </p>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-violet-600">
-              <span>See rubric builder</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </div>
-          </div>
-
-          {/* Card 4: System of Record */}
-          <div className="group rounded-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-md transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 mb-5 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-              <Layers className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">System of record for all HR data</h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Centralized repository with dynamic org charts, compensation bands, historical audit trails, and role permissions with granular security.
-            </p>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-emerald-600">
-              <span>View org chart tools</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </div>
-          </div>
-
-          {/* Card 5: Digital Documents & E-Sign */}
-          <div className="group rounded-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-md transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-50 text-amber-600 mb-5 group-hover:bg-amber-600 group-hover:text-white transition-colors">
-              <Lock className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Digital docs & e-signature</h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Legally binding e-signatures for offer letters, NDAs, and contractor agreements. Automatic PDF archiving with expiration and renewal alerts.
-            </p>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-amber-600">
-              <span>Learn about compliance</span>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </div>
-          </div>
-
-          {/* Card 6: Hireytics Recall Engine */}
-          <div className="group rounded-3xl border border-slate-200/80 bg-white p-7 shadow-sm hover:shadow-md transition-all">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-rose-50 text-rose-600 mb-5 group-hover:bg-rose-600 group-hover:text-white transition-colors">
-              <BrainCircuit className="h-5 w-5" />
-            </div>
-            <h3 className="text-base font-bold text-slate-900">Hireytics Recall memory engine</h3>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Autonomous silver-medalist reactivation. Never let great candidate relationships go cold — re-engage top talent the minute relevant roles launch.
-            </p>
-            <div className="mt-5 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-rose-600">
-              <Link href="/recall">Explore Recall</Link>
-              <ChevronRight className="h-3.5 w-3.5" />
-            </div>
-          </div>
-        </div>
-
-        {/* WORKABLE QUOTE BANNER 2 */}
-        <div className="mt-10 rounded-2xl border border-purple-100 bg-purple-50/70 p-4 sm:p-5 text-center">
-          <p className="text-xs sm:text-sm font-semibold text-purple-950">
-            &ldquo;When hiring context flows seamlessly into onboarding and workforce management, talent ROI compounds. With Hireytics, your team scales effortlessly.&rdquo;
-          </p>
         </div>
 
       </div>
     </section>
   );
 }
+
