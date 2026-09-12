@@ -62,9 +62,6 @@ export default function RecallChatExperienceShowcase() {
             <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2">
                 <span className="font-heading text-sm font-bold text-slate-900">Recall</span>
-                <span className="rounded-md bg-sky-100 px-2 py-0.5 text-[10px] font-bold text-sky-700">
-                  BRAIN
-                </span>
               </div>
               <div className="flex items-center gap-1.5 rounded-md border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs text-slate-600">
                 <span>Claude 3.5 Sonnet</span>

@@ -12,7 +12,6 @@ const navLinks = [
   { label: "How It Works", href: "/#how-it-works" },
   { label: "Recall", href: "/recall", badge: "v1.0" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Demo", href: "/#demo" },
   { label: "Stories", href: "/#testimonials" },
 ];
 

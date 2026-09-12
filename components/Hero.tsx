@@ -26,6 +26,7 @@ import {
   BarChart2,
   Lock,
 } from "lucide-react";
+import { RiProgress3Line } from "react-icons/ri";
 import { ButtonLink } from "@/components/ui/Button";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
@@ -87,7 +88,7 @@ function HeroCopy() {
         .
       </span>
       <h1 className="mt-6 text-[44px] font-semibold leading-[1.02] tracking-tight sm:text-[56px] lg:text-[64px]">
-        Turn 20 Hours of Hiring Into 20 Minutes.
+        Turn 10 Hours of Hiring Into 10 Minutes.
       </h1>
       <p className="mt-5 max-w-[640px] text-[15.5px] leading-relaxed text-muted-foreground">
         Transform the entire talent journey with Hireytics that automates screening, AI-led Realtime interviews, analytics, hiring, negotiations, onboarding, and workforce operations—helping your team save time, reduce complexity, and focus on people instead of processes.
@@ -107,9 +108,9 @@ function HeroCopy() {
         </button>
       </div>
       <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <Stat label="Faster hires" value="12×" />
+        <Stat label="Faster hires" value="22×" />
         <Stat label="AI productivity" value="92%" />
-        <Stat label="Hours saved / wk" value="40+" />
+        <Stat label="Hours saved / wk" value="12+" />
       </div>
     </div>
   );
@@ -291,9 +292,6 @@ function ProductStage() {
             </div>
           </div>
         </div>
-
-        {/* Floating side card */}
-        <FloatingCard />
       </div>
     </div>
   );
@@ -324,7 +322,7 @@ function WindowChrome() {
 
       <div className="flex items-center gap-2.5">
         <button className="flex items-center gap-1 rounded-md border border-purple-500/30 bg-purple-500/10 px-2 py-0.5 text-[10.5px] font-semibold text-purple-300">
-          <Crown className="h-3 w-3 text-purple-400" /> Custom Plan
+          <RiProgress3Line className="h-3 w-3 text-purple-400" /> 1/3 Workspace Setup
         </button>
         <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300">
           <Moon className="h-3 w-3" />
@@ -338,8 +336,8 @@ function WindowChrome() {
             S
           </div>
           <div className="hidden text-left leading-tight sm:block">
-            <div className="text-[11px] font-semibold text-slate-200">Saad Shahrukh</div>
-            <div className="text-[9px] text-slate-400">Ceo</div>
+            <div className="text-[11px] font-semibold text-slate-200">John Doe</div>
+            <div className="text-[9px] text-slate-400">Hiring Manager</div>
           </div>
         </div>
       </div>
@@ -370,7 +368,6 @@ function Sidebar({ activeScene }: { activeScene: Scene }) {
         {
           key: "recall",
           label: "Recall",
-          badge: "BRAIN",
           icon: (
             <img src="/recall.png" alt="Recall" className="h-3.5 w-3.5 object-contain" />
           ),
@@ -541,9 +538,7 @@ function RecallAgentScene({ active }: { active?: boolean }) {
         <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
           <div className="flex items-center gap-2">
             <span className="font-heading text-xs font-bold text-white">Recall</span>
-            <span className="rounded bg-sky-400/20 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-sky-300">
-              BRAIN
-            </span>
+           
           </div>
 
           <div className="flex items-center gap-2">
@@ -1222,25 +1217,3 @@ function PipelineScene() {
 
 /* ------------------------------ Floating side card ------------------------------ */
 
-function FloatingCard() {
-  return (
-    <div
-      className="absolute -right-4 top-24 hidden w-[240px] rounded-xl border border-white/10 bg-[#0c121e]/90 p-3 backdrop-blur lg:block shadow-2xl"
-      style={{ animation: "float 7s ease-in-out infinite" }}
-    >
-      <div className="flex items-center gap-2">
-        <div className="grid h-7 w-7 place-items-center rounded-md gradient-pink text-[10px] font-bold text-black">
-          SJ
-        </div>
-        <div className="min-w-0">
-          <div className="truncate text-[11.5px] font-semibold text-slate-200">Sarah Jenkins</div>
-          <div className="truncate text-[9.5px] text-slate-400">Head of Talent</div>
-        </div>
-      </div>
-      <p className="mt-2 text-[10.5px] leading-relaxed text-slate-300">
-        “Recall and the automated screening saved our hiring team{" "}
-        <span className="text-white font-semibold">over 40 hours every week.</span>”
-      </p>
-    </div>
-  );
-}

@@ -75,7 +75,7 @@ export default function HowItWorks() {
       id: 4,
       icon: Brain,
       title: "Recall Intelligence",
-      tag: "04 • RECALL BRAIN",
+      tag: "04 • RECALL",
       shortSummary:
         "Ask plain-language questions across candidate transcripts, resumes, and interview feedback with side-by-side comparison tables.",
       outcomeBadge: "Zero guesswork or hallucination",
@@ -502,7 +502,6 @@ function MockupRecallDecision() {
               <Image src="/recall.png" alt="Recall" width={16} height={16} />
             </div>
             <span className="text-xs font-bold text-slate-900">Recall Intelligence Reasoning</span>
-            <span className="rounded bg-sky-100 px-1.5 py-0.2 text-[9px] font-bold text-sky-800">BRAIN</span>
           </div>
           <span className="text-[10px] text-slate-500">Claude 3.5 Sonnet</span>
         </div>

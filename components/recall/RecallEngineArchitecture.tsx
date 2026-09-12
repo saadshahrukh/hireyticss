@@ -51,7 +51,7 @@ export default function RecallEngineArchitecture() {
         <div className="relative rounded-xl border border-sky-200 bg-sky-50/40 p-4 shadow-2xs transition hover:border-sky-300">
           <div className="flex items-center justify-between">
             <span className="rounded-md bg-sky-100 px-2 py-0.5 text-[10px] font-bold text-sky-700">
-              02 • RECALL BRAIN
+              02 • RECALL
             </span>
             <Network className="h-4 w-4 text-sky-600" />
           </div>
