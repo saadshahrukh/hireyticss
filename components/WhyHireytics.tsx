@@ -141,7 +141,7 @@ export default function WhyHireytics() {
                 {/* Floating Recall Intelligence Engine Chip */}
                 <div className="absolute -right-2 sm:-right-6 -bottom-6 rounded-2xl border border-white/95 bg-white p-3.5 sm:p-4 shadow-[0_16px_36px_rgba(0,0,0,0.16)] flex items-center gap-3 backdrop-blur-md">
                   <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-xs p-1.5 shrink-0">
-                    <Image src="/recall.png" alt="Recall" width={24} height={24} className="object-contain" />
+                    <Image src="/recall.png" alt="Hireytics Recall AI Intelligence Icon" width={24} height={24} className="object-contain" />
                   </div>
                   <div>
                     <h5 className="text-xs font-bold text-slate-900">Recall Context Engine</h5>

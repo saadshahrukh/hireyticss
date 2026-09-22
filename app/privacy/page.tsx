@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Clock, Mail, CheckCircle2, ChevronRight, Lock, FileText, ArrowUpRight } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy — Hireytics",
+export const metadata = buildMetadata({
+  title: "Privacy Policy | Hireytics",
   description:
-    "Learn how Hireytics collects, protects, uses, and processes information for candidates, hiring teams, and organizations.",
-};
+    "Learn how Hireytics collects, protects, uses, and processes candidate, recruiter, and enterprise hiring information.",
+  path: "/privacy",
+});
 
 const sections = [
   { id: "who-we-are", title: "1. Who We Are" },
@@ -36,11 +38,7 @@ export default function PrivacyPage() {
         <div className="section-container max-w-6xl">
           {/* Breadcrumb & Header */}
           <div className="border-b border-slate-200/80 pb-8">
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <a href="/" className="hover:text-slate-900 transition">Home</a>
-              <ChevronRight className="h-3 w-3" />
-              <span className="text-slate-900">Privacy Policy</span>
-            </div>
+            <Breadcrumbs items={[{ label: "Privacy Policy", href: "/privacy" }]} />
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
               <div>

@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { FileText, Clock, ChevronRight, Scale, ArrowUpRight, CheckCircle2, ShieldAlert } from "lucide-react";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service — Hireytics",
+export const metadata = buildMetadata({
+  title: "Terms of Service | Hireytics",
   description:
-    "Review the terms governing your access to and use of Hireytics software, artificial intelligence features, Recall, and workforce tools.",
-};
+    "Review the terms governing access to and use of Hireytics recruitment software, voice interview AI, and Recall workspace tools.",
+  path: "/terms",
+});
 
 const termsSections = [
   { id: "about", title: "1. About Hireytics" },
@@ -46,11 +48,7 @@ export default function TermsPage() {
         <div className="section-container max-w-6xl">
           {/* Header & Breadcrumb */}
           <div className="border-b border-slate-200/80 pb-8">
-            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-              <a href="/" className="hover:text-slate-900 transition">Home</a>
-              <ChevronRight className="h-3 w-3" />
-              <span className="text-slate-900">Terms of Service</span>
-            </div>
+            <Breadcrumbs items={[{ label: "Terms of Service", href: "/terms" }]} />
 
             <div className="mt-4 flex flex-wrap items-center justify-between gap-4">
               <div>

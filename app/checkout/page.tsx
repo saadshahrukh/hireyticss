@@ -178,6 +178,7 @@ function CheckoutContent() {
             
             {/* Left Column (Contact, Billing & Payment) */}
             <form onSubmit={handleSubscribe} className="lg:col-span-7 space-y-7">
+              <h1 className="text-xl font-bold text-slate-900">Checkout & Subscription</h1>
               
               {/* Contact Information */}
               <div>

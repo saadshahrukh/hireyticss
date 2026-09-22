@@ -499,7 +499,7 @@ function MockupRecallDecision() {
         <div className="flex items-center justify-between border-b border-slate-100 pb-3">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-pink-50 p-1 border border-pink-200">
-              <Image src="/recall.png" alt="Recall" width={16} height={16} />
+              <Image src="/recall.png" alt="Hireytics Recall Intelligence Engine Icon" width={16} height={16} />
             </div>
             <span className="text-xs font-bold text-slate-900">Recall Intelligence Reasoning</span>
           </div>

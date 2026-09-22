@@ -369,7 +369,7 @@ function Sidebar({ activeScene }: { activeScene: Scene }) {
           key: "recall",
           label: "Recall",
           icon: (
-            <img src="/recall.png" alt="Recall" className="h-3.5 w-3.5 object-contain" />
+            <img src="/recall.png" alt="Hireytics Recall Assistant Icon" className="h-3.5 w-3.5 object-contain" />
           ),
           matches: ["recall"],
         },
@@ -561,7 +561,7 @@ function RecallAgentScene({ active }: { active?: boolean }) {
         {/* Recall Assistant Response */}
         <div className="flex items-start gap-2.5">
           <div className="relative mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-pink-500/30 bg-pink-500/10 p-1">
-            <img src="/recall.png" alt="Recall" className="h-full w-full object-contain" />
+            <img src="/recall.png" alt="Hireytics Recall Intelligence Icon" className="h-full w-full object-contain" />
           </div>
 
           <div className="min-w-0 flex-1 space-y-2 text-[11.5px]">

@@ -10,21 +10,24 @@ import { Mail, Headphones } from "lucide-react";
 
 const footerLinks = {
   Product: [
-    { label: "Why Hireytics", href: "/#why-hireytics" },
-    { label: "How It Works", href: "/#how-it-works" },
-    { label: "Hireytics Recall", href: "/recall" },
+    { label: "AI Recruiting Software", href: "/features/ai-recruiting" },
+    { label: "Applicant Tracking (ATS)", href: "/features/applicant-tracking" },
+    { label: "Candidate Screening", href: "/features/candidate-screening" },
+    { label: "AI Voice Interviews", href: "/features/automated-interviews" },
+    { label: "Recall Intelligence", href: "/recall" },
     { label: "Pricing & Plans", href: "/pricing" },
-    { label: "Free Trial", href: "/free-trial" },
   ],
-  Company: [
+  Solutions: [
+    { label: "Small Business & Startups", href: "/solutions/small-business" },
+    { label: "Recruiting & Talent Teams", href: "/solutions/recruiting-teams" },
+    { label: "Custom Enterprise Plan", href: "/pricing#custom-pricing" },
+    { label: "Free 14-Day Trial", href: "/free-trial" },
+  ],
+  Resources: [
+    { label: "Recruiting Blog & Guides", href: "/blog" },
     { label: "Client Onboarding", href: "/onboarding" },
-    { label: "Custom Architecture", href: "/pricing#custom-pricing" },
-    { label: "Enterprise Security", href: "/#why-hireytics" },
-  ],
-  Legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Security & SOC2", href: "/#why-hireytics" },
   ],
 };
 

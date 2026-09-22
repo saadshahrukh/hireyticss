@@ -191,9 +191,9 @@ export default function FreeTrialPage() {
               <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <h2 className="font-heading text-2xl font-bold tracking-tight text-slate-900">
+                    <h1 className="font-heading text-2xl font-bold tracking-tight text-slate-900">
                       Create your free trial account
-                    </h2>
+                    </h1>
                     <p className="mt-1 text-xs sm:text-sm text-slate-500">
                       Setup takes under 60 seconds. We&apos;ll email your workspace credentials directly to your inbox.
                     </p>

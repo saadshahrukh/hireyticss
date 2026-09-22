@@ -8,11 +8,11 @@ import { ButtonLink } from "@/components/ui/Button";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Why Hireytics", href: "/#value" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "AI Recruiting", href: "/features/ai-recruiting" },
   { label: "Recall", href: "/recall", badge: "v1.0" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Stories", href: "/#testimonials" },
+  { label: "Solutions", href: "/solutions/small-business" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Navbar({ solid = false }: { solid?: boolean }) {
