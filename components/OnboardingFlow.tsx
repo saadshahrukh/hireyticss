@@ -197,48 +197,49 @@ function OnboardingContent() {
   const currentPercentage = steps[step].percentage;
 
   return (
-    <div className="min-h-screen bg-slate-50 px-0 py-0 lg:px-0">
-      <div className="mx-auto flex min-h-screen w-full flex-col overflow-hidden bg-white shadow-2xl lg:flex-row">
+    <div className="min-h-screen bg-[#f2f6f5] px-3 pb-5 pt-24 sm:px-5 sm:pb-7 sm:pt-24">
+      <div className="mx-auto grid min-h-[680px] w-full max-w-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_24px_80px_rgba(17,54,56,0.10)] lg:min-h-[calc(100vh-7.5rem)] lg:grid-cols-[0.98fr_1.02fr]">
         
         {/* Left Branded Sidebar */}
-        <aside className="relative flex min-h-[320px] pt-20 items-center overflow-hidden lg:min-h-screen lg:w-[40%]">
+        <aside className="relative order-2 flex min-h-[430px] items-end overflow-hidden bg-[#073f43] lg:order-2 lg:min-h-[680px]">
           <Image
             src="/onboarding.jpg"
             alt="Onboarding"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(37,99,235,0.86),_rgba(109,40,217,0.86))]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.25),_transparent_45%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,_rgba(4,44,48,0.16)_0%,_rgba(4,44,48,0.46)_45%,_rgba(3,37,40,0.94)_100%)]" />
+          <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.38)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.38)_1px,transparent_1px)] [background-size:52px_52px]" />
           
-          <div className="relative z-10 p-8 text-white sm:p-10 lg:p-12 flex flex-col justify-between h-full">
+          <div className="relative z-10 flex h-full w-full flex-col justify-between p-7 text-white sm:p-10 lg:p-12">
             <div>
-              <Link href="/" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-white backdrop-blur">
-                 Onboarding
+              <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-white">
+              < Sparkles size={20} className="text-teal-200" />
+                    ONBOARDING
               </Link>
 
-              <h1 className="mt-6 text-3xl font-bold leading-tight sm:text-4xl text-white">
+              <h1 className="mt-8 max-w-lg text-3xl font-bold leading-tight text-white sm:text-4xl">
                 Set up your autonomous recruiting workspace.
               </h1>
-              <p className="mt-4 max-w-xl text-xs sm:text-sm leading-relaxed text-indigo-50">
+              <p className="mt-4 max-w-lg text-sm leading-relaxed text-teal-50">
                 AI voice and video screening, live code execution, and candidate recall — customized to your company hiring rubrics in 3 quick steps.
               </p>
 
-              <div className="mt-8 space-y-3">
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+              <div className="mt-7 grid max-w-lg gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
                   <div className="flex items-center gap-2 text-xs font-bold text-white">
-                    <ShieldCheck size={16} /> Instant ATS Integration
+                    <ShieldCheck size={16} className="text-teal-200" /> Instant ATS Integration
                   </div>
-                  <p className="mt-1 text-[11px] text-indigo-100">
+                  <p className="mt-1.5 text-xs leading-relaxed text-teal-50/90">
                     Connect Greenhouse, Lever, Ashby, and Workday in one click.
                   </p>
                 </div>
-                <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+                <div className="rounded-xl border border-white/20 bg-white/10 p-4 backdrop-blur-md">
                   <div className="flex items-center gap-2 text-xs font-bold text-white">
-                    <Zap size={16} /> Fast Team Activation
+                    <Zap size={16} className="text-teal-200" /> Fast Team Activation
                   </div>
-                  <p className="mt-1 text-[11px] text-indigo-100">
+                  <p className="mt-1.5 text-xs leading-relaxed text-teal-50/90">
                     Start screening qualified candidates immediately.
                   </p>
                 </div>
@@ -246,11 +247,11 @@ function OnboardingContent() {
             </div>
 
             {/* Simple Floating Circular Avatar Icons (Trusted by 250+ talent leaders) */}
-            <div className="mt-8 flex items-center gap-3 pt-6 border-t border-white/15">
+            <div className="mt-8 flex items-center gap-3 border-t border-white/20 pt-5">
               <div className="flex -space-x-2.5 overflow-hidden">
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white/90 object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Leader" />
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white/90 object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Leader" />
-                <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white/90 object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Leader" />
+                <img className="inline-block h-12 w-12 rounded-full  object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Leader" />
+                <img className="inline-block h-12 w-12 rounded-full  object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Leader" />
+                <img className="inline-block h-12 w-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80" alt="Leader" />
               </div>
               <p className="text-xs font-medium text-white">
                 Trusted by <strong className="font-bold text-white">250+ talent leaders</strong>
@@ -260,10 +261,14 @@ function OnboardingContent() {
         </aside>
 
         {/* Right Main Flow Area */}
-        <main className="flex flex-1 flex-col item-center justify-center mt-20 p-6 sm:p-10 lg:p-12 overflow-y-auto">
+        <main className="order-1 flex min-w-0 flex-col justify-center overflow-y-auto px-6 py-8 sm:px-10 sm:py-10 lg:order-1 lg:px-12 lg:py-12 xl:px-16">
+          <div className="mx-auto mb-8 flex w-full max-w-xl items-center gap-2 text-sm font-semibold text-slate-900 lg:mb-10">
+            <Image src="/logo-icon.png" alt="Hireytics" width={30} height={30} className="h-[30px] w-[30px] object-contain" />
+            <span>Hireytics</span>
+          </div>
           
           {/* Top Breadcrumb & Step Ring */}
-          <div className="flex items-center justify-between border-b border-slate-100 pb-5 max-w-xl mx-auto w-full">
+          <div className="mx-auto flex w-full max-w-xl items-center justify-between border-b border-slate-100 pb-5">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
                 HOME / STEP {step + 1} OF {steps.length}
@@ -285,7 +290,7 @@ function OnboardingContent() {
                     d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   />
                   <path
-                    className="text-indigo-600 transition-all duration-500 ease-out"
+                    className="text-teal-700 transition-all duration-500 ease-out"
                     strokeDasharray={`${currentPercentage}, 100`}
                     strokeWidth="3.5"
                     strokeLinecap="round"
@@ -302,7 +307,7 @@ function OnboardingContent() {
           </div>
 
           {/* Form Content */}
-          <div className="mt-8 flex-1 max-w-xl mx-auto w-full">
+          <div className="mx-auto mt-7 w-full max-w-xl flex-1 sm:mt-8">
             
             {/* STEP 1: Personal Details */}
             {step === 0 && (
@@ -625,7 +630,7 @@ function OnboardingContent() {
           </div>
 
           {/* Bottom Navigation */}
-          <div className="mt-8 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-slate-100 pt-6 max-w-xl mx-auto w-full">
+          <div className="mx-auto mt-7 flex w-full max-w-xl flex-col-reverse gap-3 border-t border-slate-100 pt-5 sm:mt-8 sm:flex-row sm:items-center sm:justify-between sm:pt-6">
             <button
               type="button"
               onClick={goBack}

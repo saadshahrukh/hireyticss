@@ -10,6 +10,7 @@ import { Mail, Headphones } from "lucide-react";
 
 const footerLinks = {
   Product: [
+    { label: "All Platform Features", href: "/features" },
     { label: "AI Recruiting Software", href: "/features/ai-recruiting" },
     { label: "Applicant Tracking (ATS)", href: "/features/applicant-tracking" },
     { label: "Candidate Screening", href: "/features/candidate-screening" },
@@ -18,6 +19,7 @@ const footerLinks = {
     { label: "Pricing & Plans", href: "/pricing" },
   ],
   Solutions: [
+    { label: "Solutions Overview", href: "/solutions" },
     { label: "Small Business & Startups", href: "/solutions/small-business" },
     { label: "Recruiting & Talent Teams", href: "/solutions/recruiting-teams" },
     { label: "Custom Enterprise Plan", href: "/pricing#custom-pricing" },
