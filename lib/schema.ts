@@ -4,18 +4,45 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     "name": SITE_NAME,
+    "legalName": "Hireytics Inc.",
+    "alternateName": ["Hireytics", "Hireytics AI", "Hireytics Platform"],
     "url": SITE_URL,
-    "logo": `${SITE_URL}/logo-icon.png`,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${SITE_URL}/logo-icon.png`,
+      "width": 512,
+      "height": 512
+    },
+    "image": `${SITE_URL}/logo-grad.png`,
+    "description": "Hireytics (https://hireytics.com) is an AI recruiting software platform featuring automated candidate screening, voice interview evaluations, and Recall pipeline intelligence.",
+    "disambiguatingDescription": "Hireytics is an AI recruiting software and applicant tracking software platform at hireytics.com. It is distinct from Hirelytics.",
+    "knowsAbout": [
+      "AI Recruiting Software",
+      "Applicant Tracking Systems",
+      "Candidate Resume Screening",
+      "AI Voice Interview Automation",
+      "Recall Intelligence Engine",
+      "Workforce Analytics"
+    ],
     "sameAs": [
       "https://www.linkedin.com/company/hireytics",
       "https://x.com/hireytics",
       "https://facebook.com/hireytics"
     ],
+    "brand": {
+      "@type": "Brand",
+      "@id": `${SITE_URL}/#brand`,
+      "name": SITE_NAME,
+      "url": SITE_URL,
+      "logo": `${SITE_URL}/logo-icon.png`
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "contact@hireytics.com",
-      "contactType": "customer support"
+      "contactType": "customer service",
+      "url": SITE_URL
     }
   };
 }
@@ -24,8 +51,13 @@ export function generateWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     "name": SITE_NAME,
+    "alternateName": ["Hireytics AI", "Hireytics SaaS"],
     "url": SITE_URL,
+    "publisher": {
+      "@id": `${SITE_URL}/#organization`
+    },
     "potentialAction": {
       "@type": "SearchAction",
       "target": `${SITE_URL}/blog?q={search_term_string}`,
@@ -38,9 +70,17 @@ export function generateSoftwareApplicationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${SITE_URL}/#software`,
     "name": SITE_NAME,
+    "url": SITE_URL,
     "operatingSystem": "All modern web browsers (Cloud-based SaaS)",
     "applicationCategory": "BusinessApplication",
+    "publisher": {
+      "@id": `${SITE_URL}/#organization`
+    },
+    "brand": {
+      "@id": `${SITE_URL}/#brand`
+    },
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "USD",
@@ -99,12 +139,7 @@ export function generateArticleSchema({
       "name": authorName
     },
     "publisher": {
-      "@type": "Organization",
-      "name": SITE_NAME,
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/logo-icon.png`
-      }
+      "@id": `${SITE_URL}/#organization`
     }
   };
 }

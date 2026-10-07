@@ -13,6 +13,18 @@ export const metadata: Metadata = {
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
+  authors: [{ name: "Hireytics Inc.", url: SITE_URL }],
+  publisher: "Hireytics Inc.",
+  keywords: [
+    "Hireytics",
+    "Hireytics.com",
+    "Hireytics AI",
+    "AI recruiting software",
+    "applicant tracking system",
+    "candidate screening software",
+    "voice interview automation",
+    "Recall AI",
+  ],
   icons: {
     icon: [{ url: "/logo-icon.png" }],
     apple: [{ url: "/logo-icon.png" }],
