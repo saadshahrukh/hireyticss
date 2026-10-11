@@ -420,6 +420,264 @@ Hiring is the single highest-leverage decision any company makes. By replacing s
 Explore our [Small Business Solutions](/solutions/small-business) and [Recruiting Team Solutions](/solutions/recruiting-teams), or start a [Free 14-Day Trial](/free-trial) today.
     `,
   },
+  {
+    slug: "hireytics-vs-hirelytics",
+    title: "Hireytics vs. Hirelytics: Why Modern Hiring Teams Choose Hireytics for AI Recruiting Intelligence",
+    excerpt: "Searching for Hireytics and wondering why search engines suggest 'Did you mean Hirelytics?' Here is the definitive guide to Hireytics (hireytics.com), our distinct AI hiring platform, and how we compare to competitor Hirelytics.",
+    metaDescription: "Understand the core differences between Hireytics and competitor Hirelytics. Discover why Hireytics is the dedicated AI recruiting, voice screening, and Recall platform at hireytics.com.",
+    author: {
+      name: "Marcus Vance",
+      role: "Head of Talent Acquisition",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    },
+    publishedDate: "2026-10-09",
+    updatedDate: "2026-10-11",
+    readingTime: "11 min read",
+    category: "Recruiting Software & Competitor Comparison",
+    tags: [
+      "Hireytics",
+      "Hireytics vs Hirelytics",
+      "Hireytics Brand",
+      "AI Recruiting Software",
+      "Candidate Screening",
+      "Recall Intelligence",
+      "Hirelytics Competitor"
+    ],
+    coverImage: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+    featured: false,
+    content: `
+# Hireytics vs. Hirelytics: Why Modern Hiring Teams Choose Hireytics for AI Recruiting Intelligence
+
+If you searched for **Hireytics** on Google or another search engine and saw a prompt asking, *"Did you mean Hirelytics?"*—you are definitely not alone. Because of the close phonetic similarity, search engine algorithms frequently attempt to correct searches for **Hireytics** to the older competitor brand, **Hirelytics**.
+
+However, **Hireytics** (hosted exclusively at [hireytics.com](https://hireytics.com)) is a completely independent, next-generation AI recruitment intelligence platform. We are not Hirelytics, nor are we affiliated with them. Hirelytics is a legacy competitor focused on conventional workforce metrics, whereas **Hireytics** is engineered specifically for autonomous candidate screening, AI voice interview evaluations, and deep pipeline memory powered by our proprietary [Recall Engine](/recall).
+
+In this deep dive, we break down why search engines confuse the two names, examine the core differences in technology, and illustrate why fast-growing companies and talent acquisition leaders choose **Hireytics**.
+
+![Recruitment Technology Comparison: Hireytics vs Hirelytics](https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80)
+
+---
+
+## The Brand Distinction: Who Is Hireytics?
+
+**Hireytics** was founded with a single mission: to eliminate the administrative friction that bogs down corporate recruiting, while providing recruiters and hiring managers with instant contextual intelligence across their entire talent pool.
+
+Key facts about the **Hireytics** brand:
+* **Official Website:** [https://hireytics.com](https://hireytics.com)
+* **Core Product Focus:** AI recruiting software, automated resume parsing, asynchronous AI voice screening, and cross-pipeline search.
+* **Flagship Capabilities:** The [Recall Engine](/recall) for semantic talent memory, real-time rubric harmonization, and native integrations with Google Workspace, Slack, and major ATS platforms.
+* **Target Audience:** Modern founders, high-velocity talent acquisition teams, recruitment agencies, and scaling enterprise talent operations.
+
+By contrast, **Hirelytics** is an established legacy vendor operating in traditional human resources analytics and reporting. While Hirelytics primarily presents static historical workforce dashboards, **Hireytics** actively participates in the live recruitment workflow—screening applicants, conducting voice evaluations, and delivering instant candidate synthesis.
+
+---
+
+## Comprehensive Comparison: Hireytics vs. Hirelytics
+
+To help talent leaders and founders evaluate both platforms objectively, the comparison table below highlights fundamental differences in system architecture, feature sets, and operational value:
+
+| Evaluation Dimension | Hireytics (hireytics.com) | Competitor: Hirelytics |
+| :--- | :--- | :--- |
+| **Primary Platform Nature** | **AI-Native Recruiting & Intelligence Engine** | Legacy HR Analytics & Reporting Suite |
+| **Candidate Screening** | **Multi-dimensional skill vector matching & neural OCR** | Basic boolean keyword filters & rigid regex |
+| **Voice Interview Automation** | **Asynchronous AI voice interviews with 24s synthesis** | None (requires 3rd-party manual phone screens) |
+| **Cross-Pipeline Search** | **Proprietary Recall Engine (Natural Language query)** | Fragmented folder searches and static tags |
+| **Interviewer Scorecards** | **Instant rubric harmonization & bias reduction** | Manual numeric feedback forms |
+| **Google Workspace Sync** | **Strict Limited Use adherence & zero LLM training on user data** | Standard API connection |
+| **Time-to-Implement** | **Under 60 seconds (zero IT onboarding delay)** | 4 to 8 weeks enterprise configuration |
+| **Pricing Transparency** | **Flat transparent monthly tiers (from $199/mo)** | Opaque annual sales contracts & seat surcharges |
+
+---
+
+## 4 Reasons Forward-Thinking Teams Choose Hireytics
+
+### 1. Vector Embeddings vs. Fragile Keyword Matching
+
+Traditional systems like Hirelytics rely on exact keyword matches. If a candidate writes "distributed systems architecture" but the job requisition specifies "microservices engineering", older parsers discard the applicant.
+
+**Hireytics** leverages advanced [Candidate Screening](/features/candidate-screening) built on high-dimensional semantic vector embeddings. Our platform understands contextual equivalence, practical project seniority, and complementary skill synergies, ensuring high-potential talent is never overlooked.
+
+### 2. Autonomous Asynchronous AI Voice Screening
+
+One of the largest bottlenecks in talent acquisition is recruiter screening capacity. A human recruiter can conduct at most 15 to 20 phone screens per week, creating severe scheduling friction and candidate ghosting.
+
+With Hireytics [Automated Voice Interviews](/features/automated-interviews), 100% of qualified applicants receive an asynchronous structured voice screen. Candidates respond conversationally from their browser or smartphone, and hiring managers receive a complete transcript, competency breakdown, and a 24-second audio digest within minutes.
+
+![AI Voice Evaluation and Scorecard Interface](https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80)
+
+### 3. Recall: The Central Memory of Your Hiring Operation
+
+In standard systems, interview notes and candidate evaluations are trapped in siloed requisitions. When a new role opens three months later, recruiters start sourcing from scratch, completely forgetting "silver medalist" runners-up.
+
+Hireytics solved this with [Recall](/recall). Recall connects your candidate resumes, interviewer rubrics, and audio transcripts into an interactive semantic memory bank. A recruiter can simply ask:
+> *"Show me all backend engineers interviewed in Q3 who demonstrated strong Golang concurrency experience and scored above 85% in system design."*
+
+Recall answers instantly with verbatim citations and profile links, cutting sourcing cycles by up to 75%.
+
+### 4. Enterprise Privacy and Google Limited Use Compliance
+
+At Hireytics, customer data integrity is non-negotiable. As documented in our [Privacy Policy](/privacy#limited-use-policy), our integration with Google Workspace APIs strictly complies with the Google API Services User Data Policy, including Limited Use requirements:
+
+> *"The use of raw or derived user data received from Google Workspace APIs will strictly adhere to the Google API Services User Data Policy, including the Limited Use requirements. We do not use, transfer, or sell this data to create, train, or improve foundational or generalized machine learning and artificial intelligence models."*
+
+Your proprietary candidate resumes, internal evaluation rubrics, and recruiter communications remain 100% yours.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### Is Hireytics the same as Hirelytics?
+No. **Hireytics** (found at [hireytics.com](https://hireytics.com)) is an independent AI recruitment software platform designed for candidate screening, voice interviews, and pipeline memory. **Hirelytics** is a competitor operating in traditional HR analytics.
+
+### Why does Google suggest "Did you mean Hirelytics"?
+Search engines use machine-learning spelling algorithms trained on historical query frequency. Because Hirelytics is an older domain, Google's auto-correct occasionally guesses that users searching for **Hireytics** made a spelling error. As Hireytics continues its rapid growth, Googlebot and crawler entity recognition actively index **Hireytics** as the definitive brand for AI recruiting intelligence.
+
+### Can I migrate data from Hirelytics or legacy ATS to Hireytics?
+Yes. Hireytics features one-click bulk resume imports and two-way synchronization with Greenhouse, Lever, Workday, and custom CSV datasets.
+
+---
+
+## Experience Hireytics Today
+
+Do not settle for outdated analytics tools or rigid keyword filters. Elevate your talent acquisition velocity with the industry's most advanced AI recruiting intelligence platform.
+
+Explore our [Small Business Solutions](/solutions/small-business) and [Recruiting Team Solutions](/solutions/recruiting-teams), review our flexible [Pricing Plans](/pricing), or start your [Free 14-Day Trial](/free-trial) now.
+    `,
+  },
+  {
+    slug: "enterprise-recruitment-intelligence-playbook",
+    title: "The 2026 Enterprise Recruitment Intelligence Playbook: Moving from Static ATS Databases to Autonomous Hiring Workflows",
+    excerpt: "Discover how modern talent acquisition teams are transitioning from static ATS databases to active recruitment intelligence, continuous candidate recall, and structured voice screening.",
+    metaDescription: "Learn how enterprise talent leaders use AI recruitment intelligence, semantic candidate recall, and asynchronous voice screening to accelerate hiring velocity and cut cost-per-hire in 2026.",
+    author: {
+      name: "Dr. Elena Rostova",
+      role: "Lead AI Researcher & Talent Scientist",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+    },
+    publishedDate: "2026-10-10",
+    updatedDate: "2026-10-11",
+    readingTime: "12 min read",
+    category: "Talent Strategy & AI Architecture",
+    tags: [
+      "Recruitment Intelligence",
+      "Hireytics AI",
+      "Talent Acquisition Strategy",
+      "AI Voice Screening",
+      "Recall Engine",
+      "Hiring Analytics"
+    ],
+    coverImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    featured: false,
+    content: `
+# The 2026 Enterprise Recruitment Intelligence Playbook: Moving from Static ATS Databases to Autonomous Hiring Workflows
+
+For more than two decades, corporate talent acquisition has been anchored to the Applicant Tracking System (ATS). Introduced in the late 1990s as a digital replacement for paper filing cabinets, the ATS was designed around a single core function: record-keeping. It tracked where candidates were in a pipeline, stored PDFs, and logged regulatory compliance.
+
+However, in 2026, the traditional ATS has become a **passive resume graveyard**. Talent teams collect hundreds of thousands of candidate profiles, yet when a new strategic role opens, recruiters still turn to LinkedIn Recruiter or expensive headhunting agencies because their internal databases are virtually impossible to query with contextual relevance.
+
+Enter **Recruitment Intelligence Systems (RIS)**—the architectural evolution pioneered by [Hireytics](/).
+
+![Enterprise Talent Intelligence and Autonomous Pipeline Workflows](https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80)
+
+---
+
+## What Is Recruitment Intelligence?
+
+Recruitment Intelligence goes beyond basic applicant tracking. While an ATS is a passive system of record, a Recruitment Intelligence platform is an **active system of cognition and execution**.
+
+Instead of waiting for a recruiter to manually open, read, tag, and schedule 400 candidate applications, an AI recruitment intelligence engine:
+1. **Reads contextually:** Understands technical deliverable depth using semantic vector embeddings rather than rigid string matching.
+2. **Screens conversationally:** Conducts structured, asynchronous voice interviews to evaluate candidates before human interview panels meet them.
+3. **Remembers holistically:** Maintains a persistent knowledge graph of every applicant, conversation, and evaluation through a unified [Recall Engine](/recall).
+4. **Synthesizes objectively:** Reconciles disparate interviewer rubrics to eliminate bias and accelerate committee decisions.
+
+---
+
+## The Four Pillars of Modern Recruitment Intelligence
+
+### Pillar 1: High-Dimensional Semantic Resume Parsing
+Legacy keyword matching is easily gamed. Candidates who stuff their resumes with buzzwords rank at the top, while talented builders with understated formatting get discarded.
+
+With Hireytics' [Candidate Screening Engine](/features/candidate-screening), resumes are parsed using neural optical character recognition (OCR) and mapped into high-dimensional vector spaces. The platform measures semantic proximity between the candidate's verified project history and the hiring rubric.
+
+* **Contextual Seniority Detection:** Differentiates between someone who managed an AWS deployment versus someone who architected a multi-region distributed cluster.
+* **Skill Synergy Recognition:** Evaluates how adjacent technical capabilities (e.g., Rust + WebAssembly + Docker) complement one another for modern engineering stacks.
+* **Blind Evaluation Mode:** Strips demographic identifiers, addresses, and institutions to ensure strictly merit-based shortlisting.
+
+### Pillar 2: Asynchronous AI Voice Screening
+Recruiters spend up to 25 hours per week conducting repetitive 15-minute phone screens. Because scheduling is manual, top candidates often accept competing offers before a recruiter can even get them on the calendar.
+
+Hireytics [Automated Voice Interviews](/features/automated-interviews) invert this model:
+* Candidates receive an automated invitation to complete a 10-minute voice screen at their convenience.
+* The AI interviewer conducts a structured, conversational dialogue tailored to the specific role rubric.
+* Advanced speech-to-text models generate full transcripts, identify key competency demonstrations, and flag potential discrepancies with anti-cheat analysis.
+* Hiring managers receive a concise 24-second audio recap and competency scorecard, cutting evaluation review cycles from days to seconds.
+
+![AI Voice Interview Evaluation Dashboard](https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80)
+
+### Pillar 3: Continuous Pipeline Recall Memory
+In the average enterprise, 98% of candidates who apply to an open requisition are rejected—not because they lack talent, but because only one person can fill the position. These "silver medalists" represent hundreds of thousands of dollars in spent sourcing budget.
+
+Yet in a traditional ATS, these profiles vanish into an inaccessible archive.
+
+Hireytics changes this with [Recall](/recall), our real-time talent knowledge engine. Every interview transcript, resume version, and recruiter note is continuously indexed. Hiring managers and recruiters can search their entire company history using conversational natural language:
+
+> *"Who did we interview in the last 12 months for Senior Product Design who demonstrated strong design system architecture and received positive feedback from the engineering panel?"*
+
+Recall surfaces candidates in seconds, complete with direct links to past scorecards and contact records.
+
+### Pillar 4: Rubric Harmonization and Cross-Panel Calibration
+Interviewer variance is one of the primary drivers of costly mis-hires. One interviewer may give a candidate high marks based on personal rapport, while another scores harshly on minor technical nuances.
+
+Hireytics unifies evaluation criteria by anchoring every interview to standardized rubrics. By combining AI analysis of candidate verbal responses with multi-evaluator scorecards, talent leaders gain complete transparency into scoring distribution, eliminating subjectivity and ensuring equitable hiring outcomes.
+
+---
+
+## Financial and Operational Impact: Benchmarking the Transition
+
+Organizations that transition from a traditional ATS to Hireytics Recruitment Intelligence achieve significant operational gains:
+
+| KPI Benchmark | Legacy ATS Workflow | Hireytics Intelligence Workflow | Operational Gain |
+| :--- | :--- | :--- | :--- |
+| **Time-to-Shortlist** | 9 to 14 days | Under 24 hours | **92% Reduction** |
+| **Recruiter Phone Screen Time** | 20–25 hrs / week | 2 hrs / week (scorecard review) | **90% Time Saved** |
+| **Candidate Drop-Off Rate** | 38% due to scheduling delays | Under 8% asynchronous completion | **4.7x Better Retention** |
+| **Cost Per Placement** | $4,500 – $18,000 | Flat subscription model | **Up to 85% Cost Savings** |
+| **Silver Medalist Rediscovery** | Less than 2% | Over 40% sourced via Recall | **20x Pipeline Efficiency** |
+
+---
+
+## 30-Day Implementation Roadmap for Talent Acquisition Teams
+
+Transitioning your recruitment infrastructure does not require months of downtime. Here is how modern talent leaders roll out Hireytics in 30 days:
+
+### Week 1: Ingestion & ATS Synchronization
+* Connect Hireytics with your current ATS (Greenhouse, Lever, Workday) and communication channels (Slack, Google Workspace).
+* Ingest active job descriptions and calibrate standardized competency rubrics.
+
+### Week 2: Automated Resume Vectorization
+* Activate Hireytics [Candidate Screening](/features/candidate-screening) on incoming application pipelines.
+* Benchmark vector matching scores against historic hiring outcomes to fine-tune scoring weights.
+
+### Week 3: Asynchronous Voice Screening Pilot
+* Launch AI voice screening for high-volume entry-level and technical requisitions.
+* Measure candidate completion rates and gather hiring manager feedback on 24-second audio executive summaries.
+
+### Week 4: Full Pipeline Intelligence & Recall Deployment
+* Activate the [Recall Engine](/recall) across historical candidate pools.
+* Train recruiting coordinators and hiring managers on natural language talent querying and scorecards.
+
+---
+
+## Conclusion: Lead the Future of Talent Acquisition
+
+The era of passive, static candidate databases is over. In today’s competitive talent landscape, organizations that leverage active recruitment intelligence, asynchronous voice screening, and cross-pipeline recall will consistently out-hire their competitors while keeping talent acquisition costs lean.
+
+Discover how Hireytics transforms hiring operations for [Recruiting Teams](/solutions/recruiting-teams) and [Growing Businesses](/solutions/small-business).
+
+Ready to see Hireytics in action? Start your [14-Day Free Trial](/free-trial) or explore our transparent [Pricing Plans](/pricing) today.
+    `,
+  },
 ];
 
 export function getAllArticles(): Article[] {

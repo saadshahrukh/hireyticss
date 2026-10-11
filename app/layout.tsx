@@ -3,7 +3,7 @@ import "./globals.css";
 import "@/components/hero.css";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "@/lib/seo";
-import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/schema";
+import { generateOrganizationSchema, generateWebSiteSchema, generateBrandSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     "Hireytics",
     "Hireytics.com",
     "Hireytics AI",
+    "Hireytics Platform",
+    "Hireytics Recruiting",
+    "Hireytics vs Hirelytics",
     "AI recruiting software",
     "applicant tracking system",
     "candidate screening software",
@@ -26,8 +29,16 @@ export const metadata: Metadata = {
     "Recall AI",
   ],
   icons: {
-    icon: [{ url: "/logo-icon.png" }],
-    apple: [{ url: "/logo-icon.png" }],
+    icon: [
+      { url: "/favicon.ico?v=20261011_3", sizes: "any" },
+      { url: "/favicon-32x32.png?v=20261011_3", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png?v=20261011_3", type: "image/png", sizes: "16x16" },
+      { url: "/logo-icon.png?v=20261011_3", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico?v=20261011_3"],
+    apple: [
+      { url: "/apple-touch-icon.png?v=20261011_3", sizes: "180x180", type: "image/png" },
+    ],
   },
   openGraph: {
     title: DEFAULT_TITLE,
@@ -63,7 +74,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <head>
+        <link rel="icon" href="/favicon.ico?v=20261011_3" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261011_3" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261011_3" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261011_3" />
         <JsonLd data={generateOrganizationSchema()} />
+        <JsonLd data={generateBrandSchema()} />
         <JsonLd data={generateWebSiteSchema()} />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-black">

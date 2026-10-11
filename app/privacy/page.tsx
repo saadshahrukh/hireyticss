@@ -26,8 +26,9 @@ const sections = [
   { id: "cookies", title: "12. Cookies and Similar Technologies" },
   { id: "children-privacy", title: "13. Children's Privacy" },
   { id: "third-party-services", title: "14. Third-Party Services" },
-  { id: "changes", title: "15. Changes to This Privacy Policy" },
-  { id: "contact-us", title: "16. Contact Us" },
+  { id: "limited-use-policy", title: "15. Limited Use Policy (Google Workspace APIs)" },
+  { id: "changes", title: "16. Changes to This Privacy Policy" },
+  { id: "contact-us", title: "17. Contact Us" },
 ];
 
 export default function PrivacyPage() {
@@ -297,8 +298,33 @@ export default function PrivacyPage() {
 
               <hr className="my-8 border-slate-100" />
 
+              {/* Section 15: Google Workspace API Data & Limited Use Policy */}
+              <section id="limited-use-policy" className="scroll-mt-32">
+                <h2 className="text-xl font-bold text-slate-900">15. Google Workspace API Data & Limited Use Policy</h2>
+                <div className="rounded-2xl border border-sky-200 bg-sky-50/70 p-5 sm:p-6 text-sm leading-relaxed text-sky-950 not-prose my-4 shadow-2xs">
+                  <p className="font-bold text-sky-900 mb-2">Limited Use Policy:</p>
+                  <blockquote className="border-l-4 border-sky-500 pl-4 py-1 italic text-slate-800">
+                    &ldquo;The use of raw or derived user data received from Google Workspace APIs will strictly adhere to the Google API Services User Data Policy, including the Limited Use requirements. We do not use, transfer, or sell this data to create, train, or improve foundational or generalized machine learning and artificial intelligence models.&rdquo;
+                  </blockquote>
+                </div>
+                <p>
+                  When organizations or users connect Google Workspace integrations (such as Google Calendar, Gmail, or Google Meet) with Hireytics, our platform accesses only the minimum necessary data explicitly authorized by the user to automate interview scheduling, candidate availability coordination, and interview communication logs.
+                </p>
+                <p>
+                  In accordance with the Google API Services User Data Policy:
+                </p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>We only access, read, or modify Google Workspace data to deliver user-facing hiring workflow capabilities visible within Hireytics.</li>
+                  <li>We do not transfer Google Workspace user data to third parties unless strictly necessary to provide or improve user-facing features, comply with applicable laws, or as part of a merger/acquisition with advance notice.</li>
+                  <li>We never use, transfer, or sell Google Workspace data to serve advertisements, including personalized, contextual, or retargeted ads.</li>
+                  <li>We do not allow humans to read user data unless we have obtained the user&apos;s explicit affirmative consent, when necessary for security audits and bug resolution, or when required by legal process.</li>
+                </ul>
+              </section>
+
+              <hr className="my-8 border-slate-100" />
+
               <section id="changes" className="scroll-mt-32">
-                <h2 className="text-xl font-bold text-slate-900">15. Changes to This Privacy Policy</h2>
+                <h2 className="text-xl font-bold text-slate-900">16. Changes to This Privacy Policy</h2>
                 <p>
                   We may update this policy periodically. We will post revised versions with an updated &ldquo;Last Updated&rdquo; date and provide notice for material revisions.
                 </p>
@@ -306,9 +332,9 @@ export default function PrivacyPage() {
 
               <hr className="my-8 border-slate-100" />
 
-              {/* Section 16 */}
+              {/* Section 17 */}
               <section id="contact-us" className="scroll-mt-32">
-                <h2 className="text-xl font-bold text-slate-900">16. Contact Us</h2>
+                <h2 className="text-xl font-bold text-slate-900">17. Contact Us</h2>
                 <p>If you have any questions about this Privacy Policy, please reach out to our privacy team:</p>
                 <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 not-prose text-xs">
                   <p className="font-bold text-slate-900 text-sm">Hireytics Legal & Privacy Team</p>

@@ -7,7 +7,13 @@ export function generateOrganizationSchema() {
     "@id": `${SITE_URL}/#organization`,
     "name": SITE_NAME,
     "legalName": "Hireytics Inc.",
-    "alternateName": ["Hireytics", "Hireytics AI", "Hireytics Platform"],
+    "alternateName": [
+      "Hireytics",
+      "Hireytics AI",
+      "Hireytics Platform",
+      "Hireytics Recruitment Intelligence",
+      "hireytics.com"
+    ],
     "url": SITE_URL,
     "logo": {
       "@type": "ImageObject",
@@ -17,7 +23,7 @@ export function generateOrganizationSchema() {
     },
     "image": `${SITE_URL}/logo-grad.png`,
     "description": "Hireytics (https://hireytics.com) is an AI recruiting software platform featuring automated candidate screening, voice interview evaluations, and Recall pipeline intelligence.",
-    "disambiguatingDescription": "Hireytics is an AI recruiting software and applicant tracking software platform at hireytics.com. It is distinct from Hirelytics.",
+    "disambiguatingDescription": "Hireytics is an AI recruiting software and applicant tracking platform at hireytics.com. Hireytics is an autonomous brand and registered intelligence platform, distinct from competitor Hirelytics.",
     "knowsAbout": [
       "AI Recruiting Software",
       "Applicant Tracking Systems",
@@ -35,8 +41,11 @@ export function generateOrganizationSchema() {
       "@type": "Brand",
       "@id": `${SITE_URL}/#brand`,
       "name": SITE_NAME,
+      "alternateName": "Hireytics AI",
       "url": SITE_URL,
-      "logo": `${SITE_URL}/logo-icon.png`
+      "logo": `${SITE_URL}/logo-icon.png`,
+      "slogan": "AI Recruitment Software & Pipeline Recall Intelligence",
+      "disambiguatingDescription": "Hireytics (hireytics.com) is a next-generation AI recruitment intelligence engine, distinct from Hirelytics."
     },
     "contactPoint": {
       "@type": "ContactPoint",
@@ -47,14 +56,30 @@ export function generateOrganizationSchema() {
   };
 }
 
+export function generateBrandSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "@id": `${SITE_URL}/#brand`,
+    "name": SITE_NAME,
+    "alternateName": ["Hireytics AI", "Hireytics Platform", "Hireytics Recruitment"],
+    "url": SITE_URL,
+    "logo": `${SITE_URL}/logo-icon.png`,
+    "slogan": "Autonomous AI Recruitment & Pipeline Recall Intelligence",
+    "description": "Hireytics (https://hireytics.com) is an independent AI recruiting software and applicant tracking system, distinct from competitor Hirelytics.",
+    "disambiguatingDescription": "Hireytics is an AI recruiting intelligence platform hosted at hireytics.com. It is not affiliated with or related to Hirelytics."
+  };
+}
+
 export function generateWebSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     "name": SITE_NAME,
-    "alternateName": ["Hireytics AI", "Hireytics SaaS"],
+    "alternateName": ["Hireytics AI", "Hireytics SaaS", "Hireytics Recruiting"],
     "url": SITE_URL,
+    "disambiguatingDescription": "Official website for Hireytics (hireytics.com) AI recruiting and ATS software. Distinct from competitor Hirelytics.",
     "publisher": {
       "@id": `${SITE_URL}/#organization`
     },

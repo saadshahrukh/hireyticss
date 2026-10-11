@@ -393,7 +393,23 @@ We encourage users to review the privacy policies of third-party services before
 
 ---
 
-# 15. Changes to This Privacy Policy
+# 15. Google Workspace API Data & Limited Use Policy
+
+Limited Use Policy:
+
+"The use of raw or derived user data received from Google Workspace APIs will strictly adhere to the Google API Services User Data Policy, including the Limited Use requirements. We do not use, transfer, or sell this data to create, train, or improve foundational or generalized machine learning and artificial intelligence models."
+
+When organizations or users connect Google Workspace integrations (such as Google Calendar, Gmail, or Google Meet) with Hireytics, our platform accesses only the minimum necessary data explicitly authorized by the user to automate interview scheduling, candidate availability coordination, and interview communication logs.
+
+In accordance with the Google API Services User Data Policy:
+* We only access, read, or modify Google Workspace data to deliver user-facing hiring workflow capabilities visible within Hireytics.
+* We do not transfer Google Workspace user data to third parties unless strictly necessary to provide or improve user-facing features, comply with applicable laws, or as part of a merger/acquisition with advance notice.
+* We never use, transfer, or sell Google Workspace data to serve advertisements, including personalized, contextual, or retargeted ads.
+* We do not allow humans to read user data unless we have obtained the user's explicit affirmative consent, when necessary for security audits and bug resolution, or when required by legal process.
+
+---
+
+# 16. Changes to This Privacy Policy
 
 We may update this Privacy Policy as Hireytics evolves, our practices change, or legal requirements develop.
 
@@ -403,12 +419,12 @@ The "Last Updated" date at the top of this policy indicates when this policy was
 
 ---
 
-# 16. Contact Us
+# 17. Contact Us
 
 If you have questions about this Privacy Policy or Hireytics' privacy practices, contact us:
 
 **Hireytics**
-**Email:** [[privacy@yourdomain.com](mailto:privacy@yourdomain.com)]
+**Email:** [contact@hireytics.com](mailto:contact@hireytics.com)
 **Address:** [Registered business address]
 
 We take privacy questions seriously and will make reasonable efforts to respond promptly.

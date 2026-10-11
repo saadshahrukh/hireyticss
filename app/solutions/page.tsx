@@ -168,56 +168,63 @@ export default function SolutionsHubPage() {
               </h2>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-2">
+            <div className="mt-8 grid gap-10 lg:grid-cols-2">
               {solutionAudiences.map((sol) => (
                 <div
                   key={sol.slug}
-                  className="flex flex-col justify-between rounded-[32px] border border-slate-200/90 bg-white p-8 sm:p-10 shadow-xs transition-all duration-300 hover:border-slate-300 hover:shadow-lg"
+                  className="group relative flex flex-col justify-between rounded-[36px] border border-slate-200/90 bg-white p-8 sm:p-12 lg:p-14 shadow-xs transition-all duration-300 hover:border-indigo-200 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 border border-sky-100 shadow-2xs">
+                  <div className="absolute top-0 right-0 -mr-6 -mt-6 h-36 w-36 rounded-full bg-gradient-to-br from-sky-100/40 to-indigo-100/20 blur-2xl pointer-events-none group-hover:from-sky-200/50 group-hover:to-indigo-200/40 transition-all" />
+
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-sky-50 to-indigo-50 border border-slate-200/80 shadow-2xs group-hover:scale-105 transition-transform">
                         {sol.icon}
                       </div>
-                      <span className="rounded-full bg-emerald-50 border border-emerald-200/80 px-3 py-1 text-xs font-bold text-emerald-800">
-                        {sol.stats}
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 px-3.5 py-1 text-xs font-bold text-emerald-800 shadow-2xs">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          {sol.stats}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-indigo-600 bg-indigo-50/80 border border-indigo-100/80 px-2.5 py-0.5 rounded-md">
+                        {sol.eyebrow}
                       </span>
                     </div>
 
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      {sol.eyebrow}
-                    </span>
-
-                    <h3 className="mt-2 font-heading text-2xl sm:text-3xl font-bold text-slate-900">
+                    <h3 className="mt-3 font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
                       {sol.title}
                     </h3>
 
-                    <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+                    <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
                       {sol.description}
                     </p>
 
-                    <div className="mt-8 space-y-3 border-t border-slate-100 pt-6">
+                    <div className="mt-10 space-y-3.5 border-t border-slate-100/90 pt-8">
                       <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                        KEY CAPABILITIES:
+                        KEY CAPABILITIES & IMPACT:
                       </p>
                       {sol.benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-start gap-2.5 text-sm text-slate-700">
-                          <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>{benefit}</span>
+                        <div key={idx} className="flex items-start gap-3 text-sm sm:text-base text-slate-700">
+                          <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span className="font-medium leading-snug">{benefit}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-10 pt-6 border-t border-slate-100 flex items-center justify-between">
+                  <div className="relative mt-12 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
                     <ButtonLink href={sol.href} variant="primary">
                       Explore {sol.title} Solution
                     </ButtonLink>
                     <Link
                       href={sol.href}
-                      className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-indigo-600"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-indigo-600 transition-colors"
                     >
-                      <span>Full Breakdown</span>
+                      <span>Full Feature Breakdown</span>
                       <MdArrowOutward className="text-sm" />
                     </Link>
                   </div>
