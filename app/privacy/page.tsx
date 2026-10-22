@@ -5,7 +5,7 @@ import { Clock, Mail, CheckCircle2, ChevronRight, Lock, FileText, ArrowUpRight }
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy | Hireytics",
+  title: "Privacy Policy",
   description:
     "Learn how Hireytics collects, protects, uses, and processes candidate, recruiter, and enterprise hiring information.",
   path: "/privacy",

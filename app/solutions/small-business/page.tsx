@@ -23,8 +23,11 @@ import {
 } from "lucide-react";
 import { MdArrowOutward } from "react-icons/md";
 
+import { generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "Recruiting & Hiring Software for Small Business & Startups | Hireytics",
+  title: "Recruiting & Hiring Software for Small Business & Startups",
   description:
     "Hireytics empowers small business founders and hiring managers to screen candidates, run AI interviews, and manage recruiting without an expensive HR department.",
   path: "/solutions/small-business",
@@ -43,6 +46,13 @@ export default function SmallBusinessSolutionPage() {
   return (
     <>
       <JsonLd data={solutionSchema} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Solutions", item: "/solutions" },
+          { name: "Small Business & Startups", item: "/solutions/small-business" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-7xl">
@@ -274,6 +284,13 @@ export default function SmallBusinessSolutionPage() {
               </div>
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="Small Business & Founder Hiring"
+            headline="How Recall Acts as a Founder's Automated Hiring Memory"
+            description="Founders don't have time to re-read candidate resumes or decipher interview notes from two months ago. Recall stores candidate evaluations, voice transcripts, and rubric ratings so you can ask plain-language questions whenever you need to hire."
+            exampleQuery="Recall, who were the top 3 engineers we screened last month who had startup experience?"
+          />
 
           {/* ========================================================
               BOTTOM CTA

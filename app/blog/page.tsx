@@ -8,9 +8,12 @@ import { getAllArticles, getFeaturedArticle } from "@/lib/blog-data";
 import { buildMetadata } from "@/lib/seo";
 import { MdArrowOutward } from "react-icons/md";
 import { Clock } from "lucide-react";
+import AuthorAvatar from "@/components/blog/AuthorAvatar";
+
+import { generateBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "AI Recruiting & Hiring Strategy Blog | Hireytics",
+  title: "AI Recruiting & Hiring Strategy Blog",
   description:
     "Explore in-depth articles on AI recruiting software, applicant tracking systems, candidate screening, interview automation, and hiring strategy.",
   path: "/blog",
@@ -32,6 +35,12 @@ export default function BlogHubPage() {
   return (
     <>
       <JsonLd data={blogSchema} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Blog", item: "/blog" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-white pt-28 pb-24">
         <div className="section-container max-w-6xl">
@@ -81,7 +90,29 @@ export default function BlogHubPage() {
                 {featuredArticle.excerpt}
               </p>
 
-              <div className="mt-6">
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/80 pt-4">
+                <a
+                  href={featuredArticle.author.url}
+                  target={featuredArticle.author.url.startsWith("http") && !featuredArticle.author.url.includes("hireytics.com") ? "_blank" : undefined}
+                  rel={featuredArticle.author.url.startsWith("http") && !featuredArticle.author.url.includes("hireytics.com") ? "noopener noreferrer" : undefined}
+                  className="group/author flex items-center gap-3"
+                >
+                  <AuthorAvatar
+                    src={featuredArticle.author.avatar}
+                    name={featuredArticle.author.name}
+                    className="h-9 w-9"
+                    iconClassName="h-4 w-4"
+                  />
+                  <div>
+                    <span className="block text-xs font-bold text-slate-900 group-hover/author:text-sky-600 transition-colors">
+                      {featuredArticle.author.name}
+                    </span>
+                    <span className="block text-[11px] text-slate-500">
+                      {featuredArticle.author.role}
+                    </span>
+                  </div>
+                </a>
+
                 <Link
                   href={`/blog/${featuredArticle.slug}`}
                   className="group inline-flex items-center gap-1.5 text-sm font-bold text-slate-900 hover:text-sky-600 transition-colors"
@@ -139,18 +170,28 @@ export default function BlogHubPage() {
                 </div>
 
                 {/* Author Footer (Matches bottom row of cards in attached image) */}
-                <div className="mt-6 border-t border-slate-200/60 pt-3 flex items-center gap-3">
-                  <img
-                    src={art.author.avatar}
-                    alt={art.author.name}
-                    className="h-8 w-8 rounded-full object-cover shrink-0 border border-slate-200"
-                  />
-                  <div>
-                    <span className="block text-xs font-bold text-slate-900">{art.author.name}</span>
-                    <span className="block text-[10.5px] text-slate-400">
-                      Updated on: {art.updatedDate || art.publishedDate}
-                    </span>
-                  </div>
+                <div className="mt-6 border-t border-slate-200/60 pt-3 flex items-center justify-between">
+                  <a
+                    href={art.author.url}
+                    target={art.author.url.startsWith("http") && !art.author.url.includes("hireytics.com") ? "_blank" : undefined}
+                    rel={art.author.url.startsWith("http") && !art.author.url.includes("hireytics.com") ? "noopener noreferrer" : undefined}
+                    className="group/auth flex items-center gap-2.5 min-w-0"
+                  >
+                    <AuthorAvatar
+                      src={art.author.avatar}
+                      name={art.author.name}
+                      className="h-8 w-8"
+                      iconClassName="h-3.5 w-3.5"
+                    />
+                    <div className="min-w-0">
+                      <span className="block text-xs font-bold text-slate-900 truncate group-hover/auth:text-sky-600 transition-colors">
+                        {art.author.name}
+                      </span>
+                      <span className="block text-[10.5px] text-slate-400">
+                        Updated: {art.updatedDate || art.publishedDate}
+                      </span>
+                    </div>
+                  </a>
                 </div>
               </article>
             ))}

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Checkout & Subscription | Hireytics",
+  title: "Checkout & Subscription",
   description: "Complete your Hireytics subscription checkout securely.",
   path: "/checkout",
   noIndex: true,

@@ -4,27 +4,25 @@ import RecallPage from "@/components/recall/RecallPage";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { generateRecallSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "Recall — AI Hiring Assistant & Intelligence Engine | Hireytics",
+  title: "Recall — AI HR & Recruiting Chatbot and Candidate Memory Platform",
   description:
-    "Recall is the AI intelligence feature inside Hireytics that connects hiring information across job roles, candidate profiles, resumes, interview transcripts, and team feedback.",
+    "Recall is the AI HR and recruiting chatbot and institutional candidate memory platform inside Hireytics. Query resumes, interview transcripts, and hiring scorecards in plain language.",
   path: "/recall",
 });
-
-const recallSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Recall by Hireytics",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "description": "Recall is an AI hiring intelligence assistant inside Hireytics that enables talent teams to query candidate profiles, interview transcripts, resume data, and pipeline context."
-};
 
 export default function RecallRoute() {
   return (
     <>
-      <JsonLd data={recallSchema} />
+      <JsonLd data={generateRecallSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Recall AI Engine", item: "/recall" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[var(--background)] pt-24">
         <div className="section-container max-w-6xl pt-4">
@@ -36,4 +34,3 @@ export default function RecallRoute() {
     </>
   );
 }
-

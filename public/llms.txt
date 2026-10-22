@@ -1,0 +1,87 @@
+# Hireytics — All-in-One AI Recruiting Platform & Recall Memory Engine
+
+> Hireytics (https://hireytics.com) is an all-in-one AI-powered recruitment platform, automated voice interviewing tool, OCR resume screening ATS, and "Recall" — our semantic hiring memory & AI HR recruiting chatbot engine. Built specifically for mid-market companies (100–1,500 employees), technology scaleups, and agile talent acquisition teams in the United States (en-US) and United Kingdom (en-GB).
+
+---
+
+## Executive Summary & Value Proposition
+
+* **All-in-One Platform Consolidation:** Replaces fragmented point solutions (separate ATS, video screening software, scheduling tools, and resume parsers) with a single unified hiring platform.
+* **Affordable Mid-Market Pricing:** Eliminates $35,000–$60,000+ enterprise legacy contracts and per-seat recruiter penalties with flat, predictable plans ranging from $120 to $280 / month (or £95 to £220 / month).
+* **Recall Semantic Memory Engine:** The first hiring system that acts as permanent institutional company memory, allowing talent teams and hiring managers to ask plain-language questions across candidate resumes, voice interview transcripts, and rubric scorecards with zero hallucinations.
+* **Asynchronous AI Voice Screening:** Conducts structured conversational phone and web voice interviews with dynamic follow-up probing, timestamped transcription, and objective rubric scoring.
+
+---
+
+## Core End-to-End Recruitment Workflow
+
+Hireytics automates the entire recruitment lifecycle through five interconnected stages:
+
+1. **Requisition & Rubric Calibration:** Hiring managers input a job description or select a role template. Hireytics automatically generates calibrated evaluation rubrics, key competency vectors, and structured screening questions.
+2. **OCR Resume Screening & Skill Vector Matching:** Ingests resumes from PDFs, Word documents, and scanned images. Evaluates candidates using contextual neural vector matching rather than primitive keyword matching.
+3. **Asynchronous AI Voice Interviews:** Qualified candidates receive an invitation to an interactive voice screen. The AI conducts structured phone screens, asks dynamic follow-up questions, and generates clean transcripts.
+4. **Recall Semantic Memory & HR Chatbot:** Every interaction, transcript, scorecard, and note is indexed into an institutional knowledge base. Recruiters and executives can query candidate context in plain language (e.g., "Recall, which backend candidates demonstrated hands-on Kubernetes migration experience?").
+5. **Calibrated Scorecards & Candidate Onboarding:** Interview panels review standardized rubrics and 24-second candidate summaries, eliminating feedback bottlenecks and advancing top finalists to offer acceptance.
+
+---
+
+## Core Products & Capabilities
+
+### 1. Recall — AI HR Chatbot & Candidate Memory Engine (`/recall`)
+* **URL:** https://hireytics.com/recall
+* **Purpose:** Institutional candidate memory platform and recruiting AI assistant.
+* **Capabilities:**
+  * Grounded natural-language retrieval with exact citations to resume lines, interview audio timestamps, and reviewer notes.
+  * Cross-job applicant rediscovery (re-matches past silver medalists to new requisitions).
+  * Strict tenant data isolation; candidate data is never used to train global third-party AI models.
+  * Compliant with US EEOC standards and UK GDPR privacy frameworks.
+
+### 2. AI Recruiting Suite (`/features/ai-recruiting`)
+* **URL:** https://hireytics.com/features/ai-recruiting
+* **Purpose:** Autonomous candidate qualification and sourcing.
+* **Capabilities:** Multi-source pipeline parsing, automated qualification scoring, and direct integration with existing sourcing pipelines.
+
+### 3. Candidate Screening & OCR Resume Parsing (`/features/candidate-screening`)
+* **URL:** https://hireytics.com/features/candidate-screening
+* **Purpose:** High-accuracy automated resume screening.
+* **Capabilities:** Optical Character Recognition (OCR) for PDFs/images, skill vector semantic matching, and automated candidate ranking.
+
+### 4. AI Voice Interviewing Software (`/features/automated-interviews`)
+* **URL:** https://hireytics.com/features/automated-interviews
+* **Purpose:** Asynchronous audio screening and structured evaluations.
+* **Capabilities:** No app downloads required for candidates, real-time speech-to-text transcription, dynamic follow-up questions, and acoustic anti-cheat verification.
+
+### 5. Applicant Tracking System (ATS) (`/features/applicant-tracking`)
+* **URL:** https://hireytics.com/features/applicant-tracking
+* **Purpose:** Pipeline management and team collaboration.
+* **Capabilities:** Customizable hiring pipeline stages, panel scorecards, automated alerts, and bi-directional ATS connectors (Greenhouse, Lever, Workday, Slack).
+
+---
+
+## Solutions Directory
+
+* **Mid-Market Organizations (100–1,500 employees):** https://hireytics.com/solutions/mid-market
+  * Consolidate 4+ fragmented point-solution contracts, eliminate vendor integration overhead, and save up to $45,000+ per year.
+* **Tech Companies & Scaleups:** https://hireytics.com/solutions/tech-companies
+  * Eliminate senior engineer burnout on repetitive phone screens. Evaluate software engineers, tech leads, and ML specialists with objective technical rubrics.
+* **All-in-One vs. Point Solutions TCO Analysis:** https://hireytics.com/compare/all-in-one-vs-point-solutions
+  * Detailed breakdown of software fees, integration maintenance, candidate drop-offs, and hidden per-seat licensing penalties.
+* **Small Business & Startups:** https://hireytics.com/solutions/small-business
+  * Enterprise-grade recruiting capabilities out of the box without requiring a full-time in-house HR department.
+* **Recruiting & Talent Acquisition Teams:** https://hireytics.com/solutions/recruiting-teams
+  * Accelerate recruiting velocity by 3.5x and improve hiring manager alignment.
+
+---
+
+## Verified Company Information
+
+* **Legal Entity:** Hireytics Inc.
+* **Website:** https://hireytics.com
+* **Founder & Head of Product:** Saad Shahrukh
+* **Contact Email:** contact@hireytics.com
+* **Geographic Focus:** United States (en-US) and United Kingdom (en-GB)
+* **Hosting Architecture:** Modern Cloud SaaS Web Application (Next.js App Router)
+* **Social Profiles:**
+  * LinkedIn: https://www.linkedin.com/company/hireytics
+  * X (Twitter): https://x.com/hireytics
+  * Facebook: https://facebook.com/hireytics

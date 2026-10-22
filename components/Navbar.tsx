@@ -17,7 +17,8 @@ import {
   Users,
   CheckCircle2,
   Building2,
-  BarChart3
+  BarChart3,
+  Scale
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MdArrowOutward } from "react-icons/md";
@@ -80,21 +81,67 @@ const featuresList: FeatureItem[] = [
   },
 ];
 
-const generalNavLinks = [
-  { label: "Features", href: "/features", isMega: true },
-  { label: "Solutions", href: "/solutions" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Blog", href: "/blog" },
+interface SolutionItem {
+  title: string;
+  href: string;
+  description: string;
+  icon: React.ReactNode;
+  iconColor: string;
+  badge?: string;
+}
+
+const solutionsList: SolutionItem[] = [
+  {
+    title: "Mid-Market HR Platform",
+    href: "/solutions/mid-market",
+    description: "Consolidate point solutions into an all-in-one AI platform for 100–1,500 employees.",
+    icon: <Building2 className="h-6 w-6 text-indigo-600" />,
+    iconColor: "bg-indigo-50 text-indigo-600 border-indigo-100",
+    badge: "High Intent",
+  },
+  {
+    title: "Tech Companies & Scaleups",
+    href: "/solutions/tech-companies",
+    description: "Screen software engineers and technical talent with objective rubrics and AI voice.",
+    icon: <Zap className="h-6 w-6 text-amber-500" />,
+    iconColor: "bg-amber-50 text-amber-500 border-amber-100",
+    badge: "Engineering",
+  },
+  {
+    title: "All-in-One vs Point Solutions",
+    href: "/compare/all-in-one-vs-point-solutions",
+    description: "Save $45,000+ per year and eliminate vendor integration sprawl.",
+    icon: <Scale className="h-6 w-6 text-rose-500" />,
+    iconColor: "bg-rose-50 text-rose-500 border-rose-100",
+    badge: "TCO Guide",
+  },
+  {
+    title: "Small Business & Startups",
+    href: "/solutions/small-business",
+    description: "Automate hiring without expensive recruiters or dedicated HR staff.",
+    icon: <Users className="h-6 w-6 text-sky-600" />,
+    iconColor: "bg-sky-50 text-sky-600 border-sky-100",
+  },
+  {
+    title: "Talent Acquisition Teams",
+    href: "/solutions/recruiting-teams",
+    description: "Scale recruiter capacity 3.5x with automated pipeline stages and memory.",
+    icon: <BarChart3 className="h-6 w-6 text-purple-600" />,
+    iconColor: "bg-purple-50 text-purple-600 border-purple-100",
+  },
 ];
 
 export default function Navbar({ solid = false }: { solid?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
   const [featuresOpen, setFeaturesOpen] = useState(false);
+  const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileFeaturesExpanded, setMobileFeaturesExpanded] = useState(true);
+  const [mobileSolutionsExpanded, setMobileSolutionsExpanded] = useState(true);
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const closeSolutionsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const isSolid = solid || scrolled || featuresOpen;
+  const isSolid = solid || scrolled || featuresOpen || solutionsOpen;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -113,16 +160,27 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
     };
   }, [mobileDrawerOpen]);
 
-  const handleMouseEnter = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-    }
+  const handleFeaturesEnter = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setSolutionsOpen(false);
     setFeaturesOpen(true);
   };
 
-  const handleMouseLeave = () => {
+  const handleFeaturesLeave = () => {
     closeTimeoutRef.current = setTimeout(() => {
       setFeaturesOpen(false);
+    }, 180);
+  };
+
+  const handleSolutionsEnter = () => {
+    if (closeSolutionsTimeoutRef.current) clearTimeout(closeSolutionsTimeoutRef.current);
+    setFeaturesOpen(false);
+    setSolutionsOpen(true);
+  };
+
+  const handleSolutionsLeave = () => {
+    closeSolutionsTimeoutRef.current = setTimeout(() => {
+      setSolutionsOpen(false);
     }, 180);
   };
 
@@ -152,8 +210,8 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
             {/* Features Mega Menu Trigger */}
             <li 
               className="relative"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={handleFeaturesEnter}
+              onMouseLeave={handleFeaturesLeave}
             >
               <Link
                 href="/features"
@@ -171,7 +229,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                 />
               </Link>
 
-              {/* Mega Menu Dropdown Container - Replicating Image Style with 2-Column Matrix */}
+              {/* Mega Menu Dropdown Container */}
               <AnimatePresence>
                 {featuresOpen && (
                   <motion.div
@@ -180,11 +238,10 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                     exit={{ opacity: 0, y: 6, scale: 0.98 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
                     className="absolute left-1/2 top-full -translate-x-[36%] pt-2.5 w-[660px] z-50 pointer-events-auto"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
+                    onMouseEnter={handleFeaturesEnter}
+                    onMouseLeave={handleFeaturesLeave}
                   >
                     <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] backdrop-blur-2xl">
-                      {/* 2-Column Grid with Bigger Icons */}
                       <div className="grid grid-cols-2 gap-x-6 gap-y-5">
                         {featuresList.map((item) => (
                           <Link
@@ -215,7 +272,6 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                         ))}
                       </div>
 
-                      {/* Mega Menu Footer Quick Action Bar */}
                       <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
                         <div className="flex items-center gap-2 text-slate-500">
                           <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -236,17 +292,112 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
               </AnimatePresence>
             </li>
 
+            {/* Solutions Dropdown Trigger */}
+            <li 
+              className="relative"
+              onMouseEnter={handleSolutionsEnter}
+              onMouseLeave={handleSolutionsLeave}
+            >
+              <Link
+                href="/solutions"
+                onClick={() => setSolutionsOpen(false)}
+                className={`flex items-center gap-1.5 text-sm font-medium transition-colors py-2 cursor-pointer ${
+                  solutionsOpen ? "text-slate-950 font-semibold" : "text-slate-600 hover:text-slate-950"
+                }`}
+                aria-expanded={solutionsOpen}
+              >
+                <span>Solutions</span>
+                <ChevronDown
+                  className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                    solutionsOpen ? "rotate-180 text-slate-950" : "text-slate-400"
+                  }`}
+                />
+              </Link>
+
+              {/* Solutions Dropdown Container */}
+              <AnimatePresence>
+                {solutionsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                    transition={{ duration: 0.18, ease: "easeOut" }}
+                    className="absolute left-1/2 top-full -translate-x-[42%] pt-2.5 w-[660px] z-50 pointer-events-auto"
+                    onMouseEnter={handleSolutionsEnter}
+                    onMouseLeave={handleSolutionsLeave}
+                  >
+                    <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-6 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.12)] backdrop-blur-2xl">
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                        {solutionsList.map((item) => (
+                          <Link
+                            key={item.href + item.title}
+                            href={item.href}
+                            onClick={() => setSolutionsOpen(false)}
+                            className="group flex items-start gap-3.5 rounded-xl p-2 -m-2 transition-all duration-150 hover:bg-slate-50/80"
+                          >
+                            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border ${item.iconColor} transition-transform duration-200 group-hover:scale-110 shadow-2xs`}>
+                              {item.icon}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-1.5">
+                                <span className="text-[13.5px] font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                                  {item.title}
+                                </span>
+                                {item.badge && (
+                                  <span className="rounded-md bg-indigo-50 border border-indigo-100/80 px-1.5 py-0.2 text-[9px] font-bold text-indigo-700">
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-[11.5px] text-slate-500 leading-snug mt-0.5">
+                                {item.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+
+                      <div className="mt-5 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <Link
+                          href="/compare/all-in-one-vs-point-solutions"
+                          onClick={() => setSolutionsOpen(false)}
+                          className="font-bold text-rose-600 hover:text-rose-700 flex items-center gap-1"
+                        >
+                          <Scale className="h-3.5 w-3.5" />
+                          <span>All-in-One vs Point Solutions Cost Guide</span>
+                        </Link>
+                        <Link
+                          href="/solutions"
+                          onClick={() => setSolutionsOpen(false)}
+                          className="font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 group/link"
+                        >
+                          <span>All Solutions</span>
+                          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </li>
+
             {/* Other Static Links */}
-            {generalNavLinks.filter(l => !l.isMega).map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="relative flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
-                >
-                  <span>{link.label}</span>
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                href="/pricing"
+                className="relative flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
+              >
+                <span>Pricing</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                className="relative flex items-center gap-1.5 text-sm font-medium text-slate-600 transition-colors hover:text-slate-900 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all hover:after:w-full"
+              >
+                <span>Blog</span>
+              </Link>
+            </li>
           </ul>
 
           {/* Desktop Right Actions */}
@@ -295,7 +446,6 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
       <AnimatePresence>
         {mobileDrawerOpen && (
           <div className="fixed inset-0 z-50 md:hidden">
-            {/* Backdrop Blur Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -305,7 +455,6 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
               onClick={() => setMobileDrawerOpen(false)}
             />
 
-            {/* Slide-in Drawer Container */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -313,7 +462,6 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
               transition={{ type: "spring", damping: 28, stiffness: 280 }}
               className="fixed inset-y-0 right-0 z-50 flex w-[330px] max-w-[88vw] flex-col justify-between bg-white p-6 shadow-2xl overflow-y-auto"
             >
-              {/* Drawer Top Header */}
               <div>
                 <div className="flex items-center justify-between border-b border-slate-100 pb-4">
                   <div className="flex items-center gap-2">
@@ -332,8 +480,7 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                   </button>
                 </div>
 
-                {/* Mobile Navigation List */}
-                <div className="mt-4 space-y-1">
+                <div className="mt-4 space-y-2">
                   
                   {/* Features Accordion */}
                   <div className="rounded-2xl border border-slate-100 bg-slate-50/70 p-2">
@@ -383,18 +530,73 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
                     )}
                   </div>
 
-                  {/* Other Links */}
-                  {generalNavLinks.filter(l => !l.isMega).map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setMobileDrawerOpen(false)}
-                      className="group flex items-center justify-between rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
+                  {/* Solutions Accordion */}
+                  <div className="rounded-2xl border border-slate-100 bg-slate-50/70 p-2">
+                    <button
+                      type="button"
+                      onClick={() => setMobileSolutionsExpanded(!mobileSolutionsExpanded)}
+                      className="flex w-full items-center justify-between px-2 py-2 text-sm font-bold text-slate-900"
                     >
-                      <span>{link.label}</span>
-                      <ChevronRight className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-0.5" />
-                    </Link>
-                  ))}
+                      <span className="flex items-center gap-2">
+                        <Building2 className="h-4 w-4 text-indigo-600" /> Solutions
+                      </span>
+                      <ChevronDown
+                        className={`h-4 w-4 text-slate-400 transition-transform ${
+                          mobileSolutionsExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    {mobileSolutionsExpanded && (
+                      <div className="mt-2 space-y-1.5 border-t border-slate-200/60 pt-2">
+                        {solutionsList.map((item) => (
+                          <Link
+                            key={item.href + item.title}
+                            href={item.href}
+                            onClick={() => setMobileDrawerOpen(false)}
+                            className="flex items-start gap-3 rounded-xl p-2 text-xs font-semibold text-slate-800 transition hover:bg-white hover:text-indigo-600 shadow-2xs"
+                          >
+                            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border ${item.iconColor}`}>
+                              {item.icon}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center justify-between">
+                                <span className="font-bold text-slate-900">{item.title}</span>
+                                {item.badge && (
+                                  <span className="rounded bg-indigo-100 px-1.5 py-0.2 text-[9px] font-bold text-indigo-800">
+                                    {item.badge}
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-[10.5px] font-normal text-slate-500 leading-tight mt-0.5 line-clamp-1">
+                                {item.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Pricing */}
+                  <Link
+                    href="/pricing"
+                    onClick={() => setMobileDrawerOpen(false)}
+                    className="group flex items-center justify-between rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
+                  >
+                    <span>Pricing</span>
+                    <ChevronRight className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+
+                  {/* Blog */}
+                  <Link
+                    href="/blog"
+                    onClick={() => setMobileDrawerOpen(false)}
+                    className="group flex items-center justify-between rounded-xl px-3.5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
+                  >
+                    <span>Blog</span>
+                    <ChevronRight className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
                 </div>
               </div>
 
@@ -439,4 +641,3 @@ export default function Navbar({ solid = false }: { solid?: boolean }) {
     </>
   );
 }
-

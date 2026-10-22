@@ -5,7 +5,7 @@ import { FileText, Clock, ChevronRight, Scale, ArrowUpRight, CheckCircle2, Shiel
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Terms of Service | Hireytics",
+  title: "Terms of Service",
   description:
     "Review the terms governing access to and use of Hireytics recruitment software, voice interview AI, and Recall workspace tools.",
   path: "/terms",

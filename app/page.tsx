@@ -4,15 +4,16 @@ import TechMarquee from "@/components/TechMarquee";
 import HowItWorks from "@/components/HowItWorks";
 import WhyHireytics from "@/components/WhyHireytics";
 import Testimonials from "@/components/Testimonials";
+import HomeFAQ from "@/components/HomeFAQ";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { generateSoftwareApplicationSchema } from "@/lib/schema";
+import { generateSoftwareApplicationSchema, generateFAQSchema, HOME_BRAND_FAQS } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "AI Recruiting Software & Applicant Tracking System | Hireytics",
+  title: "Hireytics — All-in-One AI Recruiting Platform & Recall Memory Engine",
   description:
-    "Hireytics is an AI-powered hiring platform that automates candidate screening, conducts voice interview evaluations, and provides instant hiring context using Recall.",
+    "Hireytics is the all-in-one AI recruiting platform featuring automated OCR candidate screening, asynchronous voice interviews, and Recall — institutional hiring memory and recruiting AI chatbot engine.",
   path: "/",
 });
 
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd data={generateFAQSchema(HOME_BRAND_FAQS)} />
       <Navbar />
       <main>
         <Hero />
@@ -27,6 +29,7 @@ export default function Home() {
         <HowItWorks />
         <WhyHireytics />
         <Testimonials />
+        <HomeFAQ />
       </main>
       <Footer />
     </>

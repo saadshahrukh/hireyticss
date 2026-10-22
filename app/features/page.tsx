@@ -30,8 +30,11 @@ import {
 import { MdArrowOutward } from "react-icons/md";
 import { ButtonLink } from "@/components/ui/Button";
 
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "Platform Features & AI Capabilities | Hireytics",
+  title: "Platform Features & AI Capabilities",
   description:
     "Explore the complete Hireytics platform: Recall AI intelligence, autonomous recruiting, ATS pipeline management, AI voice interviews, and OCR resume parsing.",
   path: "/features",
@@ -170,6 +173,13 @@ export default function FeaturesHubPage() {
   return (
     <>
       <JsonLd data={featuresHubSchema} />
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Features", item: "/features" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-7xl">
@@ -540,6 +550,13 @@ export default function FeaturesHubPage() {
               </div>
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="All Platform Stages"
+            headline="How Recall Unifies Every Stage of Your Hiring Pipeline"
+            description="From initial job requisition to OCR resume screening, automated voice interviews, and final team debriefs, Recall connects every data point into an interactive hiring intelligence memory. Query your entire candidate history using natural language."
+            exampleQuery="Recall, summarize candidate evaluations across all voice screens for the Senior Product Lead requisition this quarter."
+          />
 
           {/* ========================================================
               COMPARISON TABLE: LEGACY ATS VS HIREYTICS

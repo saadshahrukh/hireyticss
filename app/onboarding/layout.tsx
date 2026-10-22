@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Client Onboarding | Hireytics",
+  title: "Client Onboarding",
   description: "Set up your Hireytics workspace and configure hiring workflow preferences.",
   path: "/onboarding",
   noIndex: true,

@@ -20,8 +20,11 @@ import {
 } from "lucide-react";
 import { MdArrowOutward } from "react-icons/md";
 
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "AI Voice Interview Software & Screening Automation | Hireytics",
+  title: "AI Voice Interview Software & Screening Automation",
   description:
     "Conduct automated AI voice interviews with real-time transcription, structured scoring, and candidate evaluations inside Hireytics.",
   path: "/features/automated-interviews",
@@ -67,6 +70,14 @@ export default function AutomatedInterviewsFeaturePage() {
   return (
     <>
       <JsonLd data={featureSchema} />
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Features", item: "/features" },
+          { name: "AI Voice Interviews", item: "/features/automated-interviews" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-6xl">
@@ -207,6 +218,13 @@ export default function AutomatedInterviewsFeaturePage() {
               ))}
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="Voice Interviews & Acoustic Evaluations"
+            headline="How Recall Indexes Spoken Candidate Evidence"
+            description="Every recorded candidate voice screen is transcribed into timestamped, speaker-separated text. Recall indexes these transcripts so recruiters can search across hours of candidate audio in seconds and quote exact answers during hiring debriefs."
+            exampleQuery="Recall, what did Sarah Chen say during her voice interview when asked about debugging production outages?"
+          />
 
           {/* ========================================================
               BOTTOM CTA

@@ -2,9 +2,21 @@ import type { Metadata } from "next";
 
 export const SITE_URL = "https://hireytics.com";
 export const SITE_NAME = "Hireytics";
-export const DEFAULT_TITLE = "AI Recruiting Software & Applicant Tracking System | Hireytics";
+export const DEFAULT_TITLE =
+  "Hireytics — All-in-One AI Recruiting Platform & Recall Memory Engine";
 export const DEFAULT_DESCRIPTION =
-  "Hireytics is hiring software for modern companies to streamline recruitment, automated candidate screening, voice interview evaluation, and hiring context using Recall.";
+  "Hireytics is the all-in-one AI recruiting platform featuring OCR candidate screening, automated voice interviews, and Recall — institutional hiring memory and recruiting AI chatbot engine.";
+
+/**
+ * Strips redundant brand name suffixes to ensure child routes
+ * never output duplicate titles like "| Hireytics | Hireytics".
+ */
+export function sanitizeTitle(rawTitle: string): string {
+  return rawTitle
+    .replace(/\s*\|\s*Hireytics\s*Blog$/i, "")
+    .replace(/\s*\|\s*Hireytics$/i, "")
+    .trim();
+}
 
 export function buildMetadata({
   title,
@@ -22,12 +34,30 @@ export function buildMetadata({
   ogImage?: string;
 }): Metadata {
   const canonicalUrl = `${SITE_URL}${path}`;
+  const cleanedTitle = sanitizeTitle(title);
+  const isHomePage = path === "" || path === "/";
+
+  // For the homepage, use absolute title to preserve exact branding without duplication
+  const resolvedTitle = isHomePage
+    ? { absolute: DEFAULT_TITLE }
+    : cleanedTitle;
+
+  const fullOgTitle = isHomePage
+    ? DEFAULT_TITLE
+    : `${cleanedTitle} | ${SITE_NAME}`;
 
   return {
-    title,
+    metadataBase: new URL(SITE_URL),
+    applicationName: SITE_NAME,
+    title: resolvedTitle,
     description,
     alternates: {
       canonical: canonicalUrl,
+      languages: {
+        "en-US": canonicalUrl,
+        "en-GB": canonicalUrl,
+        "x-default": canonicalUrl,
+      },
     },
     robots: noIndex
       ? {
@@ -51,24 +81,25 @@ export function buildMetadata({
           },
         },
     openGraph: {
-      title,
+      title: fullOgTitle,
       description,
       url: canonicalUrl,
       siteName: SITE_NAME,
+      locale: "en_US",
+      alternateLocale: ["en_GB"],
+      type: ogType,
       images: [
         {
           url: ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: cleanedTitle,
         },
       ],
-      locale: "en_US",
-      type: ogType,
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullOgTitle,
       description,
       images: [ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`],
       creator: "@hireytics",

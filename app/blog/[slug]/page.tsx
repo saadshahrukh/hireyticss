@@ -6,8 +6,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllArticles, getArticleBySlug } from "@/lib/blog-data";
 import { buildMetadata } from "@/lib/seo";
-import { generateArticleSchema } from "@/lib/schema";
+import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/schema";
 import { Clock, User, Calendar, ArrowUpRight, ArrowLeft } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa6";
+import AuthorAvatar from "@/components/blog/AuthorAvatar";
 
 interface ArticlePageProps {
   params: Promise<{
@@ -28,14 +30,14 @@ export async function generateMetadata({ params }: ArticlePageProps) {
 
   if (!article) {
     return buildMetadata({
-      title: "Article Not Found | Hireytics Blog",
+      title: "Article Not Found",
       description: "The requested article could not be found.",
       noIndex: true,
     });
   }
 
   return buildMetadata({
-    title: `${article.title} | Hireytics Blog`,
+    title: article.title,
     description: article.metaDescription,
     path: `/blog/${article.slug}`,
     ogType: "article",
@@ -74,14 +76,24 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     headline: article.title,
     description: article.metaDescription,
     url: `/blog/${article.slug}`,
+    imageUrl: article.coverImage,
     datePublished: article.publishedDate,
     dateModified: article.updatedDate || article.publishedDate,
     authorName: article.author.name,
+    authorRole: article.author.role,
+    authorUrl: article.author.url,
   });
 
   return (
     <>
       <JsonLd data={articleSchema} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Blog", item: "/blog" },
+          { name: article.title, item: `/blog/${article.slug}` },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-white pt-28 pb-20">
         <div className="section-container max-w-6xl">
@@ -112,16 +124,29 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               {article.title}
             </h1>
 
-            <div className="mt-4 flex items-center gap-3 text-xs text-slate-600">
-              <img
-                src={article.author.avatar}
-                alt={article.author.name}
-                className="h-8 w-8 rounded-full object-cover shrink-0 border border-slate-200"
-              />
-              <div>
-                <span className="font-bold text-slate-900 block">{article.author.name}</span>
-                <span className="text-slate-500 text-[11px] block">{article.author.role}</span>
-              </div>
+            <div className="mt-4 flex items-center gap-3 text-xs">
+              <a
+                href={article.author.url}
+                target={article.author.url.startsWith("http") && !article.author.url.includes("hireytics.com") ? "_blank" : undefined}
+                rel={article.author.url.startsWith("http") && !article.author.url.includes("hireytics.com") ? "noopener noreferrer" : undefined}
+                className="group flex items-center gap-3"
+              >
+                <AuthorAvatar
+                  src={article.author.avatar}
+                  name={article.author.name}
+                  className="h-10 w-10"
+                  iconClassName="h-4 w-4"
+                />
+                <div>
+                  <div className="flex items-center gap-1.5 font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                    <span>{article.author.name}</span>
+                    {article.author.name.includes("Saad") && (
+                      <FaLinkedin className="h-3.5 w-3.5 text-[#0A66C2]" />
+                    )}
+                  </div>
+                  <span className="text-slate-500 text-[11px] block">{article.author.role}</span>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -266,7 +291,65 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 );
               })}
 
-              <div className="mt-12 border-t border-slate-200 pt-6 flex items-center justify-between">
+              {/* Author Profile Bio Card */}
+              <div className="mt-12 rounded-2xl border border-slate-200/80 bg-slate-50/70 p-6 sm:p-7">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                  <AuthorAvatar
+                    src={article.author.avatar}
+                    name={article.author.name}
+                    className="h-16 w-16"
+                    iconClassName="h-7 w-7"
+                  />
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Written by</span>
+                      <h3 className="font-heading text-lg font-bold text-slate-900">
+                        <a
+                          href={article.author.url}
+                          target={article.author.url.startsWith("http") && !article.author.url.includes("hireytics.com") ? "_blank" : undefined}
+                          rel={article.author.url.startsWith("http") && !article.author.url.includes("hireytics.com") ? "noopener noreferrer" : undefined}
+                          className="hover:text-sky-600 transition-colors inline-flex items-center gap-1.5"
+                        >
+                          {article.author.name}
+                          {article.author.name.includes("Saad") && (
+                            <FaLinkedin className="h-4 w-4 text-[#0A66C2]" />
+                          )}
+                        </a>
+                      </h3>
+                    </div>
+                    <p className="mt-1 text-xs font-medium text-slate-500">
+                      {article.author.role}
+                    </p>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                      {article.author.name.includes("Saad")
+                        ? "Saad Shahrukh is the Founder & Head of Product at Hireytics, building next-generation AI recruiting systems, automated acoustic voice screening, and institutional hiring memory with Recall."
+                        : "The Hireytics Team consists of talent acquisition engineers and recruitment intelligence researchers developing autonomous hiring workflows and candidate ranking platforms."}
+                    </p>
+                    <div className="mt-4">
+                      <a
+                        href={article.author.url}
+                        target={article.author.url.startsWith("http") && !article.author.url.includes("hireytics.com") ? "_blank" : undefined}
+                        rel={article.author.url.startsWith("http") && !article.author.url.includes("hireytics.com") ? "noopener noreferrer" : undefined}
+                        className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-2xs hover:border-slate-400 hover:bg-slate-50 transition-colors"
+                      >
+                        {article.author.name.includes("Saad") ? (
+                          <>
+                            <FaLinkedin className="h-3.5 w-3.5 text-[#0A66C2]" />
+                            <span>Connect on LinkedIn</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Visit Hireytics</span>
+                            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400" />
+                          </>
+                        )}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 border-t border-slate-200 pt-6 flex items-center justify-between">
                 <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-950">
                   <ArrowLeft className="h-4 w-4" />
                   <span>Back to Blog Articles</span>

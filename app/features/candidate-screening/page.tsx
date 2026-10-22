@@ -23,8 +23,11 @@ import {
 } from "lucide-react";
 import { MdArrowOutward } from "react-icons/md";
 
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "AI Candidate Screening Software & Resume Parsing | Hireytics",
+  title: "AI Candidate Screening Software & Resume Parsing",
   description:
     "Automate candidate resume screening with OCR resume parsing, skill match scoring, and automated candidate evaluation.",
   path: "/features/candidate-screening",
@@ -70,6 +73,14 @@ export default function CandidateScreeningFeaturePage() {
   return (
     <>
       <JsonLd data={featureSchema} />
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Features", item: "/features" },
+          { name: "Candidate Screening", item: "/features/candidate-screening" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-6xl">
@@ -226,6 +237,13 @@ export default function CandidateScreeningFeaturePage() {
               ))}
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="Resume Screening & OCR Parsing"
+            headline="How Recall Powers Candidate Screening & Vector Analysis"
+            description="Every resume parsed by OCR is semantically indexed inside Recall. Rather than reading hundreds of PDF pages, hiring managers can ask Recall to extract specific qualifications, verify years of experience, or compare candidates side-by-side."
+            exampleQuery="Recall, which candidate screened this week has the deepest hands-on Kubernetes and Terraform migration experience?"
+          />
 
           {/* ========================================================
               COMPARISON / VALUE BANNER

@@ -21,8 +21,11 @@ import {
 } from "lucide-react";
 import { MdArrowOutward } from "react-icons/md";
 
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "Applicant Tracking System (ATS) & Pipeline Management | Hireytics",
+  title: "Applicant Tracking System (ATS) & Pipeline Management",
   description:
     "Manage candidate pipelines, track application stages, evaluate interview feedback, and automate hiring workflows with Hireytics ATS.",
   path: "/features/applicant-tracking",
@@ -68,6 +71,14 @@ export default function ApplicantTrackingFeaturePage() {
   return (
     <>
       <JsonLd data={featureSchema} />
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Features", item: "/features" },
+          { name: "Applicant Tracking System", item: "/features/applicant-tracking" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-6xl">
@@ -211,6 +222,13 @@ export default function ApplicantTrackingFeaturePage() {
               ))}
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="Applicant Tracking & Pipeline Velocity"
+            headline="How Recall Transforms Static ATS Records into Active Company Memory"
+            description="Legacy ATS databases are graveyards for old candidate PDFs. Recall connects every stage in your Hireytics ATS—from job requisition through panel scorecards—allowing talent leaders to ask plain-language questions across closed pipelines."
+            exampleQuery="Recall, what were the main concerns raised by the engineering panel for candidate Alex Rivera during last month's interviews?"
+          />
 
           {/* ========================================================
               BOTTOM CTA

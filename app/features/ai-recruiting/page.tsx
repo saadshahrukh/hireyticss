@@ -24,8 +24,11 @@ import {
 } from "lucide-react";
 import { MdArrowOutward } from "react-icons/md";
 
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "AI Recruiting Software for Modern Hiring Teams | Hireytics",
+  title: "AI Recruiting Software for Modern Hiring Teams",
   description:
     "Streamline hiring with AI recruiting software that screens candidates, evaluates voice interviews, and indexes hiring intelligence with Recall.",
   path: "/features/ai-recruiting",
@@ -71,6 +74,14 @@ export default function AIRecruitingFeaturePage() {
   return (
     <>
       <JsonLd data={featureSchema} />
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Features", item: "/features" },
+          { name: "AI Recruiting Software", item: "/features/ai-recruiting" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-6xl">
@@ -217,6 +228,13 @@ export default function AIRecruitingFeaturePage() {
               ))}
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="AI Recruiting & Candidate Matching"
+            headline="How Recall Powers AI Candidate Sourcing & Pipeline Memory"
+            description="Recall continuously indexes qualification vectors against open job requisitions. Instead of losing candidate history after a role is closed, Recall remembers candidate strengths and prompts recruiters when past applicants match new openings."
+            exampleQuery="Recall, surface past candidates who passed our Frontend screen with high React ratings and are open to new opportunities."
+          />
 
           {/* ========================================================
               COMPARISON / VALUE BANNER

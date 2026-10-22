@@ -4,20 +4,29 @@ import PricingSection from "@/components/pricing/PricingSection";
 import ComparisonTable from "@/components/pricing/ComparisonTable";
 import PricingFAQ from "@/components/pricing/PricingFAQ";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import JsonLd from "@/components/JsonLd";
 import { FadeIn } from "@/components/ui/Motion";
 import { ButtonLink } from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo";
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
 
 export const metadata = buildMetadata({
-  title: "Pricing Plans for AI Hiring & Applicant Tracking | Hireytics",
+  title: "Pricing Plans for AI Hiring & Applicant Tracking",
   description:
-    "Flexible pricing plans for teams of every size. Start free with AI interviews, resume screening, and analytics — scale to Enterprise with custom workflows and Recall integration.",
+    "Flexible mid-market pricing plans for teams of every size. Start free with AI interviews, resume screening, and analytics — scale with Recall integration.",
   path: "/pricing",
 });
 
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Pricing", item: "/pricing" },
+        ])}
+      />
       <Navbar solid />
       <main className="relative overflow-hidden pt-24">
         <div className="section-container max-w-6xl pt-4">

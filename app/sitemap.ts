@@ -20,25 +20,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
+      url: `${SITE_URL}/recall`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.95,
+    },
+    {
       url: `${SITE_URL}/features`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.95,
     },
     {
-      url: `${SITE_URL}/solutions`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    },
-    {
       url: `${SITE_URL}/features/ai-recruiting`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}/features/applicant-tracking`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
@@ -56,6 +50,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/features/applicant-tracking`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/solutions`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/solutions/mid-market`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/solutions/tech-companies`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/compare/all-in-one-vs-point-solutions`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    },
+    {
       url: `${SITE_URL}/solutions/small-business`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
@@ -66,12 +90,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/recall`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
     },
     {
       url: `${SITE_URL}/pricing`,

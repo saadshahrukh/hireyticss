@@ -24,8 +24,11 @@ import {
 } from "lucide-react";
 import { MdArrowOutward } from "react-icons/md";
 
+import { generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "Recruiting Software for Talent Acquisition Teams | Hireytics",
+  title: "Recruiting Software for Talent Acquisition Teams",
   description:
     "Empower talent acquisition teams and recruiters with AI voice screening, candidate pipeline tracking, ATS integrations, and Recall intelligence context.",
   path: "/solutions/recruiting-teams",
@@ -44,6 +47,13 @@ export default function RecruitingTeamsSolutionPage() {
   return (
     <>
       <JsonLd data={solutionSchema} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Solutions", item: "/solutions" },
+          { name: "Talent Acquisition & Recruiting Teams", item: "/solutions/recruiting-teams" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-7xl">
@@ -260,6 +270,13 @@ export default function RecruitingTeamsSolutionPage() {
               </div>
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="Talent Acquisition & High-Volume Operations"
+            headline="How Recall Accelerates Recruiter Throughput and Panel Alignment"
+            description="High-velocity recruiting teams conduct hundreds of phone screens every month. Recall synthesizes recruiter notes, interviewer rubrics, and voice screening audio so panels reach alignment in minutes instead of days."
+            exampleQuery="Recall, compare interviewer scorecards for all Staff Engineering finalists and highlight points of consensus or disagreement."
+          />
 
           {/* ========================================================
               BOTTOM CTA

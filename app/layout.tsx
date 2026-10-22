@@ -3,7 +3,7 @@ import "./globals.css";
 import "@/components/hero.css";
 import JsonLd from "@/components/JsonLd";
 import { SITE_URL, SITE_NAME, DEFAULT_TITLE, DEFAULT_DESCRIPTION } from "@/lib/seo";
-import { generateOrganizationSchema, generateWebSiteSchema, generateBrandSchema } from "@/lib/schema";
+import { generateGlobalKnowledgeGraphSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -12,7 +12,12 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
-  applicationName: SITE_NAME,
+  applicationName: "Hireytics",
+  appleWebApp: {
+    title: "Hireytics",
+    capable: true,
+    statusBarStyle: "default",
+  },
   authors: [{ name: "Hireytics Inc.", url: SITE_URL }],
   publisher: "Hireytics Inc.",
   keywords: [
@@ -27,7 +32,18 @@ export const metadata: Metadata = {
     "candidate screening software",
     "voice interview automation",
     "Recall AI",
+    "AI HR chatbot",
+    "candidate memory engine",
+    "mid-market recruiting platform",
   ],
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      "en-US": SITE_URL,
+      "en-GB": SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
   icons: {
     icon: [
       { url: "/favicon.ico?v=20261011_3", sizes: "any" },
@@ -44,15 +60,16 @@ export const metadata: Metadata = {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
-    siteName: SITE_NAME,
+    siteName: "Hireytics",
     locale: "en_US",
+    alternateLocale: ["en_GB"],
     type: "website",
     images: [
       {
         url: `${SITE_URL}/logo-grad.png`,
         width: 1200,
         height: 630,
-        alt: SITE_NAME,
+        alt: "Hireytics",
       },
     ],
   },
@@ -78,9 +95,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20261011_3" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20261011_3" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261011_3" />
-        <JsonLd data={generateOrganizationSchema()} />
-        <JsonLd data={generateBrandSchema()} />
-        <JsonLd data={generateWebSiteSchema()} />
+        <JsonLd data={generateGlobalKnowledgeGraphSchema()} />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-black">
         {children}
@@ -88,4 +103,3 @@ export default function RootLayout({
     </html>
   );
 }
-

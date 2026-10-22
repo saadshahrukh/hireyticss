@@ -25,10 +25,13 @@ import {
 import { MdArrowOutward } from "react-icons/md";
 import { ButtonLink } from "@/components/ui/Button";
 
+import { generateSoftwareApplicationSchema, generateBreadcrumbSchema } from "@/lib/schema";
+import RecallContextCallout from "@/components/recall/RecallContextCallout";
+
 export const metadata = buildMetadata({
-  title: "Tailored AI Hiring Solutions | Hireytics",
+  title: "Tailored AI Hiring Solutions",
   description:
-    "Discover Hireytics hiring solutions tailored for Founders, Small Businesses, Scaleups, and High-Volume Talent Acquisition Teams.",
+    "Discover Hireytics hiring solutions tailored for Founders, Small Businesses, Mid-Market Organizations, Tech Companies, and Talent Acquisition Teams.",
   path: "/solutions",
 });
 
@@ -41,6 +44,40 @@ const solutionsSchema = {
 };
 
 const solutionAudiences = [
+  {
+    slug: "mid-market",
+    title: "Mid-Market Organizations",
+    eyebrow: "BEST FOR 100–1,500 EMPLOYEES",
+    badge: "Most Popular",
+    description:
+      "Consolidate fragmented point solutions into a single AI-powered hiring platform at a fraction of legacy enterprise ATS costs.",
+    icon: <Building2 className="h-6 w-6 text-indigo-600" />,
+    stats: "Save $45k+ Annually",
+    benefits: [
+      "All-in-one ATS, OCR screening, AI voice interviews, and Recall memory",
+      "Eliminate point-solution sprawl, vendor bloat, and costly seat licenses",
+      "Predictable transparent mid-market pricing with no implementation delays",
+      "Seamless integrations with major HRIS, Slack, and calendars",
+    ],
+    href: "/solutions/mid-market",
+  },
+  {
+    slug: "tech-companies",
+    title: "Tech Companies & Scaleups",
+    eyebrow: "ENGINEERING & PRODUCT HIRING",
+    badge: "High Velocity",
+    description:
+      "Screen software engineers, architects, and technical talent with objective rubric calibration and deep semantic vector matching.",
+    icon: <Zap className="h-6 w-6 text-amber-500" />,
+    stats: "75% Faster Engineering Hires",
+    benefits: [
+      "Objective AI voice technical screening with live code logic probing",
+      "Zero recruiter engineering burnout with automated interview transcripts",
+      "Recall candidate memory prevents repeated technical screens",
+      "Fast-track verified top 5% engineering finalists directly to team rounds",
+    ],
+    href: "/solutions/tech-companies",
+  },
   {
     slug: "small-business",
     title: "Small Business & Startups",
@@ -65,7 +102,7 @@ const solutionAudiences = [
     badge: "High Velocity",
     description:
       "Scale hiring throughput across multiple hiring managers and departments with automated pipeline stages and unified memory.",
-    icon: <Users className="h-6 w-6 text-indigo-600" />,
+    icon: <Users className="h-6 w-6 text-purple-600" />,
     stats: "3.5x Pipeline Velocity",
     benefits: [
       "Autonomous resume screening & multi-dimensional skill vector matching",
@@ -108,6 +145,13 @@ export default function SolutionsHubPage() {
   return (
     <>
       <JsonLd data={solutionsSchema} />
+      <JsonLd data={generateSoftwareApplicationSchema()} />
+      <JsonLd
+        data={generateBreadcrumbSchema([
+          { name: "Home", item: "/" },
+          { name: "Solutions", item: "/solutions" },
+        ])}
+      />
       <Navbar solid />
       <main className="min-h-screen bg-[#FAF9F6] pt-28 pb-24">
         <div className="section-container max-w-7xl">
@@ -327,6 +371,13 @@ export default function SolutionsHubPage() {
               </div>
             </div>
           </div>
+
+          <RecallContextCallout
+            stage="Enterprise & Mid-Market Recruitment Operations"
+            headline="How Recall Unifies Tailored Recruiting Solutions"
+            description="Whether scaling technical teams or automating SMB screening, Recall acts as your institutional candidate memory. Recall enables hiring managers to make confident hiring decisions backed by historical applicant evidence."
+            exampleQuery="Recall, analyze hiring cycle times and candidate acceptance rates across technical versus operational roles."
+          />
 
           {/* ========================================================
               BOTTOM HIGH-CONVERTING CTA BANNER

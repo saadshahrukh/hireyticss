@@ -4,9 +4,10 @@ export interface Article {
   excerpt: string;
   metaDescription: string;
   author: {
-    name: string;
+    name: "Saad Shahrukh" | "Hireytics Team";
     role: string;
-    avatar: string;
+    avatar?: string;
+    url: string;
   };
   publishedDate: string;
   updatedDate?: string;
@@ -25,9 +26,10 @@ export const ARTICLES: Article[] = [
     excerpt: "A practical guide to how artificial intelligence is applied in modern recruitment, from resume screening to voice interview transcription and hiring pipeline context.",
     metaDescription: "Understand what AI recruiting software actually does, where artificial intelligence fits into the hiring process, and how companies can evaluate platforms responsibly.",
     author: {
-      name: "Sarah Jenkins",
-      role: "Talent Operations Specialist",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+      name: "Saad Shahrukh",
+      role: "Founder & Head of Product at Hireytics",
+      avatar: "/saad-shahrukh.jpg",
+      url: "https://www.linkedin.com/in/saadshahrukh/",
     },
     publishedDate: "2026-09-15",
     updatedDate: "2026-09-20",
@@ -109,9 +111,10 @@ AI recruiting software transforms how modern organizations hire by automating ad
     excerpt: "Compare traditional Applicant Tracking Systems (ATS) with modern AI recruiting software to determine which platform architecture best fits your hiring needs.",
     metaDescription: "Learn the core differences between a traditional Applicant Tracking System (ATS) and AI recruiting software, including screening capabilities and pipeline intelligence.",
     author: {
-      name: "Marcus Vance",
-      role: "Head of Talent Acquisition",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      name: "Saad Shahrukh",
+      role: "Founder & Head of Product at Hireytics",
+      avatar: "/saad-shahrukh.jpg",
+      url: "https://www.linkedin.com/in/saadshahrukh/",
     },
     publishedDate: "2026-09-17",
     updatedDate: "2026-09-21",
@@ -183,9 +186,10 @@ An ATS stores applicant data, but AI recruiting software transforms that data in
     excerpt: "Discover how hiring teams can implement recruiting workflow automation to eliminate manual screening while elevating candidate relationships.",
     metaDescription: "Learn how to automate repetitive recruitment tasks like resume screening and interview scheduling while preserving candidate empathy and human connection.",
     author: {
-      name: "David Ross",
-      role: "Recruitment Operations Lead",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80",
+      name: "Hireytics Team",
+      role: "Recruitment Intelligence Group",
+      avatar: "/logo-icon.png",
+      url: "https://hireytics.com",
     },
     publishedDate: "2026-09-19",
     updatedDate: "2026-09-22",
@@ -252,9 +256,10 @@ Recruiting automation and human-centered hiring reinforce each other. Review our
     excerpt: "Discover how modern neural vector embeddings and OCR parsing decode contextual technical experience, eliminating keyword stuffing and surfacing hidden top performers.",
     metaDescription: "Learn how skill vector matching and neural AI resume parsing transform candidate screening by understanding experience context instead of primitive keyword matching.",
     author: {
-      name: "Dr. Elena Rostova",
-      role: "Lead AI Researcher & Talent Scientist",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+      name: "Saad Shahrukh",
+      role: "Founder & Head of Product at Hireytics",
+      avatar: "/saad-shahrukh.jpg",
+      url: "https://www.linkedin.com/in/saadshahrukh/",
     },
     publishedDate: "2026-09-28",
     updatedDate: "2026-10-02",
@@ -330,9 +335,10 @@ Check out our [Pricing Plans](/pricing) or begin a [Free 14-Day Trial](/free-tri
     excerpt: "A deep-dive ROI analysis of mis-hires, recruiter burnout, and screening bottlenecks—and how asynchronous AI voice interviews cut evaluation cycle times by 75%.",
     metaDescription: "Explore the real financial and operational cost of a bad hire in 2026, and discover how AI voice screening interviews prevent hiring mistakes while accelerating velocity.",
     author: {
-      name: "Marcus Vance",
-      role: "Head of Talent Acquisition",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      name: "Saad Shahrukh",
+      role: "Founder & Head of Product at Hireytics",
+      avatar: "/saad-shahrukh.jpg",
+      url: "https://www.linkedin.com/in/saadshahrukh/",
     },
     publishedDate: "2026-10-04",
     updatedDate: "2026-10-06",
@@ -426,9 +432,10 @@ Explore our [Small Business Solutions](/solutions/small-business) and [Recruitin
     excerpt: "Searching for Hireytics and wondering why search engines suggest 'Did you mean Hirelytics?' Here is the definitive guide to Hireytics (hireytics.com), our distinct AI hiring platform, and how we compare to competitor Hirelytics.",
     metaDescription: "Understand the core differences between Hireytics and competitor Hirelytics. Discover why Hireytics is the dedicated AI recruiting, voice screening, and Recall platform at hireytics.com.",
     author: {
-      name: "Marcus Vance",
-      role: "Head of Talent Acquisition",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+      name: "Saad Shahrukh",
+      role: "Founder & Head of Product at Hireytics",
+      avatar: "/saad-shahrukh.jpg",
+      url: "https://www.linkedin.com/in/saadshahrukh/",
     },
     publishedDate: "2026-10-09",
     updatedDate: "2026-10-11",
@@ -550,9 +557,10 @@ Explore our [Small Business Solutions](/solutions/small-business) and [Recruitin
     excerpt: "Discover how modern talent acquisition teams are transitioning from static ATS databases to active recruitment intelligence, continuous candidate recall, and structured voice screening.",
     metaDescription: "Learn how enterprise talent leaders use AI recruitment intelligence, semantic candidate recall, and asynchronous voice screening to accelerate hiring velocity and cut cost-per-hire in 2026.",
     author: {
-      name: "Dr. Elena Rostova",
-      role: "Lead AI Researcher & Talent Scientist",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80",
+      name: "Hireytics Team",
+      role: "Recruitment Intelligence Group",
+      avatar: "/logo-icon.png",
+      url: "https://hireytics.com",
     },
     publishedDate: "2026-10-10",
     updatedDate: "2026-10-11",
